@@ -1,5 +1,3 @@
-HTML
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -24,7 +22,10 @@ HTML
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; scroll-padding-top: 150px; }
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 150px;
+}
 
 body {
   background: var(--cream);
@@ -36,7 +37,11 @@ body {
 a { color: inherit; text-decoration: none; }
 button { font: inherit; cursor: pointer; }
 img { max-width: 100%; }
-.container { width: min(1160px, 92%); margin: auto; }
+
+.container {
+  width: min(1160px, 92%);
+  margin: auto;
+}
 
 .topbar {
   background: var(--green);
@@ -80,7 +85,10 @@ header {
   display: block;
 }
 
-.brand-copy { direction: rtl; text-align: right; }
+.brand-copy {
+  direction: rtl;
+  text-align: right;
+}
 
 .brand-topline {
   color: var(--brown);
@@ -96,7 +104,10 @@ header {
   white-space: nowrap;
 }
 
-.brand-tagline { color: var(--muted); font-size: 12px; }
+.brand-tagline {
+  color: var(--muted);
+  font-size: 12px;
+}
 
 .header-actions {
   display: flex;
@@ -116,7 +127,10 @@ header {
   white-space: nowrap;
 }
 
-.language-btn:hover { background: var(--green); color: white; }
+.language-btn:hover {
+  background: var(--green);
+  color: white;
+}
 
 .main-nav {
   display: flex;
@@ -149,7 +163,10 @@ header {
   transition: .2s;
 }
 
-.btn:hover { background: var(--brown-dark); transform: translateY(-2px); }
+.btn:hover {
+  background: var(--brown-dark);
+  transform: translateY(-2px);
+}
 
 .btn-outline {
   background: transparent;
@@ -157,8 +174,12 @@ header {
   border: 1px solid var(--green);
 }
 
-.btn-outline:hover { background: var(--green); color: white; }
+.btn-outline:hover {
+  background: var(--green);
+  color: white;
+}
 
+/* الرئيسية */
 .hero { padding: 38px 0 30px; }
 
 .hero-inner {
@@ -173,7 +194,8 @@ header {
   box-shadow: var(--shadow);
 }
 
-.eyebrow, .section-kicker {
+.eyebrow,
+.section-kicker {
   color: var(--brown);
   font-size: 13px;
   font-weight: bold;
@@ -195,13 +217,17 @@ header {
   margin-bottom: 22px;
 }
 
-.hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.hero-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
 
 .hero-art {
-  min-height: 260px;
+  min-height: 300px;
   display: grid;
   place-items: center;
-  padding: 20px;
+  padding: 18px;
   border-radius: 22px;
   background:
     radial-gradient(circle at 20% 25%, #f0d7a9 0 11%, transparent 12%),
@@ -210,20 +236,48 @@ header {
     #f7ecda;
 }
 
-.hero-art-content {
-  width: 88%;
-  background: rgba(255,253,248,.92);
-  border-radius: 22px;
-  padding: 25px 15px;
-  text-align: center;
-  box-shadow: var(--shadow);
-  transform: rotate(-2deg);
+.hero-cover {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  max-height: 390px;
+  object-fit: contain;
+  border-radius: 14px;
+  filter: drop-shadow(0 8px 12px rgba(50,40,20,.14));
 }
 
-.hero-art-icons { font-size: 43px; letter-spacing: 4px; }
-.hero-art-content strong { display: block; color: var(--green); font-size: 24px; }
-.hero-art-content span { color: var(--brown); font-size: 13px; }
+.cover-fallback {
+  width: 100%;
+  max-width: 340px;
+  padding: 28px 18px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
 
+.cover-fallback[hidden] { display: none; }
+
+.cover-fallback .cover-icons {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.cover-fallback strong {
+  display: block;
+  color: var(--green);
+  font-size: 24px;
+}
+
+.cover-fallback span {
+  display: block;
+  color: var(--brown);
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* الأقسام */
 section { padding: 29px 0; }
 
 .section-heading {
@@ -240,7 +294,10 @@ section { padding: 29px 0; }
   line-height: 1.5;
 }
 
-.section-heading p { color: var(--muted); font-size: 13px; }
+.section-heading p {
+  color: var(--muted);
+  font-size: 13px;
+}
 
 .categories {
   display: grid;
@@ -258,7 +315,10 @@ section { padding: 29px 0; }
   transition: .2s;
 }
 
-.category-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
 
 .category-icon {
   width: 58px;
@@ -273,37 +333,62 @@ section { padding: 29px 0; }
 
 .category-card:nth-child(2) .category-icon { background: #e8eddf; }
 .category-card:nth-child(3) .category-icon { background: #f3dfd5; }
-.category-card h3 { color: var(--green); font-size: 17px; }
-.category-card p { color: var(--muted); font-size: 12px; }
-.category-link { display: inline-block; color: var(--brown); font-size: 12px; font-weight: bold; margin-top: 7px; }
 
+.category-card h3 {
+  color: var(--green);
+  font-size: 17px;
+}
+
+.category-card p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.category-link {
+  display: inline-block;
+  color: var(--brown);
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 7px;
+}
+
+/* المنتجات */
 .product-section { padding: 31px 0; }
-.product-section + .product-section { border-top: 1px solid var(--line); }
+
+.product-section + .product-section {
+  border-top: 1px solid var(--line);
+}
 
 .products-row {
   display: grid;
   grid-template-columns: 38px minmax(0,1fr) 38px;
-  align-items: center;
+  align-items: stretch;
   gap: 9px;
 }
 
 .carousel-arrow {
   width: 38px;
-  height: 38px;
+  height: auto;
+  min-height: 100%;
+  align-self: stretch;
   border: 1px solid var(--line);
-  border-radius: 50%;
+  border-radius: 14px;
   background: var(--white);
   color: var(--green);
   display: grid;
   place-items: center;
-  font-size: 23px;
+  font-size: 28px;
   box-shadow: 0 3px 10px rgba(50,40,20,.05);
 }
 
-.carousel-arrow:hover { background: var(--green); color: white; }
+.carousel-arrow:hover {
+  background: var(--green);
+  color: white;
+}
 
 .products-track {
   display: flex;
+  align-items: stretch;
   gap: 14px;
   min-width: 0;
   overflow-x: auto;
@@ -316,7 +401,11 @@ section { padding: 29px 0; }
 }
 
 .products-track::-webkit-scrollbar { height: 5px; }
-.products-track::-webkit-scrollbar-thumb { background: #d6c6ad; border-radius: 10px; }
+
+.products-track::-webkit-scrollbar-thumb {
+  background: #d6c6ad;
+  border-radius: 10px;
+}
 
 .product-card {
   flex: 0 0 calc((100% - 28px)/3);
@@ -331,10 +420,14 @@ section { padding: 29px 0; }
   transition: .2s;
 }
 
-.product-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
 
 .product-art {
   height: 165px;
+  flex-shrink: 0;
   position: relative;
   display: grid;
   place-items: center;
@@ -364,9 +457,25 @@ section { padding: 29px 0; }
   padding: 13px;
 }
 
-.product-info h3 { color: var(--green); font-size: 15px; margin-bottom: 5px; }
-.product-info p { color: var(--muted); font-size: 12px; margin-bottom: 10px; flex: 1; }
-.product-price { color: var(--brown); font-size: 12px; font-weight: bold; margin-bottom: 9px; }
+.product-info h3 {
+  color: var(--green);
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.product-info p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-bottom: 10px;
+  flex: 1;
+}
+
+.product-price {
+  color: var(--brown);
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 9px;
+}
 
 .order-btn {
   width: 100%;
@@ -388,9 +497,14 @@ section { padding: 29px 0; }
   scroll-snap-type: none;
 }
 
-.products-track.expanded .product-card { width: auto; }
+.products-track.expanded .product-card {
+  width: auto;
+}
 
-.show-all-wrap { text-align: center; margin-top: 10px; }
+.show-all-wrap {
+  text-align: center;
+  margin-top: 10px;
+}
 
 .show-all {
   border: 1px solid var(--brown);
@@ -402,8 +516,12 @@ section { padding: 29px 0; }
   font-size: 13px;
 }
 
-.show-all:hover { background: var(--brown); color: white; }
+.show-all:hover {
+  background: var(--brown);
+  color: white;
+}
 
+/* عن البراند والتواصل */
 .about-box {
   background: var(--green);
   color: white;
@@ -415,8 +533,16 @@ section { padding: 29px 0; }
   gap: 20px;
 }
 
-.about-box h2 { font-size: clamp(24px,3vw,32px); margin: 5px 0 10px; }
-.about-box p { color: #f0f1e9; font-size: 14px; }
+.about-box h2 {
+  font-size: clamp(24px,3vw,32px);
+  margin: 5px 0 10px;
+}
+
+.about-box p {
+  color: #f0f1e9;
+  font-size: 14px;
+}
+
 .about-symbol { font-size: 70px; }
 
 .contact-box {
@@ -427,10 +553,20 @@ section { padding: 29px 0; }
   padding: clamp(23px,4vw,36px);
 }
 
-.contact-box h2 { color: var(--green); font-size: clamp(24px,3vw,31px); margin: 5px 0; }
-.contact-box p { color: var(--muted); font-size: 14px; margin-bottom: 19px; }
+.contact-box h2 {
+  color: var(--green);
+  font-size: clamp(24px,3vw,31px);
+  margin: 5px 0;
+}
 
-.contact-actions, .social-links {
+.contact-box p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 19px;
+}
+
+.contact-actions,
+.social-links {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -448,7 +584,10 @@ section { padding: 29px 0; }
   font-size: 12px;
 }
 
-.social-links a:hover { color: var(--brown); border-color: var(--brown); }
+.social-links a:hover {
+  color: var(--brown);
+  border-color: var(--brown);
+}
 
 footer {
   margin-top: 32px;
@@ -460,74 +599,201 @@ footer {
 }
 
 footer strong { color: var(--green); }
-.back-top { display: inline-block; margin-top: 8px; color: var(--brown); font-weight: bold; }
 
-[dir="ltr"] .brand-copy { direction: ltr; text-align: left; }
-[dir="ltr"] .section-heading { text-align: left; }
-[dir="ltr"] .product-label { inset-inline-start: auto; inset-inline-end: 9px; }
-
-@media (max-width: 850px) {
-  .header-inner { flex-direction: column; align-items: stretch; gap: 10px; }
-  .brand { justify-content: center; }
-  .brand-logo { width: 76px; height: 76px; flex-basis: 76px; }
-  .header-actions { align-items: center; }
-  .main-nav { justify-content: center; gap: 10px 14px; }
-  .hero-inner { grid-template-columns: 1fr; }
-  .hero-art { min-height: 200px; }
-  .product-card { flex-basis: calc((100% - 14px)/2); }
-  .products-track.expanded { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.back-top {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--brown);
+  font-weight: bold;
 }
 
+[dir="ltr"] .brand-copy {
+  direction: ltr;
+  text-align: left;
+}
+
+[dir="ltr"] .section-heading { text-align: left; }
+
+[dir="ltr"] .product-label {
+  inset-inline-start: auto;
+  inset-inline-end: 9px;
+}
+
+/* الأجهزة المتوسطة */
+@media (max-width: 850px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .brand { justify-content: center; }
+
+  .brand-logo {
+    width: 76px;
+    height: 76px;
+    flex-basis: 76px;
+  }
+
+  .header-actions { align-items: center; }
+
+  .main-nav {
+    justify-content: center;
+    gap: 10px 14px;
+  }
+
+  .hero-inner { grid-template-columns: 1fr; }
+
+  .hero-art { min-height: 240px; }
+
+  .hero-cover { max-height: 350px; }
+
+  .product-card { flex-basis: calc((100% - 14px)/2); }
+
+  .products-track.expanded {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+}
+
+/* الموبايل */
 @media (max-width: 540px) {
   .topbar { font-size: 11px; }
+
   .brand { gap: 9px; }
-  .brand-logo { width: 62px; height: 62px; flex-basis: 62px; }
+
+  .brand-logo {
+    width: 62px;
+    height: 62px;
+    flex-basis: 62px;
+  }
+
   .brand-topline { font-size: 10px; }
   .brand-name { font-size: 24px; }
   .brand-tagline { font-size: 11px; }
-  .main-nav { gap: 7px 12px; font-size: 11px; }
+
+  .main-nav {
+    gap: 7px 12px;
+    font-size: 11px;
+  }
+
   .nav-contact { padding: 5px 10px; }
+
   .hero { padding-top: 22px; }
-  .hero-inner { padding: 20px 16px; gap: 18px; }
+
+  .hero-inner {
+    padding: 20px 16px;
+    gap: 18px;
+  }
+
   .hero p { font-size: 13px; }
-  .hero-art { min-height: 165px; }
-  .hero-art-icons { font-size: 34px; }
-  .hero-art-content strong { font-size: 20px; }
+
+  .hero-art {
+    min-height: 180px;
+    padding: 12px;
+  }
+
+  .hero-cover { max-height: 300px; }
+
   section { padding: 23px 0; }
+
   .categories { gap: 8px; }
-  .category-card { padding: 12px 5px; border-radius: 14px; }
-  .category-icon { width: 43px; height: 43px; font-size: 22px; }
+
+  .category-card {
+    padding: 12px 5px;
+    border-radius: 14px;
+  }
+
+  .category-icon {
+    width: 43px;
+    height: 43px;
+    font-size: 22px;
+  }
+
   .category-card h3 { font-size: 12px; }
-  .category-card p, .category-link { font-size: 10px; }
+
+  .category-card p,
+  .category-link { font-size: 10px; }
+
   .section-heading p { font-size: 11px; }
-  .products-row { grid-template-columns: 27px minmax(0,1fr) 27px; gap: 5px; }
-  .carousel-arrow { width: 27px; height: 32px; border-radius: 9px; font-size: 18px; }
+
+  .products-row {
+    grid-template-columns: 27px minmax(0,1fr) 27px;
+    gap: 5px;
+    align-items: stretch;
+  }
+
+  /* الأسهم تمتد بطول كروت المنتجات */
+  .carousel-arrow {
+    width: 27px;
+    height: auto;
+    min-height: 100%;
+    align-self: stretch;
+    border-radius: 9px;
+    font-size: 22px;
+    padding: 0;
+  }
+
   .products-track { gap: 9px; }
+
   .product-card { flex-basis: 82%; }
-  .product-art { height: 140px; font-size: 51px; }
+
+  .product-art {
+    height: 140px;
+    font-size: 51px;
+  }
+
   .product-info { padding: 10px; }
+
   .product-info h3 { font-size: 13px; }
   .product-info p { font-size: 11px; }
-  .products-track.expanded { gap: 8px; grid-template-columns: repeat(2,minmax(0,1fr)); }
-  .products-track.expanded .product-art { height: 105px; font-size: 38px; }
+
+  .products-track.expanded {
+    gap: 8px;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+  }
+
+  .products-track.expanded .product-art {
+    height: 105px;
+    font-size: 38px;
+  }
+
   .products-track.expanded .product-info { padding: 8px; }
+
   .products-track.expanded .product-info h3 { font-size: 11px; }
   .products-track.expanded .product-info p { font-size: 10px; }
-  .products-track.expanded .order-btn { font-size: 10px; padding: 7px 4px; }
+
+  .products-track.expanded .order-btn {
+    font-size: 10px;
+    padding: 7px 4px;
+  }
+
   .about-box { grid-template-columns: 1fr; }
+
   .about-symbol { font-size: 42px; }
-  .btn { padding: 9px 13px; font-size: 12px; }
+
+  .btn {
+    padding: 9px 13px;
+    font-size: 12px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  *, *::before, *::after { transition: none !important; }
+
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+  }
 }
 </style>
 </head>
 
 <body>
-<div class="topbar" data-ar="هدايا مميزة وتفاصيل معمولة بحب — أهلاً بيكم في لون وحكاية" data-en="Thoughtful gifts and beautiful details — Welcome to Lawn We7kaya">
+
+<div class="topbar"
+     data-ar="هدايا مميزة وتفاصيل معمولة بحب — أهلاً بيكم في لون وحكاية"
+     data-en="Thoughtful gifts and beautiful details — Welcome to Lawn We7kaya">
   هدايا مميزة وتفاصيل معمولة بحب — أهلاً بيكم في لون وحكاية
 </div>
 
@@ -535,16 +801,39 @@ footer strong { color: var(--green); }
   <div class="container header-inner">
 
     <a class="brand" href="#top" aria-label="لون وحكاية">
-      <img class="brand-logo" src="website%20logo.jpeg" alt="لوجو لون وحكاية">
+      <img class="brand-logo"
+           src="website%20logo.jpeg"
+           alt="لوجو لون وحكاية">
+
       <div class="brand-copy">
-        <div class="brand-topline" data-ar="لون وحكاية — كل قطعة ليها حكاية" data-en="Lawn We7kaya — Every Piece Tells a Story">لون وحكاية — كل قطعة ليها حكاية</div>
-        <div class="brand-name" data-ar="لون وحكاية" data-en="Lawn We7kaya">لون وحكاية</div>
-        <div class="brand-tagline" data-ar="كل لون وراه حكاية" data-en="Every Color Has a Story">كل لون وراه حكاية</div>
+        <div class="brand-topline"
+             data-ar="لون وحكاية — كل قطعة ليها حكاية"
+             data-en="Lawn We7kaya — Every Piece Tells a Story">
+          لون وحكاية — كل قطعة ليها حكاية
+        </div>
+
+        <div class="brand-name"
+             data-ar="لون وحكاية"
+             data-en="Lawn We7kaya">
+          لون وحكاية
+        </div>
+
+        <div class="brand-tagline"
+             data-ar="كل لون وراه حكاية"
+             data-en="Every Color Has a Story">
+          كل لون وراه حكاية
+        </div>
       </div>
     </a>
 
     <div class="header-actions">
-      <button class="language-btn" id="languageToggle" type="button" onclick="toggleLanguage()">English 🌐</button>
+      <button class="language-btn"
+              id="languageToggle"
+              type="button"
+              onclick="toggleLanguage()">
+        English 🌐
+      </button>
+
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#top" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
         <a href="#categories" data-ar="الأقسام" data-en="Categories">الأقسام</a>
@@ -559,112 +848,278 @@ footer strong { color: var(--green); }
 </header>
 
 <main>
+
+  <!-- الرئيسية -->
   <section class="hero">
     <div class="container">
       <div class="hero-inner">
+
         <div>
-          <div class="eyebrow" data-ar="كل هدية ممكن تحكي حكاية ✨" data-en="Every Gift Can Tell a Story ✨">كل هدية ممكن تحكي حكاية ✨</div>
+          <div class="eyebrow"
+               data-ar="لون وحكاية — كل قطعة ليها حكاية ✨"
+               data-en="Lawn We7kaya — Every Piece Tells a Story ✨">
+            لون وحكاية — كل قطعة ليها حكاية ✨
+          </div>
+
           <h1>
-            <span data-ar="كل لون وراه حكاية،" data-en="Every Color Has a Story,">كل لون وراه حكاية،</span><br>
-            <span data-ar="وكل حكاية ليها لون." data-en="Every Story Has a Color.">وكل حكاية ليها لون.</span>
+            <span data-ar="كل لون وراه حكاية،"
+                  data-en="Every Color Has a Story,">
+              كل لون وراه حكاية،
+            </span>
+            <br>
+            <span data-ar="وكل حكاية ليها لون."
+                  data-en="Every Story Has a Color.">
+              وكل حكاية ليها لون.
+            </span>
           </h1>
-          <p data-ar="اكتشفوا عالم من كتب التلوين، واللوحات الفنية، والهدايا الشخصية المصممة بحب عشان كل لحظة تبقى ذكرى مميزة." data-en="Explore coloring books, art prints, and personalized gifts made with love to turn special moments into lasting memories.">
+
+          <p
+            data-ar="اكتشفوا عالم من كتب التلوين، واللوحات الفنية، والهدايا الشخصية المصممة بحب عشان كل لحظة تبقى ذكرى مميزة."
+            data-en="Explore coloring books, art prints, and personalized gifts made with love to turn special moments into lasting memories.">
             اكتشفوا عالم من كتب التلوين، واللوحات الفنية، والهدايا الشخصية المصممة بحب عشان كل لحظة تبقى ذكرى مميزة.
           </p>
+
           <div class="hero-actions">
-            <a class="btn" href="#categories" data-ar="اختار حكايتك 🎨" data-en="Choose Your Story 🎨">اختار حكايتك 🎨</a>
-            <a class="btn btn-outline" href="#contact" data-ar="اطلب هديتك" data-en="Order Your Gift">اطلب هديتك</a>
+            <a class="btn"
+               href="#categories"
+               data-ar="اختار حكايتك 🎨"
+               data-en="Choose Your Story 🎨">
+              اختار حكايتك 🎨
+            </a>
+
+            <a class="btn btn-outline"
+               href="#contact"
+               data-ar="اطلب هديتك"
+               data-en="Order Your Gift">
+              اطلب هديتك
+            </a>
           </div>
         </div>
 
+        <!-- صورة غلاف الكتاب -->
         <div class="hero-art">
-          <div class="hero-art-content">
-            <div class="hero-art-icons">🎨 📚 🎁</div>
-            <strong data-ar="حكايتك تبدأ هنا" data-en="Your Story Starts Here">حكايتك تبدأ هنا</strong>
-            <span data-ar="أفكار ملونة وتفاصيل شخصية" data-en="Colorful Ideas, Personal Details">أفكار ملونة وتفاصيل شخصية</span>
+          <img
+            class="hero-cover"
+            src="cover.jpg"
+            alt="غلاف كتاب التلوين من لون وحكاية"
+            onerror="this.hidden=true; document.getElementById('cover-fallback').hidden=false;">
+
+          <div class="cover-fallback" id="cover-fallback" hidden>
+            <div class="cover-icons">🎨 📚 🎁</div>
+            <strong>لون وحكاية</strong>
+            <span>كل قطعة ليها حكاية</span>
           </div>
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- الأقسام -->
   <section id="categories">
     <div class="container">
+
       <div class="section-heading">
         <div>
-          <div class="section-kicker" data-ar="اكتشف عالمنا" data-en="Explore Our World">اكتشف عالمنا</div>
-          <h2 data-ar="اختار حكايتك" data-en="Choose Your Story">اختار حكايتك</h2>
-          <p data-ar="كل قسم فيه فكرة مختلفة، اختار اللي يناسبك." data-en="Discover something special in every collection.">كل قسم فيه فكرة مختلفة، اختار اللي يناسبك.</p>
+          <div class="section-kicker"
+               data-ar="اكتشف عالمنا"
+               data-en="Explore Our World">
+            اكتشف عالمنا
+          </div>
+
+          <h2 data-ar="اختار حكايتك" data-en="Choose Your Story">
+            اختار حكايتك
+          </h2>
+
+          <p
+            data-ar="كل قسم فيه فكرة مختلفة، اختار اللي يناسبك."
+            data-en="Discover something special in every collection.">
+            كل قسم فيه فكرة مختلفة، اختار اللي يناسبك.
+          </p>
         </div>
       </div>
 
       <div class="categories">
+
         <a class="category-card" href="#kids">
           <div class="category-icon">🖍️</div>
           <h3 data-ar="عالم أطفال" data-en="Kids' World">عالم أطفال</h3>
-          <p data-ar="كتب تلوين ومغامرات تفتح خيال الصغيرين." data-en="Coloring books and adventures for little imaginations.">كتب تلوين ومغامرات تفتح خيال الصغيرين.</p>
-          <span class="category-link" data-ar="اكتشف القسم ←" data-en="Explore Collection ←">اكتشف القسم ←</span>
+          <p
+            data-ar="كتب تلوين ومغامرات تفتح خيال الصغيرين."
+            data-en="Coloring books and adventures for little imaginations.">
+            كتب تلوين ومغامرات تفتح خيال الصغيرين.
+          </p>
+          <span class="category-link"
+                data-ar="اكتشف القسم ←"
+                data-en="Explore Collection ←">
+            اكتشف القسم ←
+          </span>
         </a>
 
         <a class="category-card" href="#art">
           <div class="category-icon">🖼️</div>
           <h3 data-ar="لوحات فنية" data-en="Art Prints">لوحات فنية</h3>
-          <p data-ar="لوحات تضيف لمسة مميزة لمكانك." data-en="Artwork that adds a special touch to your space.">لوحات تضيف لمسة مميزة لمكانك.</p>
-          <span class="category-link" data-ar="اكتشف القسم ←" data-en="Explore Collection ←">اكتشف القسم ←</span>
+          <p
+            data-ar="لوحات تضيف لمسة مميزة لمكانك."
+            data-en="Artwork that adds a special touch to your space.">
+            لوحات تضيف لمسة مميزة لمكانك.
+          </p>
+          <span class="category-link"
+                data-ar="اكتشف القسم ←"
+                data-en="Explore Collection ←">
+            اكتشف القسم ←
+          </span>
         </a>
 
         <a class="category-card" href="#gifts">
           <div class="category-icon">🎁</div>
           <h3 data-ar="الهدايا الشخصية" data-en="Personalized Gifts">الهدايا الشخصية</h3>
-          <p data-ar="هدايا باسم الشخص وتفاصيل تحكي حكايته." data-en="Personalized gifts made just for someone special.">هدايا باسم الشخص وتفاصيل تحكي حكايته.</p>
-          <span class="category-link" data-ar="اكتشف القسم ←" data-en="Explore Collection ←">اكتشف القسم ←</span>
+          <p
+            data-ar="هدايا باسم الشخص وتفاصيل تحكي حكايته."
+            data-en="Personalized gifts made just for someone special.">
+            هدايا باسم الشخص وتفاصيل تحكي حكايته.
+          </p>
+          <span class="category-link"
+                data-ar="اكتشف القسم ←"
+                data-en="Explore Collection ←">
+            اكتشف القسم ←
+          </span>
         </a>
+
       </div>
     </div>
   </section>
 
-  <!-- قسم عالم أطفال -->
+  <!-- عالم أطفال -->
   <section class="product-section" id="kids">
     <div class="container">
+
       <div class="section-heading">
         <div>
-          <div class="section-kicker" data-ar="ألوان وخيال ومغامرات" data-en="Colors, Imagination & Adventure">ألوان وخيال ومغامرات</div>
-          <h2 data-ar="🖍️ عالم أطفال" data-en="🖍️ Kids' World">🖍️ عالم أطفال</h2>
-          <p data-ar="خلي وقت التلوين حكاية ممتعة لطفلك." data-en="Make coloring time a fun story for your child.">خلي وقت التلوين حكاية ممتعة لطفلك.</p>
+          <div class="section-kicker"
+               data-ar="ألوان وخيال ومغامرات"
+               data-en="Colors, Imagination & Adventure">
+            ألوان وخيال ومغامرات
+          </div>
+
+          <h2 data-ar="🖍️ عالم أطفال" data-en="🖍️ Kids' World">
+            🖍️ عالم أطفال
+          </h2>
+
+          <p
+            data-ar="خلي وقت التلوين حكاية ممتعة لطفلك."
+            data-en="Make coloring time a fun story for your child.">
+            خلي وقت التلوين حكاية ممتعة لطفلك.
+          </p>
         </div>
       </div>
 
       <div class="products-row">
-        <button class="carousel-arrow" type="button" onclick="moveProducts('kids-track',-1)" aria-label="Previous products">›</button>
+        <button class="carousel-arrow"
+                type="button"
+                onclick="moveProducts('kids-track',-1)"
+                aria-label="Previous products">‹</button>
+
         <div class="products-track" id="kids-track">
 
           <article class="product-card">
-            <div class="product-art"><span class="product-label" data-ar="اختيار مميز" data-en="Featured">اختيار مميز</span>📚</div>
+            <div class="product-art">
+              <span class="product-label"
+                    data-ar="اختيار مميز"
+                    data-en="Featured">
+                اختيار مميز
+              </span>
+              📚
+            </div>
+
             <div class="product-info">
-              <h3 data-ar="كتاب تلوين للأطفال" data-en="Kids' Coloring Book">كتاب تلوين للأطفال</h3>
-              <p data-ar="رسومات ممتعة ومساحة واسعة للإبداع والتلوين." data-en="Fun illustrations and plenty of room for creativity.">رسومات ممتعة ومساحة واسعة للإبداع والتلوين.</p>
-              <div class="product-price" data-ar="السعر حسب التفاصيل" data-en="Price depends on details">السعر حسب التفاصيل</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="كتاب تلوين للأطفال" data-name-en="Kids' Coloring Book" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="كتاب تلوين للأطفال" data-en="Kids' Coloring Book">
+                كتاب تلوين للأطفال
+              </h3>
+
+              <p
+                data-ar="رسومات ممتعة ومساحة واسعة للإبداع والتلوين."
+                data-en="Fun illustrations and plenty of room for creativity.">
+                رسومات ممتعة ومساحة واسعة للإبداع والتلوين.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب التفاصيل"
+                   data-en="Price depends on details">
+                السعر حسب التفاصيل
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="كتاب تلوين للأطفال"
+                      data-name-en="Kids' Coloring Book"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
 
           <article class="product-card">
             <div class="product-art">🦖</div>
             <div class="product-info">
-              <h3 data-ar="مغامرات الديناصورات" data-en="Dinosaur Adventures">مغامرات الديناصورات</h3>
-              <p data-ar="رسومات ومغامرات ممتعة للأطفال." data-en="Fun dinosaur illustrations and adventures for kids.">رسومات ومغامرات ممتعة للأطفال.</p>
-              <div class="product-price" data-ar="السعر حسب التفاصيل" data-en="Price depends on details">السعر حسب التفاصيل</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="كتاب مغامرات الديناصورات" data-name-en="Dinosaur Adventures Coloring Book" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="مغامرات الديناصورات" data-en="Dinosaur Adventures">
+                مغامرات الديناصورات
+              </h3>
+
+              <p
+                data-ar="رسومات ومغامرات ممتعة للأطفال."
+                data-en="Fun dinosaur illustrations and adventures for kids.">
+                رسومات ومغامرات ممتعة للأطفال.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب التفاصيل"
+                   data-en="Price depends on details">
+                السعر حسب التفاصيل
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="كتاب مغامرات الديناصورات"
+                      data-name-en="Dinosaur Adventures Coloring Book"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
 
           <article class="product-card">
             <div class="product-art">🧒</div>
             <div class="product-info">
-              <h3 data-ar="كتاب باسم طفلك" data-en="A Book with Your Child's Name">كتاب باسم طفلك</h3>
-              <p data-ar="هدية شخصية باسم الطفل وتفاصيل تناسبه." data-en="A personalized gift featuring your child's name.">هدية شخصية باسم الطفل وتفاصيل تناسبه.</p>
-              <div class="product-price" data-ar="السعر حسب التفاصيل" data-en="Price depends on details">السعر حسب التفاصيل</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="كتاب تلوين باسم الطفل" data-name-en="Personalized Kids' Coloring Book" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="كتاب باسم طفلك" data-en="A Book with Your Child's Name">
+                كتاب باسم طفلك
+              </h3>
+
+              <p
+                data-ar="هدية شخصية باسم الطفل وتفاصيل تناسبه."
+                data-en="A personalized gift featuring your child's name.">
+                هدية شخصية باسم الطفل وتفاصيل تناسبه.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب التفاصيل"
+                   data-en="Price depends on details">
+                السعر حسب التفاصيل
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="كتاب تلوين باسم الطفل"
+                      data-name-en="Personalized Kids' Coloring Book"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
 
@@ -672,125 +1127,337 @@ footer strong { color: var(--green); }
             <div class="product-art">🦁</div>
             <div class="product-info">
               <h3 data-ar="عالم الحيوانات" data-en="Animal World">عالم الحيوانات</h3>
-              <p data-ar="رسومات متنوعة للتلوين والتسلية." data-en="A variety of fun animal illustrations to color.">رسومات متنوعة للتلوين والتسلية.</p>
-              <div class="product-price" data-ar="السعر حسب التفاصيل" data-en="Price depends on details">السعر حسب التفاصيل</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="كتاب تلوين الحيوانات" data-name-en="Animal Coloring Book" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+
+              <p
+                data-ar="رسومات متنوعة للتلوين والتسلية."
+                data-en="A variety of fun animal illustrations to color.">
+                رسومات متنوعة للتلوين والتسلية.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب التفاصيل"
+                   data-en="Price depends on details">
+                السعر حسب التفاصيل
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="كتاب تلوين الحيوانات"
+                      data-name-en="Animal Coloring Book"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
+
         </div>
-        <button class="carousel-arrow" type="button" onclick="moveProducts('kids-track',1)" aria-label="Next products">‹</button>
+
+        <button class="carousel-arrow"
+                type="button"
+                onclick="moveProducts('kids-track',1)"
+                aria-label="Next products">›</button>
       </div>
 
       <div class="show-all-wrap">
-        <button class="show-all" onclick="toggleProducts('kids-track',this)" data-ar="عرض كل المنتجات" data-en="Show All Products">عرض كل المنتجات</button>
+        <button class="show-all"
+                type="button"
+                onclick="toggleProducts('kids-track',this)"
+                data-ar="عرض كل المنتجات"
+                data-en="Show All Products">
+          عرض كل المنتجات
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- قسم اللوحات الفنية -->
+  <!-- اللوحات الفنية -->
   <section class="product-section" id="art">
     <div class="container">
+
       <div class="section-heading">
         <div>
-          <div class="section-kicker" data-ar="لمسة فن في كل مكان" data-en="Art for Every Space">لمسة فن في كل مكان</div>
-          <h2 data-ar="🖼️ لوحات فنية" data-en="🖼️ Art Prints">🖼️ لوحات فنية</h2>
-          <p data-ar="اختار تصميم يعبّر عن ذوقك وشخصيتك." data-en="Choose artwork that reflects your taste and personality.">اختار تصميم يعبّر عن ذوقك وشخصيتك.</p>
+          <div class="section-kicker"
+               data-ar="لمسة فن في كل مكان"
+               data-en="Art for Every Space">
+            لمسة فن في كل مكان
+          </div>
+
+          <h2 data-ar="🖼️ لوحات فنية" data-en="🖼️ Art Prints">
+            🖼️ لوحات فنية
+          </h2>
+
+          <p
+            data-ar="اختار تصميم يعبّر عن ذوقك وشخصيتك."
+            data-en="Choose artwork that reflects your taste and personality.">
+            اختار تصميم يعبّر عن ذوقك وشخصيتك.
+          </p>
         </div>
       </div>
 
       <div class="products-row">
-        <button class="carousel-arrow" type="button" onclick="moveProducts('art-track',-1)" aria-label="Previous products">›</button>
+        <button class="carousel-arrow"
+                type="button"
+                onclick="moveProducts('art-track',-1)"
+                aria-label="Previous products">‹</button>
+
         <div class="products-track" id="art-track">
 
           <article class="product-card">
             <div class="product-art">🌿</div>
             <div class="product-info">
-              <h3 data-ar="لوحات مستوحاة من الطبيعة" data-en="Nature-Inspired Art">لوحات مستوحاة من الطبيعة</h3>
-              <p data-ar="تصميمات هادئة تضيف إحساسًا بالراحة للمكان." data-en="Calming designs to bring warmth to your space.">تصميمات هادئة تضيف إحساسًا بالراحة للمكان.</p>
-              <div class="product-price" data-ar="السعر حسب المقاس" data-en="Price depends on size">السعر حسب المقاس</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="لوحة فنية مستوحاة من الطبيعة" data-name-en="Nature-Inspired Art Print" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="لوحات مستوحاة من الطبيعة" data-en="Nature-Inspired Art">
+                لوحات مستوحاة من الطبيعة
+              </h3>
+
+              <p
+                data-ar="تصميمات هادئة تضيف إحساسًا بالراحة للمكان."
+                data-en="Calming designs to bring warmth to your space.">
+                تصميمات هادئة تضيف إحساسًا بالراحة للمكان.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب المقاس"
+                   data-en="Price depends on size">
+                السعر حسب المقاس
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="لوحة فنية مستوحاة من الطبيعة"
+                      data-name-en="Nature-Inspired Art Print"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
 
           <article class="product-card">
             <div class="product-art">🌅</div>
             <div class="product-info">
-              <h3 data-ar="لوحات بألوان دافئة" data-en="Warm-Toned Art">لوحات بألوان دافئة</h3>
-              <p data-ar="اختيارات فنية تناسب البيت أو المكتب." data-en="Artistic designs for your home or office.">اختيارات فنية تناسب البيت أو المكتب.</p>
-              <div class="product-price" data-ar="السعر حسب التفاصيل" data-en="Price depends on details">السعر حسب التفاصيل</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="لوحة فنية بألوان دافئة" data-name-en="Warm-Toned Art Print" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="لوحات بألوان دافئة" data-en="Warm-Toned Art">
+                لوحات بألوان دافئة
+              </h3>
+
+              <p
+                data-ar="اختيارات فنية تناسب البيت أو المكتب."
+                data-en="Artistic designs for your home or office.">
+                اختيارات فنية تناسب البيت أو المكتب.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب التفاصيل"
+                   data-en="Price depends on details">
+                السعر حسب التفاصيل
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="لوحة فنية بألوان دافئة"
+                      data-name-en="Warm-Toned Art Print"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
 
           <article class="product-card">
             <div class="product-art">🎨</div>
             <div class="product-info">
-              <h3 data-ar="تصميم فني حسب الطلب" data-en="Custom Art Design">تصميم فني حسب الطلب</h3>
-              <p data-ar="شاركنا فكرتك ونساعدك تختار التصميم المناسب." data-en="Tell us your idea and let's create something special.">شاركنا فكرتك ونساعدك تختار التصميم المناسب.</p>
-              <div class="product-price" data-ar="السعر حسب التصميم" data-en="Price depends on design">السعر حسب التصميم</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="تصميم لوحة فنية حسب الطلب" data-name-en="Custom Art Design" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="تصميم فني حسب الطلب" data-en="Custom Art Design">
+                تصميم فني حسب الطلب
+              </h3>
+
+              <p
+                data-ar="شاركنا فكرتك ونساعدك تختار التصميم المناسب."
+                data-en="Tell us your idea and let's create something special.">
+                شاركنا فكرتك ونساعدك تختار التصميم المناسب.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب التصميم"
+                   data-en="Price depends on design">
+                السعر حسب التصميم
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="تصميم لوحة فنية حسب الطلب"
+                      data-name-en="Custom Art Design"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
+
         </div>
-        <button class="carousel-arrow" type="button" onclick="moveProducts('art-track',1)" aria-label="Next products">‹</button>
+
+        <button class="carousel-arrow"
+                type="button"
+                onclick="moveProducts('art-track',1)"
+                aria-label="Next products">›</button>
       </div>
 
       <div class="show-all-wrap">
-        <button class="show-all" onclick="toggleProducts('art-track',this)" data-ar="عرض كل المنتجات" data-en="Show All Products">عرض كل المنتجات</button>
+        <button class="show-all"
+                type="button"
+                onclick="toggleProducts('art-track',this)"
+                data-ar="عرض كل المنتجات"
+                data-en="Show All Products">
+          عرض كل المنتجات
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- قسم الهدايا الشخصية -->
+  <!-- الهدايا الشخصية -->
   <section class="product-section" id="gifts">
     <div class="container">
+
       <div class="section-heading">
         <div>
-          <div class="section-kicker" data-ar="هدية تشبه صاحبها" data-en="A Gift as Unique as They Are">هدية تشبه صاحبها</div>
-          <h2 data-ar="🎁 الهدايا الشخصية" data-en="🎁 Personalized Gifts">🎁 الهدايا الشخصية</h2>
-          <p data-ar="تفاصيل صغيرة تصنع ذكرى كبيرة." data-en="Little details can create big memories.">تفاصيل صغيرة تصنع ذكرى كبيرة.</p>
+          <div class="section-kicker"
+               data-ar="هدية تشبه صاحبها"
+               data-en="A Gift as Unique as They Are">
+            هدية تشبه صاحبها
+          </div>
+
+          <h2 data-ar="🎁 الهدايا الشخصية" data-en="🎁 Personalized Gifts">
+            🎁 الهدايا الشخصية
+          </h2>
+
+          <p
+            data-ar="تفاصيل صغيرة تصنع ذكرى كبيرة."
+            data-en="Little details can create big memories.">
+            تفاصيل صغيرة تصنع ذكرى كبيرة.
+          </p>
         </div>
       </div>
 
       <div class="products-row">
-        <button class="carousel-arrow" type="button" onclick="moveProducts('gifts-track',-1)" aria-label="Previous products">›</button>
+        <button class="carousel-arrow"
+                type="button"
+                onclick="moveProducts('gifts-track',-1)"
+                aria-label="Previous products">‹</button>
+
         <div class="products-track" id="gifts-track">
 
           <article class="product-card">
             <div class="product-art">🎁</div>
             <div class="product-info">
-              <h3 data-ar="هدية باسمك" data-en="A Gift with Your Name">هدية باسمك</h3>
-              <p data-ar="اختار الاسم والتفاصيل اللي تخلي هديتك مختلفة." data-en="Choose a name and details to make your gift unique.">اختار الاسم والتفاصيل اللي تخلي هديتك مختلفة.</p>
-              <div class="product-price" data-ar="السعر حسب التفاصيل" data-en="Price depends on details">السعر حسب التفاصيل</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="هدية شخصية بالاسم" data-name-en="Personalized Name Gift" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="هدية باسمك" data-en="A Gift with Your Name">
+                هدية باسمك
+              </h3>
+
+              <p
+                data-ar="اختار الاسم والتفاصيل اللي تخلي هديتك مختلفة."
+                data-en="Choose a name and details to make your gift unique.">
+                اختار الاسم والتفاصيل اللي تخلي هديتك مختلفة.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب التفاصيل"
+                   data-en="Price depends on details">
+                السعر حسب التفاصيل
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="هدية شخصية بالاسم"
+                      data-name-en="Personalized Name Gift"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
 
           <article class="product-card">
             <div class="product-art">💝</div>
             <div class="product-info">
-              <h3 data-ar="هدية لمناسبة مميزة" data-en="A Special Occasion Gift">هدية لمناسبة مميزة</h3>
-              <p data-ar="لأعياد الميلاد والمناسبات واللحظات الحلوة." data-en="For birthdays, celebrations, and special moments.">لأعياد الميلاد والمناسبات واللحظات الحلوة.</p>
-              <div class="product-price" data-ar="السعر حسب الطلب" data-en="Price depends on request">السعر حسب الطلب</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="هدية لمناسبة مميزة" data-name-en="Special Occasion Gift" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="هدية لمناسبة مميزة" data-en="A Special Occasion Gift">
+                هدية لمناسبة مميزة
+              </h3>
+
+              <p
+                data-ar="لأعياد الميلاد والمناسبات واللحظات الحلوة."
+                data-en="For birthdays, celebrations, and special moments.">
+                لأعياد الميلاد والمناسبات واللحظات الحلوة.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب الطلب"
+                   data-en="Price depends on request">
+                السعر حسب الطلب
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="هدية لمناسبة مميزة"
+                      data-name-en="Special Occasion Gift"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
 
           <article class="product-card">
             <div class="product-art">📖</div>
             <div class="product-info">
-              <h3 data-ar="حكاية بتفاصيلك" data-en="Your Own Story">حكاية بتفاصيلك</h3>
-              <p data-ar="فكرة شخصية نبدأها من فكرتك وذوقك." data-en="A personalized creation inspired by your idea.">فكرة شخصية نبدأها من فكرتك وذوقك.</p>
-              <div class="product-price" data-ar="السعر حسب التفاصيل" data-en="Price depends on details">السعر حسب التفاصيل</div>
-              <button class="order-btn" onclick="orderProduct(this)" data-name-ar="هدية حكاية بتفاصيل شخصية" data-name-en="Personalized Story Gift" data-ar="اطلب على واتساب" data-en="Order on WhatsApp">اطلب على واتساب</button>
+              <h3 data-ar="حكاية بتفاصيلك" data-en="Your Own Story">
+                حكاية بتفاصيلك
+              </h3>
+
+              <p
+                data-ar="فكرة شخصية نبدأها من فكرتك وذوقك."
+                data-en="A personalized creation inspired by your idea.">
+                فكرة شخصية نبدأها من فكرتك وذوقك.
+              </p>
+
+              <div class="product-price"
+                   data-ar="السعر حسب التفاصيل"
+                   data-en="Price depends on details">
+                السعر حسب التفاصيل
+              </div>
+
+              <button class="order-btn"
+                      type="button"
+                      onclick="orderProduct(this)"
+                      data-name-ar="هدية حكاية بتفاصيل شخصية"
+                      data-name-en="Personalized Story Gift"
+                      data-ar="اطلب على واتساب"
+                      data-en="Order on WhatsApp">
+                اطلب على واتساب
+              </button>
             </div>
           </article>
+
         </div>
-        <button class="carousel-arrow" type="button" onclick="moveProducts('gifts-track',1)" aria-label="Next products">‹</button>
+
+        <button class="carousel-arrow"
+                type="button"
+                onclick="moveProducts('gifts-track',1)"
+                aria-label="Next products">›</button>
       </div>
 
       <div class="show-all-wrap">
-        <button class="show-all" onclick="toggleProducts('gifts-track',this)" data-ar="عرض كل المنتجات" data-en="Show All Products">عرض كل المنتجات</button>
+        <button class="show-all"
+                type="button"
+                onclick="toggleProducts('gifts-track',this)"
+                data-ar="عرض كل المنتجات"
+                data-en="Show All Products">
+          عرض كل المنتجات
+        </button>
       </div>
     </div>
   </section>
@@ -799,13 +1466,27 @@ footer strong { color: var(--green); }
   <section id="about">
     <div class="container">
       <div class="about-box">
+
         <div>
-          <div class="section-kicker" style="color:#f1c5ad" data-ar="حكايتنا" data-en="Our Story">حكايتنا</div>
-          <h2 data-ar="كل لون وراه حكاية 💚" data-en="Every Color Has a Story 💚">كل لون وراه حكاية 💚</h2>
-          <p data-ar="في لون وحكاية بنحب نحول الأفكار البسيطة لحاجات مميزة. من كتب التلوين للأطفال، للوحات الفنية، للهدايا الشخصية، هدفنا إن كل قطعة يكون ليها معنى وتفاصيل تفرّح اللي بيستلمها. حكايتك تهمنا، ونحب نكون جزء من ذكرياتك الجميلة." data-en="At Lawn We7kaya, we turn simple ideas into special creations. From kids' coloring books to art prints and personalized gifts, we want every piece to carry meaning and make someone smile. Your story matters to us, and we'd love to be part of your memories.">
+          <div class="section-kicker"
+               style="color:#f1c5ad"
+               data-ar="حكايتنا"
+               data-en="Our Story">
+            حكايتنا
+          </div>
+
+          <h2 data-ar="كل لون وراه حكاية 💚"
+              data-en="Every Color Has a Story 💚">
+            كل لون وراه حكاية 💚
+          </h2>
+
+          <p
+            data-ar="في لون وحكاية بنحب نحول الأفكار البسيطة لحاجات مميزة. من كتب التلوين للأطفال، للوحات الفنية، للهدايا الشخصية، هدفنا إن كل قطعة يكون ليها معنى وتفاصيل تفرّح اللي بيستلمها. حكايتك تهمنا، ونحب نكون جزء من ذكرياتك الجميلة."
+            data-en="At Lawn We7kaya, we turn simple ideas into special creations. From kids' coloring books to art prints and personalized gifts, we want every piece to carry meaning and make someone smile. Your story matters to us, and we'd love to be part of your memories.">
             في لون وحكاية بنحب نحول الأفكار البسيطة لحاجات مميزة. من كتب التلوين للأطفال، للوحات الفنية، للهدايا الشخصية، هدفنا إن كل قطعة يكون ليها معنى وتفاصيل تفرّح اللي بيستلمها. حكايتك تهمنا، ونحب نكون جزء من ذكرياتك الجميلة.
           </p>
         </div>
+
         <div class="about-symbol" aria-hidden="true">🎨</div>
       </div>
     </div>
@@ -815,100 +1496,177 @@ footer strong { color: var(--green); }
   <section id="contact">
     <div class="container">
       <div class="contact-box">
-        <div class="section-kicker" data-ar="إحنا هنا عشانك" data-en="We Are Here for You">إحنا هنا عشانك</div>
-        <h2 data-ar="يلا نبدأ حكاية جديدة!" data-en="Let's Start a New Story!">يلا نبدأ حكاية جديدة!</h2>
-        <p data-ar="عندك فكرة أو عايز تعمل طلب مخصوص؟ ابعتلنا وهنساعدك في التفاصيل." data-en="Have an idea or a custom request? Message us and we'll help you with the details.">عندك فكرة أو عايز تعمل طلب مخصوص؟ ابعتلنا وهنساعدك في التفاصيل.</p>
+
+        <div class="section-kicker"
+             data-ar="إحنا هنا عشانك"
+             data-en="We Are Here for You">
+          إحنا هنا عشانك
+        </div>
+
+        <h2 data-ar="يلا نبدأ حكاية جديدة!"
+            data-en="Let's Start a New Story!">
+          يلا نبدأ حكاية جديدة!
+        </h2>
+
+        <p
+          data-ar="عندك فكرة أو عايز تعمل طلب مخصوص؟ ابعتلنا وهنساعدك في التفاصيل."
+          data-en="Have an idea or a custom request? Message us and we'll help you with the details.">
+          عندك فكرة أو عايز تعمل طلب مخصوص؟ ابعتلنا وهنساعدك في التفاصيل.
+        </p>
 
         <div class="contact-actions">
-          <a class="btn" href="https://wa.me/201276369556" target="_blank" rel="noopener noreferrer" data-ar="تواصل معنا على واتساب" data-en="Contact Us on WhatsApp">تواصل معنا على واتساب</a>
-          <a class="btn btn-outline" href="https://www.facebook.com/share/1FjaMLQWo6/" target="_blank" rel="noopener noreferrer" data-ar="صفحتنا على فيسبوك" data-en="Our Facebook Page">صفحتنا على فيسبوك</a>
+          <a class="btn"
+             href="https://wa.me/201276369556"
+             target="_blank"
+             rel="noopener noreferrer"
+             data-ar="تواصل معنا على واتساب"
+             data-en="Contact Us on WhatsApp">
+            تواصل معنا على واتساب
+          </a>
+
+          <a class="btn btn-outline"
+             href="https://www.facebook.com/share/1FjaMLQWo6/"
+             target="_blank"
+             rel="noopener noreferrer"
+             data-ar="صفحتنا على فيسبوك"
+             data-en="Our Facebook Page">
+            صفحتنا على فيسبوك
+          </a>
         </div>
 
         <div class="social-links">
-          <a href="https://www.instagram.com/lawnwe7kaya/" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://www.facebook.com/share/1FjaMLQWo6/" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://wa.me/201276369556" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a href="https://www.instagram.com/lawnwe7kaya/"
+             target="_blank"
+             rel="noopener noreferrer">Instagram</a>
+
+          <a href="https://www.facebook.com/share/1FjaMLQWo6/"
+             target="_blank"
+             rel="noopener noreferrer">Facebook</a>
+
+          <a href="https://wa.me/201276369556"
+             target="_blank"
+             rel="noopener noreferrer">WhatsApp</a>
         </div>
+
       </div>
     </div>
   </section>
+
 </main>
 
 <footer>
   <div class="container">
     <strong data-ar="لون وحكاية" data-en="Lawn We7kaya">لون وحكاية</strong>
-    <span data-ar=" — كل قطعة ليها حكاية" data-en=" — Every Piece Tells a Story"> — كل قطعة ليها حكاية</span>
-    <div data-ar="صُنع بحب لكل حكاية تستاهل تتلوّن 💚" data-en="Made with love for every story worth coloring 💚">صُنع بحب لكل حكاية تستاهل تتلوّن 💚</div>
-    <a class="back-top" href="#top" data-ar="الرجوع لأعلى الصفحة ↑" data-en="Back to Top ↑">الرجوع لأعلى الصفحة ↑</a>
+
+    <span
+      data-ar=" — كل قطعة ليها حكاية"
+      data-en=" — Every Piece Tells a Story">
+      — كل قطعة ليها حكاية
+    </span>
+
+    <div
+      data-ar="صُنع بحب لكل حكاية تستاهل تتلوّن 💚"
+      data-en="Made with love for every story worth coloring 💚">
+      صُنع بحب لكل حكاية تستاهل تتلوّن 💚
+    </div>
+
+    <a class="back-top"
+       href="#top"
+       data-ar="الرجوع لأعلى الصفحة ↑"
+       data-en="Back to Top ↑">
+      الرجوع لأعلى الصفحة ↑
+    </a>
   </div>
 </footer>
 
 <script>
-  // تبديل لغة الموقع بالكامل
-  let currentLanguage = 'ar';
+let currentLanguage = 'ar';
 
-  function toggleLanguage() {
-    currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
+/* تبديل لغة الموقع */
+function toggleLanguage() {
+  currentLanguage = currentLanguage === 'ar' ? 'en' : 'ar';
 
-    document.documentElement.lang = currentLanguage;
-    document.documentElement.dir = currentLanguage === 'ar' ? 'rtl' : 'ltr';
+  document.documentElement.lang = currentLanguage;
+  document.documentElement.dir =
+    currentLanguage === 'ar' ? 'rtl' : 'ltr';
 
-    document.querySelectorAll('[data-ar][data-en]').forEach(function(element) {
-      element.textContent = element.getAttribute('data-' + currentLanguage);
-    });
+  document.querySelectorAll('[data-ar][data-en]').forEach(function(element) {
+    element.textContent = element.getAttribute('data-' + currentLanguage);
+  });
 
-    const languageButton = document.getElementById('languageToggle');
-    languageButton.textContent = currentLanguage === 'ar' ? 'English 🌐' : 'العربية 🌐';
+  const languageButton = document.getElementById('languageToggle');
 
-    document.title = currentLanguage === 'ar'
-      ? 'لون وحكاية | كل قطعة ليها حكاية'
-      : 'Lawn We7kaya | Every Piece Tells a Story';
-  }
+  languageButton.textContent =
+    currentLanguage === 'ar' ? 'English 🌐' : 'العربية 🌐';
 
-  // تحريك المنتجات بالأسهم
-  function moveProducts(trackId, direction) {
-    const track = document.getElementById(trackId);
-    if (!track) return;
+  document.title = currentLanguage === 'ar'
+    ? 'لون وحكاية | كل قطعة ليها حكاية'
+    : 'Lawn We7kaya | Every Piece Tells a Story';
 
-    const card = track.querySelector('.product-card');
-    const distance = card
-      ? card.getBoundingClientRect().width + 14
-      : track.clientWidth * 0.8;
+  /* الاحتفاظ بحالة زر عرض المنتجات بعد تغيير اللغة */
+  document.querySelectorAll('.products-track').forEach(function(track) {
+    const container = track.closest('.container');
+    const showAllButton = container
+      ? container.querySelector('.show-all')
+      : null;
 
-    const isRTL = document.documentElement.dir === 'rtl';
-    const visualDirection = isRTL ? -direction : direction;
+    if (showAllButton) {
+      const expanded = track.classList.contains('expanded');
 
-    track.scrollBy({
-      left: visualDirection * distance,
-      behavior: 'smooth'
-    });
-  }
+      showAllButton.textContent = expanded
+        ? (currentLanguage === 'ar' ? 'عرض أقل' : 'Show Less')
+        : (currentLanguage === 'ar' ? 'عرض كل المنتجات' : 'Show All Products');
+    }
+  });
+}
 
-  // عرض كل المنتجات أو عرضها كشريط متحرك
-  function toggleProducts(trackId, button) {
-    const track = document.getElementById(trackId);
-    if (!track) return;
+/* تحريك المنتجات بالأسهم */
+function moveProducts(trackId, direction) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
 
-    const isExpanded = track.classList.toggle('expanded');
+  const card = track.querySelector('.product-card');
 
-    button.textContent = isExpanded
-      ? (currentLanguage === 'ar' ? 'عرض أقل' : 'Show Less')
-      : (currentLanguage === 'ar' ? 'عرض كل المنتجات' : 'Show All Products');
-  }
+  const distance = card
+    ? card.getBoundingClientRect().width + 14
+    : track.clientWidth * 0.8;
 
-  // تجهيز رسالة واتساب باسم المنتج
-  function orderProduct(button) {
-    const productName = button.getAttribute(
-      currentLanguage === 'ar' ? 'data-name-ar' : 'data-name-en'
-    );
+  const isRTL = document.documentElement.dir === 'rtl';
+  const visualDirection = isRTL ? -direction : direction;
 
-    const message = currentLanguage === 'ar'
-      ? 'أهلاً، أنا مهتم/ة بطلب: ' + productName + '\nممكن أعرف التفاصيل والسعر؟'
-      : 'Hello, I am interested in: ' + productName + '\nCould you please share the details and price?';
+  track.scrollBy({
+    left: visualDirection * distance,
+    behavior: 'smooth'
+  });
+}
 
-    const url = 'https://wa.me/201276369556?text=' + encodeURIComponent(message);
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }
+/* عرض كل المنتجات أو إعادتها إلى الشريط */
+function toggleProducts(trackId, button) {
+  const track = document.getElementById(trackId);
+  if (!track) return;
+
+  const isExpanded = track.classList.toggle('expanded');
+
+  button.textContent = isExpanded
+    ? (currentLanguage === 'ar' ? 'عرض أقل' : 'Show Less')
+    : (currentLanguage === 'ar' ? 'عرض كل المنتجات' : 'Show All Products');
+}
+
+/* تجهيز رسالة واتساب باسم المنتج */
+function orderProduct(button) {
+  const productName = button.getAttribute(
+    currentLanguage === 'ar' ? 'data-name-ar' : 'data-name-en'
+  );
+
+  const message = currentLanguage === 'ar'
+    ? 'أهلاً، أنا مهتم/ة بطلب: ' + productName + '\nممكن أعرف التفاصيل والسعر؟'
+    : 'Hello, I am interested in: ' + productName + '\nCould you please share the details and price?';
+
+  const url =
+    'https://wa.me/201276369556?text=' + encodeURIComponent(message);
+
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
 </script>
 
 </body>
