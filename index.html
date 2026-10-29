@@ -4,275 +4,233 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#fbf5e9">
-<meta name="description" content="لون وحكاية — كتب تلوين ولوحات فنية وهدايا شخصية. كل قطعة ليها حكاية.">
-<title>لون وحكاية | كل قطعة ليها حكاية</title>
-  <style>
+<meta name="description" content="لون وحكاية - كل لون وراه حكاية">
+<title>لون وحكاية | كل لون وراه حكاية</title>
+
+<style>
 :root {
   --cream: #fbf5e9;
-  --white: #fffdf8;
-  --brown: #b85f45;
-  --brown-dark: #934832;
-  --green: #536b4c;
-  --ink: #39372f;
-  --muted: #777165;
-  --line: #eadfce;
-  --shadow: 0 8px 25px rgba(75,55,35,.08);
+  --brown: #493b35;
+  --orange: #d98252;
+  --green: #718568;
+  --white: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+}
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 150px;
 }
 
 body {
+  margin: 0;
   background: var(--cream);
-  color: var(--ink);
-  font-family: Tahoma, Arial, sans-serif;
-  line-height: 1.8;
-}
-
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
-img { max-width: 100%; }
-
-.container {
-  width: min(1160px, 92%);
-  margin: auto;
-}
-
-.topbar {
-  background: var(--green);
-  color: white;
-  text-align: center;
-  padding: 7px 12px;
-  font-size: 13px;
-}
-
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,253,248,.97);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(10px);
-}
-
-.header-inner {
-  min-height: 112px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 12px 0;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  direction: ltr;
-  min-width: 0;
-}
-
-.brand-logo {
-  width: 88px;
-  height: 88px;
-  flex: 0 0 88px;
-  object-fit: contain;
-  display: block;
-}
-
-.brand-copy {
-  direction: rtl;
-  text-align: right;
-}
-
-.brand-topline {
   color: var(--brown);
-  font-size: 12px;
-  font-weight: bold;
+  font-family: Arial, Tahoma, sans-serif;
+  line-height: 1.7;
+}
+
+.site-header {
+  width: 100%;
+  padding: 18px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  background: var(--cream);
 }
 
 .brand-name {
-  color: var(--green);
-  font-size: clamp(25px, 3vw, 35px);
-  line-height: 1.35;
-  font-weight: 900;
-  white-space: nowrap;
+  font-size: 25px;
+  font-weight: 800;
+  margin: 0;
 }
 
 .brand-tagline {
-  color: var(--muted);
+  margin: 0;
+  font-size: 13px;
+  color: #76665d;
+}
+
+.home-link {
+  text-decoration: none;
+  color: var(--brown);
+  font-weight: bold;
+}
+
+.home-hero {
+  padding: 35px 5% 55px;
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.hero-text {
+  text-align: right;
+}
+
+.hero-label {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 30px;
+  background: #f0e3d1;
+  color: #78563f;
+  font-size: 14px;
+}
+
+.hero-title {
+  font-size: clamp(32px, 5vw, 52px);
+  line-height: 1.3;
+  margin: 18px 0 12px;
+}
+
+.hero-description {
+  font-size: 17px;
+  color: #76665d;
+  margin-bottom: 25px;
+}
+
+.hero-button {
+  display: inline-block;
+  padding: 11px 22px;
+  background: var(--orange);
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+.hero-image-area {
+  width: 100%;
+  max-width: 440px;
+  margin: auto;
+}
+
+.hero-image-frame {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  min-height: 280px;
+  padding: 14px;
+  background: #fff;
+  border: 2px solid #eadac6;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(73, 59, 53, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-image-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 14px;
+}
+
+.image-note {
+  margin-top: 10px;
+  text-align: center;
+  color: #76665d;
   font-size: 12px;
 }
 
-.header-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
+@media (max-width: 700px) {
+  .site-header {
+    padding: 15px 5%;
+  }
+
+  .brand-name {
+    font-size: 21px;
+  }
+
+  .home-hero {
+    padding-top: 20px;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .hero-text {
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 34px;
+  }
+
+  .hero-image-area {
+    max-width: 340px;
+  }
+
+  .hero-image-frame {
+    min-height: 250px;
+  }
 }
+</style>
+</head>
 
-.language-btn {
-  background: var(--white);
-  color: var(--green);
-  border: 1px solid var(--green);
-  border-radius: 22px;
-  padding: 7px 14px;
-  font-size: 13px;
-  font-weight: bold;
-  white-space: nowrap;
-}
+<body id="top">
 
-.language-btn:hover {
-  background: var(--green);
-  color: white;
-}
+<header class="site-header">
+  <div>
+    <p class="brand-name">لون وحكاية</p>
+    <p class="brand-tagline">كل لون وراه حكاية</p>
+  </div>
+  <a class="home-link" href="#top">الرئيسية</a>
+</header>
 
-.main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  font-size: 13px;
-}
+<main>
+  <!-- بداية الصفحة الرئيسية -->
+  <section class="home-hero" id="home">
+    <div class="hero-inner">
 
-.main-nav a:hover { color: var(--brown); }
+      <div class="hero-text">
+        <span class="hero-label">كل قطعة ليها حكاية ✨</span>
 
-.nav-contact {
-  background: var(--brown);
-  color: white !important;
-  padding: 7px 13px;
-  border-radius: 22px;
-}
+        <h1 class="hero-title">كل لون وراه حكاية</h1>
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 26px;
-  padding: 11px 20px;
-  background: var(--brown);
-  color: white;
-  font-weight: bold;
-  transition: .2s;
-}
-
-.btn:hover {
-  background: var(--brown-dark);
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--green);
-  border: 1px solid var(--green);
-}
-
-.btn-outline:hover {
-  background: var(--green);
-  color: white;
-}
-
-/* الرئيسية */
-<!-- ===== بداية الصفحة الرئيسية ===== -->
-<section class="lw-home" id="home">
-  <div class="lw-home-container">
-
-    <div class="lw-hero-layout">
-
-      <!-- النص الرئيسي -->
-      <div class="lw-hero-text">
-
-        <div class="lw-eyebrow">
-          لون وحكاية — كل قطعة ليها حكاية ✨
-        </div>
-
-        <h1 class="lw-hero-title">
-          كل لون وراه حكاية
-        </h1>
-
-        <p class="lw-hero-description">
-          كتب تلوين للأطفال، لوحات فنية، وهدايا شخصية
-          بتصميمات مميزة معمولة بحب.
+        <p class="hero-description">
+          مساحة تجمع بين الخيال والفن والأفكار المميزة،
+          لأن كل حكاية جميلة بتبدأ بفكرة.
         </p>
 
-        <div class="lw-hero-buttons">
-          <a class="lw-action" href="#kids">
-            اكتشف كتب التلوين
-          </a>
-
-          <a class="lw-action lw-action-secondary" href="#contact">
-            اطلب تصميمك الخاص
-          </a>
-        </div>
-
+        <a class="hero-button" href="#categories">
+          اكتشف عالمنا
+        </a>
       </div>
 
-      <!-- مربع الصورة المرتبط باللوجو -->
-     <!-- مربع الصورة المرتبط باللوجو -->
-<div class="lw-hero-visual">
-  <div class="lw-image-frame">
-    <img
-      src="./Website%20logo.jpeg"
-      alt="لون وحكاية - كل لون وراه حكاية"
-      loading="eager"
-    >
-  </div>
-</div>
-
+      <div class="hero-image-area">
+        <div class="hero-image-frame">
+          <img
+            src="./Website%20logo.jpeg"
+            alt="لون وحكاية - كل لون وراه حكاية"
+            loading="eager"
+            onerror="this.style.display='none'; this.parentElement.style.background='#f0e3d1'; this.parentElement.innerHTML='<p style=&quot;text-align:center;padding:20px&quot;>تعذّر تحميل الصورة<br>تأكد من اسم الملف ومكانه على GitHub</p>';"
+          >
         </div>
+        <p class="image-note">لون وحكاية — كل لون وراه حكاية</p>
       </div>
 
     </div>
+  </section>
+  <!-- نهاية الصفحة الرئيسية -->
 
-    <!-- قسم اختار حكايتك -->
-    <div class="lw-categories" id="categories">
-
-      <h2 class="lw-categories-heading">
-        اختار حكايتك
-      </h2>
-
-      <p class="lw-categories-intro">
-        اكتشف عالمنا واختار اللي يناسبك
-      </p>
-
-      <div class="lw-category-grid">
-
-        <a class="lw-category-card" href="#kids">
-          <span class="lw-category-icon">🖍️</span>
-          <span class="lw-category-title">عالم أطفال</span>
-          <span class="lw-category-description">
-            كتب تلوين ومغامرات ممتعة للصغار
-          </span>
-        </a>
-
-        <a class="lw-category-card" href="#art">
-          <span class="lw-category-icon">🎨</span>
-          <span class="lw-category-title">لوحات فنية</span>
-          <span class="lw-category-description">
-            فنون ورسومات تضيف لمسة مميزة
-          </span>
-        </a>
-
-        <a class="lw-category-card" href="#gifts">
-          <span class="lw-category-icon">🎁</span>
-          <span class="lw-category-title">هدايا شخصية</span>
-          <span class="lw-category-description">
-            هدايا بتصميمات خاصة ومميزة
-          </span>
-        </a>
-
-      </div>
-    </div>
-
-  </div>
-</section>
-
+  <!-- بداية الأقسام: اترك الكود الحالي للأقسام هنا كما هو -->
+</main>
+</body>
+</html>
 /* الأقسام */
 section { padding: 29px 0; }
 
