@@ -181,11 +181,11 @@ header {
 /* الرئيسية */
 <!-- ===== بداية الصفحة الرئيسية ===== -->
 <section class="lw-home" id="home">
-  <div class="lw-container">
+  <div class="lw-home-container">
 
-    <!-- القسم الرئيسي -->
     <div class="lw-hero-layout">
 
+      <!-- النص الرئيسي -->
       <div class="lw-hero-text">
 
         <div class="lw-eyebrow">
@@ -213,49 +213,15 @@ header {
 
       </div>
 
-      <!-- مربع صورة الغلاف -->
+      <!-- مربع الصورة المرتبط باللوجو -->
       <div class="lw-hero-visual">
-        <div class="lw-hero-image-frame">
+        <div class="lw-image-frame">
 
           <img
-            class="lw-hero-cover"
-            src="./cover.jpg"
-            alt="غلاف كتاب التلوين من لون وحكاية"
-            onerror="
-              if (!this.dataset.logoTry) {
-                this.dataset.logoTry = '1';
-                this.src = './website%20logo.jpeg';
-              } else if (this.dataset.logoTry === '1') {
-                this.dataset.logoTry = '2';
-                this.src = './Website%20logo.jpeg';
-              } else {
-                this.style.display = 'none';
-                document.getElementById('lw-image-fallback').style.display = 'flex';
-              }
-            "
+            src="./Website%20logo.jpeg"
+            alt="لون وحكاية - كل لون وراه حكاية"
+            loading="eager"
           >
-
-          <!-- يظهر إذا تعذر تحميل الصورتين -->
-          <div
-            class="lw-image-fallback"
-            id="lw-image-fallback"
-          >
-            <div class="lw-fallback-icons">
-              🎨 🖍️ 📚
-            </div>
-
-            <div class="lw-fallback-title">
-              لون وحكاية
-            </div>
-
-            <div class="lw-fallback-slogan">
-              كل لون وراه حكاية
-            </div>
-
-            <p>
-              كتب تلوين للأطفال، لوحات فنية، وهدايا شخصية
-            </p>
-          </div>
 
         </div>
       </div>
@@ -277,11 +243,7 @@ header {
 
         <a class="lw-category-card" href="#kids">
           <span class="lw-category-icon">🖍️</span>
-
-          <span class="lw-category-title">
-            عالم أطفال
-          </span>
-
+          <span class="lw-category-title">عالم أطفال</span>
           <span class="lw-category-description">
             كتب تلوين ومغامرات ممتعة للصغار
           </span>
@@ -289,11 +251,7 @@ header {
 
         <a class="lw-category-card" href="#art">
           <span class="lw-category-icon">🎨</span>
-
-          <span class="lw-category-title">
-            لوحات فنية
-          </span>
-
+          <span class="lw-category-title">لوحات فنية</span>
           <span class="lw-category-description">
             فنون ورسومات تضيف لمسة مميزة
           </span>
@@ -301,11 +259,7 @@ header {
 
         <a class="lw-category-card" href="#gifts">
           <span class="lw-category-icon">🎁</span>
-
-          <span class="lw-category-title">
-            هدايا شخصية
-          </span>
-
+          <span class="lw-category-title">هدايا شخصية</span>
           <span class="lw-category-description">
             هدايا بتصميمات خاصة ومميزة
           </span>
