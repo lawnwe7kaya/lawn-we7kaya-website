@@ -6,7 +6,266 @@
 <meta name="theme-color" content="#fbf5e9">
 <meta name="description" content="لون وحكاية — كتب تلوين ولوحات فنية وهدايا شخصية. كل قطعة ليها حكاية.">
 <title>لون وحكاية | كل قطعة ليها حكاية</title>
-<style>
+.lw-home {
+  padding: 30px 16px 40px;
+  color: #493b35;
+}
+
+.lw-home * {
+  box-sizing: border-box;
+}
+
+.lw-home .lw-container {
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.lw-hero-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 50px;
+}
+
+.lw-hero-text {
+  min-width: 0;
+}
+
+.lw-eyebrow {
+  display: inline-block;
+  margin-bottom: 14px;
+  color: #b76d45;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.lw-hero-title {
+  margin: 0 0 18px;
+  color: #493b35;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 1.45;
+  font-weight: 900;
+}
+
+.lw-hero-description {
+  margin: 0 0 24px;
+  font-size: 17px;
+  line-height: 2;
+  color: #71625b;
+}
+
+.lw-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.lw-home .lw-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: #bd7952;
+  color: #fff !important;
+  text-decoration: none !important;
+  text-align: center;
+  font-weight: 800;
+  transition: transform .2s ease, background .2s ease;
+}
+
+.lw-home .lw-action:hover {
+  background: #a9633d;
+  transform: translateY(-2px);
+}
+
+.lw-home .lw-action-secondary {
+  background: #fff;
+  color: #965b3b !important;
+  border: 1px solid #e8cdbb;
+}
+
+/* مربع صورة الغلاف */
+
+.lw-hero-visual {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lw-hero-image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  min-height: 360px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 2px solid #f0d7c4;
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at top left, #ffe5b7 0%, transparent 43%),
+    linear-gradient(145deg, #fffaf0, #fbe9da);
+  box-shadow: 0 14px 35px rgba(99, 65, 43, 0.12);
+}
+
+.lw-hero-cover {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  max-height: 420px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  filter: drop-shadow(0 8px 12px rgba(50, 40, 20, .14));
+}
+
+.lw-image-fallback {
+  display: none;
+  width: 100%;
+  min-height: 320px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 14px;
+  padding: 24px;
+  text-align: center;
+  border: 2px dashed #ddb393;
+  border-radius: 20px;
+  background: rgba(255,255,255,.68);
+}
+
+.lw-fallback-icons {
+  font-size: 42px;
+  letter-spacing: 5px;
+}
+
+.lw-fallback-title {
+  color: #965b3b;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.lw-fallback-slogan {
+  font-size: 19px;
+  font-weight: 800;
+}
+
+/* قسم اختار حكايتك */
+
+.lw-categories {
+  padding-top: 12px;
+}
+
+.lw-categories-heading {
+  margin: 0 0 10px;
+  text-align: center;
+  color: #493b35;
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 900;
+}
+
+.lw-categories-intro {
+  margin: 0 auto 26px;
+  text-align: center;
+  color: #796961;
+  line-height: 1.9;
+}
+
+.lw-category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.lw-category-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 175px;
+  padding: 22px 14px;
+  border: 1px solid #f0dfd1;
+  border-radius: 22px;
+  background: #fff;
+  text-decoration: none !important;
+  text-align: center;
+  box-shadow: 0 8px 22px rgba(85, 57, 39, .06);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.lw-category-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(85, 57, 39, .12);
+}
+
+.lw-category-icon {
+  margin-bottom: 12px;
+  font-size: 38px;
+}
+
+.lw-category-title {
+  color: #744b35;
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.lw-category-description {
+  margin-top: 8px;
+  color: #827169;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+@media (max-width: 700px) {
+  .lw-home {
+    padding: 22px 13px 32px;
+  }
+
+  .lw-hero-layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 25px;
+    margin-bottom: 38px;
+  }
+
+  .lw-hero-text {
+    text-align: center;
+  }
+
+  .lw-hero-buttons {
+    justify-content: center;
+  }
+
+  .lw-hero-image-frame {
+    max-width: 390px;
+    min-height: 300px;
+    padding: 14px;
+  }
+
+  .lw-hero-cover {
+    max-height: 360px;
+  }
+
+  .lw-image-fallback {
+    min-height: 280px;
+  }
+
+  .lw-category-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .lw-category-card {
+    min-height: 140px;
+  }
+}
+  <style>
 :root {
   --cream: #fbf5e9;
   --white: #fffdf8;
@@ -179,52 +438,141 @@ header {
 }
 
 /* الرئيسية */
-<section class="hero" id="home">
-  <div class="container">
-    <div class="hero-content">
+<!-- ===== بداية الصفحة الرئيسية ===== -->
+<section class="lw-home" id="home">
+  <div class="lw-container">
 
-      <div class="hero-text">
-        <div class="eyebrow">
+    <!-- القسم الرئيسي -->
+    <div class="lw-hero-layout">
+
+      <div class="lw-hero-text">
+
+        <div class="lw-eyebrow">
           لون وحكاية — كل قطعة ليها حكاية ✨
         </div>
 
-        <h1>
+        <h1 class="lw-hero-title">
           كل لون وراه حكاية
         </h1>
 
-        <p>
+        <p class="lw-hero-description">
           كتب تلوين للأطفال، لوحات فنية، وهدايا شخصية
           بتصميمات مميزة معمولة بحب.
         </p>
 
-        <div class="hero-buttons">
-          <a class="btn" href="#kids">
+        <div class="lw-hero-buttons">
+          <a class="lw-action" href="#kids">
             اكتشف كتب التلوين
           </a>
 
-          <a class="btn" href="#contact">
+          <a class="lw-action lw-action-secondary" href="#contact">
             اطلب تصميمك الخاص
           </a>
         </div>
+
       </div>
 
-      <div class="hero-visual">
-        <img
-          class="hero-cover"
-          src="./cover.jpg"
-          alt="غلاف كتاب التلوين من لون وحكاية"
-          onerror="this.style.display='none'; document.getElementById('cover-fallback').style.display='block';"
-        >
+      <!-- مربع صورة الغلاف -->
+      <div class="lw-hero-visual">
+        <div class="lw-hero-image-frame">
 
-        <div class="cover-fallback" id="cover-fallback" style="display:none;">
-          <div class="cover-icons">🎨 🖍️ 📚</div>
-          <strong>لون وحكاية</strong>
-          <span>كل لون وراه حكاية</span>
-          <p>كتب تلوين وهدايا شخصية للأطفال</p>
+          <img
+            class="lw-hero-cover"
+            src="./cover.jpg"
+            alt="غلاف كتاب التلوين من لون وحكاية"
+            onerror="
+              if (!this.dataset.logoTry) {
+                this.dataset.logoTry = '1';
+                this.src = './website%20logo.jpeg';
+              } else if (this.dataset.logoTry === '1') {
+                this.dataset.logoTry = '2';
+                this.src = './Website%20logo.jpeg';
+              } else {
+                this.style.display = 'none';
+                document.getElementById('lw-image-fallback').style.display = 'flex';
+              }
+            "
+          >
+
+          <!-- يظهر إذا تعذر تحميل الصورتين -->
+          <div
+            class="lw-image-fallback"
+            id="lw-image-fallback"
+          >
+            <div class="lw-fallback-icons">
+              🎨 🖍️ 📚
+            </div>
+
+            <div class="lw-fallback-title">
+              لون وحكاية
+            </div>
+
+            <div class="lw-fallback-slogan">
+              كل لون وراه حكاية
+            </div>
+
+            <p>
+              كتب تلوين للأطفال، لوحات فنية، وهدايا شخصية
+            </p>
+          </div>
+
         </div>
       </div>
 
     </div>
+
+    <!-- قسم اختار حكايتك -->
+    <div class="lw-categories" id="categories">
+
+      <h2 class="lw-categories-heading">
+        اختار حكايتك
+      </h2>
+
+      <p class="lw-categories-intro">
+        اكتشف عالمنا واختار اللي يناسبك
+      </p>
+
+      <div class="lw-category-grid">
+
+        <a class="lw-category-card" href="#kids">
+          <span class="lw-category-icon">🖍️</span>
+
+          <span class="lw-category-title">
+            عالم أطفال
+          </span>
+
+          <span class="lw-category-description">
+            كتب تلوين ومغامرات ممتعة للصغار
+          </span>
+        </a>
+
+        <a class="lw-category-card" href="#art">
+          <span class="lw-category-icon">🎨</span>
+
+          <span class="lw-category-title">
+            لوحات فنية
+          </span>
+
+          <span class="lw-category-description">
+            فنون ورسومات تضيف لمسة مميزة
+          </span>
+        </a>
+
+        <a class="lw-category-card" href="#gifts">
+          <span class="lw-category-icon">🎁</span>
+
+          <span class="lw-category-title">
+            هدايا شخصية
+          </span>
+
+          <span class="lw-category-description">
+            هدايا بتصميمات خاصة ومميزة
+          </span>
+        </a>
+
+      </div>
+    </div>
+
   </div>
 </section>
 
