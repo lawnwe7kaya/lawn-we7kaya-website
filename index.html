@@ -2,22 +2,24 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fbf5e9">
-  <meta name="description" content="لون وحكاية - كتب تلوين للأطفال، أعمال فنية وهدايا شخصية مصممة بحب.">
-  <title>لون وحكاية | لون خيالك واحكي حكايتك</title>
+  <meta name="description" content="لون وحكاية: كتب تلوين للأطفال وهدايا شخصية وتصميمات فنية مميزة.">
+  <title>لون وحكاية | كل لون وراه حكاية</title>
 
   <style>
     :root {
       --cream: #fbf5e9;
-      --paper: #fffdf8;
-      --terracotta: #bd7257;
+      --white: #fffdf9;
+      --brown: #40352f;
+      --muted: #81736a;
+      --terracotta: #b96f54;
       --terracotta-dark: #96533f;
       --green: #657b60;
-      --ink: #40352f;
-      --muted: #82746b;
-      --line: #eadfd1;
-      --shadow: 0 8px 24px rgba(75, 53, 38, .08);
+      --line: #e9ddcf;
+      --soft-green: #e9eee4;
+      --soft-pink: #f4e4e3;
+      --shadow: 0 8px 26px rgba(64, 53, 47, .08);
     }
 
     * {
@@ -28,13 +30,13 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 90px;
+      scroll-padding-top: 100px;
     }
 
     body {
       font-family: Tahoma, Arial, sans-serif;
       background: var(--cream);
-      color: var(--ink);
+      color: var(--brown);
       line-height: 1.8;
     }
 
@@ -45,175 +47,172 @@
 
     button {
       font: inherit;
-      cursor: pointer;
+    }
+
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
     }
 
     .container {
-      width: min(1100px, 92%);
-      margin: auto;
+      width: min(1120px, 92%);
+      margin-inline: auto;
     }
 
-    header {
-      background: rgba(255, 253, 248, .96);
-      border-bottom: 1px solid var(--line);
+    .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 100;
+      background: rgba(255, 253, 249, .97);
+      border-bottom: 1px solid var(--line);
       backdrop-filter: blur(10px);
     }
 
     .navbar {
-      min-height: 76px;
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      padding: 10px 0;
+      gap: 20px;
+      padding-block: 10px;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 23px;
+      flex-shrink: 0;
+      font-size: 22px;
       font-weight: 800;
       color: var(--terracotta-dark);
     }
 
-    .brand-mark {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: #f3e4d3;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-    }
-
-    .brand-mark img {
-      width: 100%;
-      height: 100%;
+    .brand-logo {
+      width: 48px;
+      height: 48px;
       object-fit: contain;
+      border-radius: 12px;
     }
 
-    nav {
+    .nav-links {
       display: flex;
-      gap: 20px;
       align-items: center;
+      justify-content: center;
+      gap: 20px;
       flex-wrap: wrap;
       font-size: 14px;
     }
 
-    nav a:hover {
+    .nav-links a:hover {
       color: var(--terracotta);
     }
 
-    .hero {
-      padding: 65px 0 55px;
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      padding: 11px 19px;
+      font-size: 14px;
+      font-weight: bold;
+      transition: .2s ease;
+      cursor: pointer;
     }
 
-    .hero-inner {
+    .button-primary {
+      color: white;
+      background: var(--terracotta);
+    }
+
+    .button-primary:hover {
+      background: var(--terracotta-dark);
+      transform: translateY(-2px);
+    }
+
+    .button-outline {
+      background: var(--white);
+      border-color: var(--line);
+    }
+
+    .button-outline:hover {
+      border-color: var(--terracotta);
+      color: var(--terracotta-dark);
+    }
+
+    .hero {
+      padding-block: 65px 55px;
+    }
+
+    .hero-grid {
       display: grid;
       grid-template-columns: 1.05fr .95fr;
       align-items: center;
-      gap: 38px;
+      gap: 42px;
     }
 
     .eyebrow {
       color: var(--green);
       font-weight: bold;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    h1 {
-      font-size: clamp(32px, 5vw, 51px);
+    .hero h1 {
+      font-size: clamp(34px, 5vw, 54px);
       line-height: 1.4;
-      margin-bottom: 16px;
+      margin-bottom: 15px;
     }
 
-    h1 span {
+    .hero h1 span {
       color: var(--terracotta);
     }
 
-    .hero p {
+    .hero-copy {
       color: var(--muted);
-      max-width: 520px;
-      margin-bottom: 24px;
+      max-width: 540px;
+      margin-bottom: 23px;
     }
 
-    .actions {
+    .hero-actions {
       display: flex;
-      gap: 12px;
+      gap: 11px;
       flex-wrap: wrap;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 11px 20px;
-      border-radius: 12px;
-      border: 1px solid transparent;
-      font-weight: bold;
-      transition: .2s;
-    }
-
-    .btn-primary {
-      background: var(--terracotta);
-      color: white;
-    }
-
-    .btn-primary:hover {
-      background: var(--terracotta-dark);
-      transform: translateY(-2px);
-    }
-
-    .btn-outline {
-      border-color: var(--line);
-      background: var(--paper);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--terracotta);
-    }
-
-    .hero-art {
-      min-height: 310px;
-      border-radius: 28px;
-      background: #f1e4d3;
+    .hero-visual {
+      min-height: 320px;
       display: grid;
       place-items: center;
       padding: 25px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 20% 20%, #f8dcca 0 8%, transparent 9%),
+        radial-gradient(circle at 80% 75%, #dce7d4 0 11%, transparent 12%),
+        #f0e4d5;
       overflow: hidden;
     }
 
-    .hero-art img {
+    .hero-visual img {
       display: block;
       max-width: 100%;
       max-height: 340px;
-      width: auto;
-      height: auto;
       object-fit: contain;
       border-radius: 18px;
     }
 
     .section {
-      padding: 48px 0;
+      padding-block: 42px;
     }
 
     .section-heading {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 16px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .section-heading h2 {
-      font-size: clamp(24px, 4vw, 32px);
-      margin-bottom: 5px;
+      font-size: clamp(25px, 4vw, 34px);
+      margin-bottom: 4px;
     }
 
     .section-heading p {
@@ -221,19 +220,19 @@
       font-size: 14px;
     }
 
-    .category-grid {
+    .categories {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 17px;
     }
 
     .category-card {
-      background: var(--paper);
+      padding: 21px 14px;
       border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 22px 15px;
+      border-radius: 19px;
+      background: var(--white);
       text-align: center;
-      transition: .2s;
+      transition: .2s ease;
     }
 
     .category-card:hover {
@@ -242,49 +241,51 @@
     }
 
     .category-icon {
-      width: 62px;
-      height: 62px;
-      margin: 0 auto 10px;
-      border-radius: 18px;
+      width: 55px;
+      height: 55px;
       display: grid;
       place-items: center;
-      font-size: 32px;
-      background: #f4e7d9;
+      margin: 0 auto 9px;
+      border-radius: 17px;
+      font-size: 29px;
+      background: #f4e5d8;
     }
 
     .category-card:nth-child(2) .category-icon {
-      background: #e8eee2;
+      background: var(--soft-green);
     }
 
     .category-card:nth-child(3) .category-icon {
-      background: #f4e3e4;
+      background: var(--soft-pink);
     }
 
     .category-card h3 {
-      font-size: 18px;
-      margin-bottom: 4px;
+      font-size: 17px;
+      margin-bottom: 3px;
     }
 
     .category-card p {
+      font-size: 12px;
       color: var(--muted);
-      font-size: 13px;
     }
 
     .product-section {
-      padding: 35px 0;
+      padding-block: 34px 40px;
       border-top: 1px solid var(--line);
+      scroll-margin-top: 100px;
     }
 
     .product-heading {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      gap: 12px;
+      justify-content: space-between;
+      gap: 14px;
       margin-bottom: 17px;
     }
 
     .product-heading h2 {
-      font-size: 25px;
+      font-size: clamp(21px, 3vw, 27px);
+      margin-bottom: 3px;
     }
 
     .product-heading p {
@@ -298,19 +299,29 @@
       flex-shrink: 0;
     }
 
-    .arrow {
-      width: 39px;
-      height: 39px;
+    .carousel-arrow {
+      display: grid;
+      place-items: center;
+      width: 41px;
+      height: 41px;
       border: 1px solid var(--line);
       border-radius: 12px;
-      background: var(--paper);
-      color: var(--ink);
-      font-size: 20px;
+      background: var(--white);
+      color: var(--brown);
+      font-size: 23px;
+      cursor: pointer;
+      transition: .2s;
     }
 
-    .arrow:hover {
+    .carousel-arrow:hover {
       background: var(--terracotta);
       color: white;
+      border-color: var(--terracotta);
+    }
+
+    .carousel-arrow:disabled {
+      opacity: .4;
+      cursor: default;
     }
 
     .product-track {
@@ -324,33 +335,38 @@
       scroll-behavior: smooth;
       padding: 3px 2px 15px;
       scrollbar-width: thin;
-      scrollbar-color: #d7b9a5 transparent;
+      scrollbar-color: #c9a38e transparent;
     }
 
     .product-card {
       min-width: 0;
-      scroll-snap-align: start;
-      background: var(--paper);
+      overflow: hidden;
       border: 1px solid var(--line);
       border-radius: 17px;
-      overflow: hidden;
+      background: var(--white);
+      scroll-snap-align: start;
+      transition: box-shadow .2s;
+    }
+
+    .product-card:hover {
+      box-shadow: var(--shadow);
     }
 
     .product-art {
-      min-height: 145px;
+      min-height: 135px;
       aspect-ratio: 1.15 / 1;
       display: grid;
       place-items: center;
-      background: #f1e5d8;
-      font-size: 58px;
+      font-size: 59px;
+      background: #f2e5d8;
     }
 
     .product-card:nth-child(3n + 2) .product-art {
-      background: #e8eee2;
+      background: var(--soft-green);
     }
 
     .product-card:nth-child(3n) .product-art {
-      background: #f3e4e5;
+      background: var(--soft-pink);
     }
 
     .product-info {
@@ -359,54 +375,57 @@
 
     .product-info h3 {
       font-size: 15px;
+      line-height: 1.6;
       margin-bottom: 5px;
     }
 
     .product-info p {
       font-size: 12px;
       color: var(--muted);
+      line-height: 1.7;
     }
 
-    .product-note {
-      margin-top: 10px;
+    .product-tag {
+      display: inline-block;
+      margin-top: 9px;
       color: var(--green);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: bold;
     }
 
     .section-footer {
       text-align: center;
-      padding-top: 12px;
+      margin-top: 13px;
     }
 
     .all-products {
       display: none;
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 16px;
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
     .all-products.open {
       display: grid;
     }
 
-    .about {
-      background: #f0e8dc;
-      border-radius: 26px;
-      padding: 35px;
+    .about-panel {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 25px;
       align-items: center;
+      gap: 25px;
+      padding: 32px;
+      border-radius: 24px;
+      background: #f0e7da;
     }
 
-    .about h2 {
-      font-size: 27px;
+    .about-panel h2 {
+      font-size: 28px;
       margin-bottom: 10px;
     }
 
-    .about p {
-      color: #76685e;
+    .about-panel p {
+      color: #76695f;
     }
 
     .about-points {
@@ -415,135 +434,216 @@
     }
 
     .about-point {
-      background: rgba(255, 253, 248, .8);
-      border-radius: 13px;
       padding: 12px 15px;
+      border-radius: 13px;
+      background: rgba(255, 253, 249, .85);
     }
 
-    .contact-card {
-      text-align: center;
-      background: var(--paper);
+    .contact-panel {
+      padding: 35px 20px;
       border: 1px solid var(--line);
       border-radius: 24px;
-      padding: 35px 20px;
+      background: var(--white);
+      text-align: center;
     }
 
-    .contact-card h2 {
-      font-size: 28px;
-      margin-bottom: 8px;
+    .contact-panel h2 {
+      font-size: 29px;
+      margin-bottom: 7px;
     }
 
-    .contact-card p {
+    .contact-panel > p {
       color: var(--muted);
-      margin-bottom: 20px;
+      margin-bottom: 21px;
     }
 
     .social-links {
       display: flex;
+      align-items: center;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 11px;
     }
 
-    footer {
+    .social-link {
+      min-width: 135px;
+    }
+
+    .social-whatsapp {
+      background: #287e50;
+      color: white;
+    }
+
+    .social-whatsapp:hover {
+      background: #20643f;
+    }
+
+    .social-facebook {
+      background: #2866b2;
+      color: white;
+    }
+
+    .social-facebook:hover {
+      background: #1e518f;
+    }
+
+    .social-instagram {
+      background: #a84679;
+      color: white;
+    }
+
+    .social-instagram:hover {
+      background: #85355f;
+    }
+
+    .social-caption {
+      margin-top: 17px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .site-footer {
+      margin-top: 20px;
+      padding-block: 25px;
       border-top: 1px solid var(--line);
       text-align: center;
-      padding: 22px 10px;
-      color: var(--muted);
-      font-size: 13px;
-      margin-top: 35px;
+      background: #f7efe3;
     }
 
-    @media (max-width: 800px) {
-      .hero-inner {
-        grid-template-columns: 1fr;
-        gap: 25px;
-      }
+    .footer-brand {
+      font-size: 19px;
+      font-weight: bold;
+      color: var(--terracotta-dark);
+      margin-bottom: 10px;
+    }
 
-      .hero {
-        padding-top: 38px;
-      }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 17px;
+      margin-bottom: 12px;
+      font-size: 13px;
+    }
 
-      .hero-art {
-        min-height: 230px;
+    .footer-socials {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 13px;
+    }
+
+    .footer-socials a {
+      color: var(--green);
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .copyright {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 850px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
       }
 
       .product-track {
         grid-auto-columns: calc((100% - 16px) / 2);
-        gap: 16px;
       }
 
       .all-products.open {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      .about {
-        grid-template-columns: 1fr;
-        padding: 25px;
+      .nav-links {
+        gap: 12px;
+      }
+
+      .navbar {
+        flex-wrap: wrap;
       }
     }
 
-    @media (max-width: 520px) {
+    @media (max-width: 600px) {
       .navbar {
         justify-content: center;
+        gap: 8px;
       }
 
       .brand {
-        font-size: 21px;
+        font-size: 20px;
       }
 
-      nav {
-        justify-content: center;
-        gap: 13px;
-        font-size: 13px;
+      .brand-logo {
+        width: 42px;
+        height: 42px;
+      }
+
+      .nav-links {
+        width: 100%;
+        gap: 9px 15px;
+        font-size: 12px;
       }
 
       .hero {
-        padding-bottom: 35px;
+        padding-block: 35px 30px;
       }
 
-      .hero-art {
-        min-height: 190px;
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero-visual {
+        min-height: 210px;
         padding: 15px;
       }
 
       .section {
-        padding: 34px 0;
+        padding-block: 30px;
       }
 
-      .category-grid {
+      .categories {
         gap: 9px;
       }
 
       .category-card {
-        padding: 15px 8px;
+        padding: 15px 7px;
       }
 
       .category-icon {
-        width: 49px;
-        height: 49px;
-        font-size: 25px;
+        width: 45px;
+        height: 45px;
+        font-size: 24px;
       }
 
       .category-card h3 {
-        font-size: 15px;
+        font-size: 14px;
       }
 
       .category-card p {
-        font-size: 11px;
+        font-size: 10px;
       }
 
-      .product-heading h2 {
-        font-size: 20px;
+      .product-section {
+        padding-block: 27px 32px;
       }
 
-      .product-heading p {
-        font-size: 12px;
+      .product-track {
+        grid-auto-columns: calc((100% - 12px) / 2);
+        gap: 12px;
       }
 
       .product-art {
-        min-height: 115px;
-        font-size: 45px;
+        min-height: 105px;
+        font-size: 46px;
       }
 
       .product-info {
@@ -554,34 +654,68 @@
         font-size: 13px;
       }
 
-      .all-products.open {
-        gap: 10px;
+      .product-info p {
+        font-size: 11px;
       }
 
-      .btn {
-        padding: 10px 14px;
-        font-size: 14px;
+      .product-heading {
+        align-items: center;
+      }
+
+      .carousel-arrow {
+        width: 36px;
+        height: 36px;
+      }
+
+      .about-panel {
+        grid-template-columns: 1fr;
+        padding: 23px;
+      }
+
+      .contact-panel {
+        padding: 27px 14px;
+      }
+
+      .social-links {
+        gap: 9px;
+      }
+
+      .social-link {
+        min-width: 115px;
+        padding: 10px 12px;
+      }
+
+      .all-products.open {
+        gap: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html,
+      .product-track {
+        scroll-behavior: auto;
+      }
+
+      * {
+        transition-duration: 0s !important;
       }
     }
   </style>
 </head>
 
 <body>
-
-  <header>
+  <header class="site-header">
     <div class="container navbar">
-      <a class="brand" href="#home">
-        <span class="brand-mark">
-          <img src="website%20logo.jpeg" alt="شعار لون وحكاية">
-        </span>
+      <a class="brand" href="#home" aria-label="لون وحكاية - الرئيسية">
+        <img class="brand-logo" src="website%20logo.jpeg" alt="شعار لون وحكاية">
         <span>لون وحكاية</span>
       </a>
 
-      <nav>
+      <nav class="nav-links" aria-label="القائمة الرئيسية">
         <a href="#home">الرئيسية</a>
         <a href="#categories">أقسامنا</a>
         <a href="#kids">كتب الأطفال</a>
-        <a href="#about">عنّا</a>
+        <a href="#art">الأعمال الفنية</a>
         <a href="#contact">تواصل معنا</a>
       </nav>
     </div>
@@ -589,25 +723,23 @@
 
   <main>
     <section class="hero" id="home">
-      <div class="container hero-inner">
+      <div class="container hero-grid">
         <div>
           <div class="eyebrow">كل لون وراه حكاية ✨</div>
           <h1>خلّي خيالك <span>ياخد لونه</span></h1>
-          <p>
-            كتب تلوين ممتعة للأطفال، وأعمال فنية، وهدايا شخصية
-            معمولة بحب علشان كل حكاية تبقى مميزة.
+          <p class="hero-copy">
+            كتب تلوين للأطفال، وتصميمات فنية، وهدايا شخصية
+            بتفاصيل مميزة. اختار فكرتك وابدأ حكايتك معانا.
           </p>
-          <div class="actions">
-            <a class="btn btn-primary" href="#categories">اكتشف منتجاتنا</a>
-            <a class="btn btn-outline"
+          <div class="hero-actions">
+            <a class="button button-primary" href="#categories">اكتشف منتجاتنا</a>
+            <a class="button button-outline"
                href="https://wa.me/201276369556"
-               target="_blank" rel="noopener">
-              اطلب على واتساب
-            </a>
+               target="_blank" rel="noopener noreferrer">اطلب على واتساب</a>
           </div>
         </div>
 
-        <div class="hero-art">
+        <div class="hero-visual">
           <img src="website%20logo.jpeg" alt="لون وحكاية">
         </div>
       </div>
@@ -616,13 +748,11 @@
     <section class="section" id="categories">
       <div class="container">
         <div class="section-heading">
-          <div>
-            <h2>اختار حكايتك</h2>
-            <p>كل قسم فيه أفكار مختلفة علشان تلاقي اللي يناسبك.</p>
-          </div>
+          <h2>اختار حكايتك</h2>
+          <p>تصفّح أقسامنا واكتشف الأفكار اللي تناسبك.</p>
         </div>
 
-        <div class="category-grid">
+        <div class="categories">
           <a class="category-card" href="#kids">
             <div class="category-icon">🧸</div>
             <h3>كتب الأطفال</h3>
@@ -632,32 +762,33 @@
           <a class="category-card" href="#art">
             <div class="category-icon">🎨</div>
             <h3>الأعمال الفنية</h3>
-            <p>أفكار ولمسات إبداعية</p>
+            <p>إبداع ولمسات فنية</p>
           </a>
 
           <a class="category-card" href="#gifts">
             <div class="category-icon">🎁</div>
             <h3>الهدايا الشخصية</h3>
-            <p>هدايا باسم وصورة صاحبها</p>
+            <p>هدايا بتفاصيل خاصة</p>
           </a>
         </div>
       </div>
     </section>
 
+    <!-- قسم كتب الأطفال -->
     <section class="product-section" id="kids">
       <div class="container">
         <div class="product-heading">
           <div>
             <h2>🧸 كتب الأطفال</h2>
-            <p>خلّي الطفل يعيش مغامرته ويلونها بنفسه.</p>
+            <p>مغامرات ممتعة وصفحات مليانة خيال.</p>
           </div>
           <div class="carousel-controls">
-            <button class="arrow" type="button"
-              aria-label="المنتجات السابقة"
-              onclick="moveCarousel('kidsTrack', -1)">›</button>
-            <button class="arrow" type="button"
-              aria-label="المنتجات التالية"
-              onclick="moveCarousel('kidsTrack', 1)">‹</button>
+            <button class="carousel-arrow" type="button"
+              data-track="kidsTrack" data-direction="-1"
+              aria-label="المنتجات السابقة">›</button>
+            <button class="carousel-arrow" type="button"
+              data-track="kidsTrack" data-direction="1"
+              aria-label="المنتجات التالية">‹</button>
           </div>
         </div>
 
@@ -665,65 +796,76 @@
           <article class="product-card">
             <div class="product-art">🦖</div>
             <div class="product-info">
-              <h3>كتاب مغامرات الديناصورات</h3>
-              <p>صفحات تلوين مليانة مغامرات.</p>
-              <div class="product-note">متاح للتخصيص</div>
+              <h3>مغامرات الديناصورات</h3>
+              <p>كتاب تلوين للأطفال محبي المغامرات.</p>
+              <span class="product-tag">قابل للتخصيص</span>
             </div>
           </article>
-
           <article class="product-card">
             <div class="product-art">🚀</div>
             <div class="product-info">
               <h3>رحلة إلى الفضاء</h3>
               <p>كواكب وصواريخ وخيال واسع.</p>
-              <div class="product-note">متاح للتخصيص</div>
+              <span class="product-tag">قابل للتخصيص</span>
             </div>
           </article>
-
           <article class="product-card">
             <div class="product-art">🦁</div>
             <div class="product-info">
               <h3>أصدقاء الغابة</h3>
-              <p>حيوانات لطيفة للتلوين.</p>
-              <div class="product-note">متاح للتخصيص</div>
+              <p>حيوانات لطيفة وصفحات تلوين.</p>
+              <span class="product-tag">قابل للتخصيص</span>
             </div>
           </article>
-
           <article class="product-card">
             <div class="product-art">🚗</div>
             <div class="product-info">
               <h3>عالم السيارات</h3>
-              <p>عربيات ومركبات ومغامرات.</p>
-              <div class="product-note">متاح للتخصيص</div>
+              <p>مركبات ومغامرات صغيرة.</p>
+              <span class="product-tag">قابل للتخصيص</span>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-art">🦕</div>
+            <div class="product-info">
+              <h3>رحلة في عالم الديناصورات</h3>
+              <p>أفكار ممتعة لعشاق الديناصورات.</p>
+              <span class="product-tag">قابل للتخصيص</span>
+            </div>
+          </article>
+          <article class="product-card">
+            <div class="product-art">🧑‍🚀</div>
+            <div class="product-info">
+              <h3>بطل المغامرات</h3>
+              <p>كتاب بشخصية الطفل حسب الطلب.</p>
+              <span class="product-tag">حسب الطلب</span>
             </div>
           </article>
         </div>
 
         <div class="section-footer">
-          <button class="btn btn-outline" type="button"
-            onclick="toggleProducts('kidsAll', this)">
-            عرض كل المنتجات ＋
-          </button>
+          <button class="button button-outline" type="button"
+            data-expand="kidsAll">عرض كل المنتجات ＋</button>
         </div>
-
         <div class="all-products" id="kidsAll"></div>
       </div>
     </section>
 
+    <!-- قسم الأعمال الفنية -->
     <section class="product-section" id="art">
       <div class="container">
         <div class="product-heading">
           <div>
             <h2>🎨 الأعمال الفنية</h2>
-            <p>تفاصيل فنية وأفكار تدي لمستك الخاصة.</p>
+            <p>أفكار إبداعية ولمسات مختلفة.</p>
           </div>
           <div class="carousel-controls">
-            <button class="arrow" type="button"
-              aria-label="الأعمال السابقة"
-              onclick="moveCarousel('artTrack', -1)">›</button>
-            <button class="arrow" type="button"
-              aria-label="الأعمال التالية"
-              onclick="moveCarousel('artTrack', 1)">‹</button>
+            <button class="carousel-arrow" type="button"
+              data-track="artTrack" data-direction="-1"
+              aria-label="الأعمال السابقة">›</button>
+            <button class="carousel-arrow" type="button"
+              data-track="artTrack" data-direction="1"
+              aria-label="الأعمال التالية">‹</button>
           </div>
         </div>
 
@@ -732,137 +874,26 @@
             <div class="product-art">🖼️</div>
             <div class="product-info">
               <h3>لوحات فنية</h3>
-              <p>أفكار تضيف لمسة مميزة.</p>
-              <div class="product-note">استفسر عن المتاح</div>
+              <p>لمسة مميزة لديكور المكان.</p>
+              <span class="product-tag">استفسر عن المتاح</span>
             </div>
           </article>
-
           <article class="product-card">
             <div class="product-art">🌸</div>
             <div class="product-info">
               <h3>رسومات لطيفة</h3>
-              <p>تصميمات بألوان مبهجة.</p>
-              <div class="product-note">استفسر عن المتاح</div>
+              <p>تصميمات مبهجة لمحبي الفن.</p>
+              <span class="product-tag">حسب الطلب</span>
             </div>
           </article>
-
           <article class="product-card">
             <div class="product-art">✏️</div>
             <div class="product-info">
               <h3>تصميمات مخصصة</h3>
-              <p>فكرة فنية حسب طلبك.</p>
-              <div class="product-note">حسب الطلب</div>
+              <p>فكرتك تتحول لتصميم خاص.</p>
+              <span class="product-tag">حسب الطلب</span>
             </div>
           </article>
-
           <article class="product-card">
             <div class="product-art">🌈</div>
             <div class="product-info">
-              <h3>ألوان وحكايات</h3>
-              <p>تصميمات مرحة ومختلفة.</p>
-              <div class="product-note">حسب الطلب</div>
-            </div>
-          </article>
-        </div>
-
-        <div class="section-footer">
-          <button class="btn btn-outline" type="button"
-            onclick="toggleProducts('artAll', this)">
-            عرض كل المنتجات ＋
-          </button>
-        </div>
-
-        <div class="all-products" id="artAll"></div>
-      </div>
-    </section>
-
-    <section class="product-section" id="gifts">
-      <div class="container">
-        <div class="product-heading">
-          <div>
-            <h2>🎁 الهدايا الشخصية</h2>
-            <p>خلي الهدية باسم الشخص اللي بتحبه.</p>
-          </div>
-          <div class="carousel-controls">
-            <button class="arrow" type="button"
-              aria-label="الهدايا السابقة"
-              onclick="moveCarousel('giftsTrack', -1)">›</button>
-            <button class="arrow" type="button"
-              aria-label="الهدايا التالية"
-              onclick="moveCarousel('giftsTrack', 1)">‹</button>
-          </div>
-        </div>
-
-        <div class="product-track" id="giftsTrack">
-          <article class="product-card">
-            <div class="product-art">📚</div>
-            <div class="product-info">
-              <h3>كتاب باسم الطفل</h3>
-              <p>اسم الطفل جزء من التجربة.</p>
-              <div class="product-note">حسب الطلب</div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-art">🎂</div>
-            <div class="product-info">
-              <h3>هدية عيد الميلاد</h3>
-              <p>فكرة مميزة للمناسبات.</p>
-              <div class="product-note">حسب الطلب</div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-art">💝</div>
-            <div class="product-info">
-              <h3>هدية بصورة شخصية</h3>
-              <p>تصميم حسب الصورة والطلب.</p>
-              <div class="product-note">حسب الطلب</div>
-            </div>
-          </article>
-
-          <article class="product-card">
-            <div class="product-art">⭐</div>
-            <div class="product-info">
-              <h3>هدية بتصميم خاص</h3>
-              <p>اختار الفكرة وإحنا نجهزها.</p>
-              <div class="product-note">حسب الطلب</div>
-            </div>
-          </article>
-        </div>
-
-        <div class="section-footer">
-          <button class="btn btn-outline" type="button"
-            onclick="toggleProducts('giftsAll', this)">
-            عرض كل المنتجات ＋
-          </button>
-        </div>
-
-        <div class="all-products" id="giftsAll"></div>
-      </div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container">
-        <div class="about">
-          <div>
-            <h2>حكايتنا بدأت بفكرة ❤️</h2>
-            <p>
-              في «لون وحكاية» بنحب نحول الأفكار البسيطة لحاجات
-              مميزة. هدفنا نقدم كتب تلوين وهدايا شخصية تجمع
-              بين الإبداع والبهجة وتناسب كل مناسبة.
-            </p>
-          </div>
-
-          <div class="about-points">
-            <div class="about-point">🎨 تصميمات مبهجة ومبتكرة</div>
-            <div class="about-point">🧸 أفكار مناسبة للأطفال</div>
-            <div class="about-point">🎁 إمكانية تخصيص الهدية</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="conta
