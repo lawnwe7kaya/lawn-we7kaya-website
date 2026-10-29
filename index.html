@@ -179,102 +179,54 @@ header {
 }
 
 /* الرئيسية */
-.hero { padding: 38px 0 30px; }
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
 
-.hero-inner {
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  align-items: center;
-  gap: 32px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 26px;
-  padding: clamp(22px, 4vw, 45px);
-  box-shadow: var(--shadow);
-}
+      <div class="hero-text">
+        <div class="eyebrow">
+          لون وحكاية — كل قطعة ليها حكاية ✨
+        </div>
 
-.eyebrow,
-.section-kicker {
-  color: var(--brown);
-  font-size: 13px;
-  font-weight: bold;
-}
+        <h1>
+          كل لون وراه حكاية
+        </h1>
 
-.hero h1 {
-  color: var(--green);
-  font-size: clamp(29px, 4vw, 46px);
-  line-height: 1.45;
-  margin: 8px 0 13px;
-}
+        <p>
+          كتب تلوين للأطفال، لوحات فنية، وهدايا شخصية
+          بتصميمات مميزة معمولة بحب.
+        </p>
 
-.hero h1 span { color: var(--brown); }
+        <div class="hero-buttons">
+          <a class="btn" href="#kids">
+            اكتشف كتب التلوين
+          </a>
 
-.hero p {
-  color: var(--muted);
-  font-size: 15px;
-  max-width: 560px;
-  margin-bottom: 22px;
-}
+          <a class="btn" href="#contact">
+            اطلب تصميمك الخاص
+          </a>
+        </div>
+      </div>
 
-.hero-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+      <div class="hero-visual">
+        <img
+          class="hero-cover"
+          src="./cover.jpg"
+          alt="غلاف كتاب التلوين من لون وحكاية"
+          onerror="this.style.display='none'; document.getElementById('cover-fallback').style.display='block';"
+        >
 
-.hero-art {
-  min-height: 300px;
-  display: grid;
-  place-items: center;
-  padding: 18px;
-  border-radius: 22px;
-  background:
-    radial-gradient(circle at 20% 25%, #f0d7a9 0 11%, transparent 12%),
-    radial-gradient(circle at 78% 30%, #d9e2c8 0 14%, transparent 15%),
-    radial-gradient(circle at 75% 80%, #e7c1ad 0 16%, transparent 17%),
-    #f7ecda;
-}
+        <div class="cover-fallback" id="cover-fallback" style="display:none;">
+          <div class="cover-icons">🎨 🖍️ 📚</div>
+          <strong>لون وحكاية</strong>
+          <span>كل لون وراه حكاية</span>
+          <p>كتب تلوين وهدايا شخصية للأطفال</p>
+        </div>
+      </div>
 
-.hero-cover {
-  display: block;
-  width: 100%;
-  max-width: 420px;
-  max-height: 480px;
-  object-fit: contain;
-  border-radius: 14px;
-  filter: drop-shadow(0 8px 12px rgba(50,40,20,.14));
-}
-
-.cover-fallback {
-  width: 100%;
-  max-width: 340px;
-  padding: 28px 18px;
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: var(--shadow);
-}
-
-.cover-fallback[hidden] { display: none; }
-
-.cover-fallback .cover-icons {
-  font-size: 42px;
-  margin-bottom: 10px;
-}
-
-.cover-fallback strong {
-  display: block;
-  color: var(--green);
-  font-size: 24px;
-}
-
-.cover-fallback span {
-  display: block;
-  color: var(--brown);
-  font-size: 13px;
-  margin-top: 5px;
-}
+    </div>
+  </div>
+</section>
 
 /* الأقسام */
 section { padding: 29px 0; }
