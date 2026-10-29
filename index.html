@@ -1,373 +1,274 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fbf5e9">
-<meta name="description" content="لون وحكاية — كتب تلوين ولوحات فنية وهدايا شخصية. كل قطعة ليها حكاية.">
-<title>لون وحكاية | كل قطعة ليها حكاية</title>
- <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#fbf5e9">
-<meta name="description" content="لون وحكاية — كتب تلوين ولوحات فنية وهدايا شخصية. كل قطعة ليها حكاية.">
-<title>لون وحكاية | كل قطعة ليها حكاية</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fbf5e9">
+  <meta name="description" content="لون وحكاية - كل لون وراه حكاية">
+  <title>لون وحكاية | كل لون وراه حكاية</title>
+
   <style>
-:root {
-  --cream: #fbf5e9;
-  --white: #fffdf8;
-  --brown: #b85f45;
-  --brown-dark: #934832;
-  --green: #536b4c;
-  --ink: #39372f;
-  --muted: #777165;
-  --line: #eadfce;
-  --shadow: 0 8px 25px rgba(75,55,35,.08);
-}
+    :root {
+      --page-bg: #fbf5e9;
+      --white: #ffffff;
+      --text: #49382c;
+      --accent: #a66f46;
+      --muted: #74685c;
+      --line: #eadcc9;
+    }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+    }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 150px;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: Tahoma, Arial, sans-serif;
-  line-height: 1.8;
-}
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--page-bg);
+      color: var(--text);
+      font-family: Arial, Tahoma, sans-serif;
+      line-height: 1.8;
+    }
 
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
-img { max-width: 100%; }
+    img {
+      max-width: 100%;
+    }
 
-.container {
-  width: min(1160px, 92%);
-  margin: auto;
-}
+    /* الرأسية الأصلية */
+    .site-header {
+      width: 100%;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+      padding: 12px 20px;
+    }
 
-.topbar {
-  background: var(--green);
-  color: white;
-  text-align: center;
-  padding: 7px 12px;
-  font-size: 13px;
-}
+    .header-inner {
+      width: 100%;
+      max-width: 1150px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,253,248,.97);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(10px);
-}
+    .brand-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
 
-.header-inner {
-  min-height: 112px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 12px 0;
-}
+    .brand-logo {
+      display: block;
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+      object-fit: contain;
+      border-radius: 10px;
+    }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  direction: ltr;
-  min-width: 0;
-}
+    .brand-name {
+      margin: 0;
+      color: var(--text);
+      font-size: 24px;
+      font-weight: 800;
+      line-height: 1.5;
+    }
 
-.brand-logo {
-  width: 88px;
-  height: 88px;
-  flex: 0 0 88px;
-  object-fit: contain;
-  display: block;
-}
+    .brand-tagline {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-.brand-copy {
-  direction: rtl;
-  text-align: right;
-}
+    /* مربع اللوجو الكبير تحت الرأسية */
+    .logo-showcase {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      padding: 24px 16px 12px;
+    }
 
-.brand-topline {
-  color: var(--brown);
-  font-size: 12px;
-  font-weight: bold;
-}
+    .logo-showcase-frame {
+      width: 100%;
+      max-width: 520px;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 12px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 8px 24px rgba(60, 40, 20, 0.10);
+    }
 
-.brand-name {
-  color: var(--green);
-  font-size: clamp(25px, 3vw, 35px);
-  line-height: 1.35;
-  font-weight: 900;
-  white-space: nowrap;
-}
+    .logo-showcase-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
 
-.brand-tagline {
-  color: var(--muted);
-  font-size: 12px;
-}
+    .logo-showcase-error {
+      max-width: 100%;
+      padding: 18px;
+      text-align: center;
+      color: var(--muted);
+      overflow-wrap: anywhere;
+      line-height: 2;
+    }
 
-.header-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
+    .logo-showcase-error[hidden] {
+      display: none;
+    }
 
-.language-btn {
-  background: var(--white);
-  color: var(--green);
-  border: 1px solid var(--green);
-  border-radius: 22px;
-  padding: 7px 14px;
-  font-size: 13px;
-  font-weight: bold;
-  white-space: nowrap;
-}
+    /* تنسيق عناصر الصفحة الرئيسية الموجودة بعد هذا الجزء */
+    .home-hero {
+      width: 100%;
+      padding: 35px 20px;
+    }
 
-.language-btn:hover {
-  background: var(--green);
-  color: white;
-}
+    .hero-inner {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 35px;
+    }
 
-.main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  font-size: 13px;
-}
+    .hero-text {
+      flex: 1 1 50%;
+      min-width: 0;
+      text-align: right;
+    }
 
-.main-nav a:hover { color: var(--brown); }
+    .hero-label {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
 
-.nav-contact {
-  background: var(--brown);
-  color: white !important;
-  padding: 7px 13px;
-  border-radius: 22px;
-}
+    .hero-title {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.5;
+    }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 26px;
-  padding: 11px 20px;
-  background: var(--brown);
-  color: white;
-  font-weight: bold;
-  transition: .2s;
-}
+    .hero-description {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 2;
+    }
 
-.btn:hover {
-  background: var(--brown-dark);
-  transform: translateY(-2px);
-}
+    .hero-button {
+      display: inline-block;
+      padding: 11px 24px;
+      border-radius: 28px;
+      background: var(--accent);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
 
-.btn-outline {
-  background: transparent;
-  color: var(--green);
-  border: 1px solid var(--green);
-}
+    @media (max-width: 600px) {
+      .site-header {
+        padding: 10px 14px;
+      }
 
-.btn-outline:hover {
-  background: var(--green);
-  color: white;
-}
-  <style>
-:root {
-  --cream: #fbf5e9;
-  --white: #fffdf8;
-  --brown: #b85f45;
-  --brown-dark: #934832;
-  --green: #536b4c;
-  --ink: #39372f;
-  --muted: #777165;
-  --line: #eadfce;
-  --shadow: 0 8px 25px rgba(75,55,35,.08);
-}
+      .brand-logo {
+        width: 44px;
+        height: 44px;
+      }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+      .brand-name {
+        font-size: 21px;
+      }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 150px;
-}
+      .logo-showcase {
+        padding: 18px 16px 8px;
+      }
 
-body {
-  background: var(--cream);
-  color: var(--ink);
-  font-family: Tahoma, Arial, sans-serif;
-  line-height: 1.8;
-}
+      .logo-showcase-frame {
+        max-width: 100%;
+        border-radius: 16px;
+      }
 
-a { color: inherit; text-decoration: none; }
-button { font: inherit; cursor: pointer; }
-img { max-width: 100%; }
+      .hero-inner {
+        flex-direction: column;
+        gap: 24px;
+      }
 
-.container {
-  width: min(1160px, 92%);
-  margin: auto;
-}
+      .hero-text {
+        width: 100%;
+        text-align: center;
+      }
 
-.topbar {
-  background: var(--green);
-  color: white;
-  text-align: center;
-  padding: 7px 12px;
-  font-size: 13px;
-}
+      .hero-title {
+        font-size: 30px;
+      }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(255,253,248,.97);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(10px);
-}
+      .hero-description {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
 
-.header-inner {
-  min-height: 112px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 12px 0;
-}
+<body>
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 13px;
-  direction: ltr;
-  min-width: 0;
-}
-
-.brand-logo {
-  width: 88px;
-  height: 88px;
-  flex: 0 0 88px;
-  object-fit: contain;
-  display: block;
-}
-
-.brand-copy {
-  direction: rtl;
-  text-align: right;
-}
-
-.brand-topline {
-  color: var(--brown);
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.brand-name {
-  color: var(--green);
-  font-size: clamp(25px, 3vw, 35px);
-  line-height: 1.35;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-.brand-tagline {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.header-actions {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
-
-.language-btn {
-  background: var(--white);
-  color: var(--green);
-  border: 1px solid var(--green);
-  border-radius: 22px;
-  padding: 7px 14px;
-  font-size: 13px;
-  font-weight: bold;
-  white-space: nowrap;
-}
-
-.language-btn:hover {
-  background: var(--green);
-  color: white;
-}
-
-.main-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  font-size: 13px;
-}
-
-.main-nav a:hover { color: var(--brown); }
-
-.nav-contact {
-  background: var(--brown);
-  color: white !important;
-  padding: 7px 13px;
-  border-radius: 22px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 0;
-  border-radius: 26px;
-  padding: 11px 20px;
-  background: var(--brown);
-  color: white;
-  font-weight: bold;
-  transition: .2s;
-}
-
-.btn:hover {
-  background: var(--brown-dark);
-  transform: translateY(-2px);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--green);
-  border: 1px solid var(--green);
-}
-
-.btn-outline:hover {
-  background: var(--green);
-  color: white;
-}
-
-  <!-- بداية رأس الموقع -->
+  <!-- بداية الرأسية -->
   <header class="site-header">
     <div class="header-inner">
-      <div>
-        <p class="brand">لون وحكاية</p>
-        <p class="brand-tagline">كل لون وراه حكاية</p>
+      <div class="brand-area">
+        <img
+          class="brand-logo"
+          src="./Website%20logo.jpeg"
+          alt="لوجو لون وحكاية"
+        >
+
+        <div>
+          <p class="brand-name">لون وحكاية</p>
+          <p class="brand-tagline">كل لون وراه حكاية</p>
+        </div>
       </div>
     </div>
   </header>
-  <!-- نهاية رأس الموقع -->
+  <!-- نهاية الرأسية -->
 
+  <!-- مربع صورة اللوجو الكبير -->
+  <section class="logo-showcase" aria-label="صورة شعار لون وحكاية">
+    <div class="logo-showcase-frame">
+      <img
+        class="logo-showcase-image"
+        src="./Website%20logo.jpeg"
+        alt="شعار لون وحكاية"
+        loading="eager"
+        onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+      >
+
+      <div class="logo-showcase-error" hidden>
+        <strong>تعذّر تحميل الصورة</strong>
+        <br>
+        تأكد من وجود ملف Website logo.jpeg
+        <br>
+        بجانب ملف index.html في GitHub.
+      </div>
+    </div>
+  </section>
+
+  <!-- نهاية الجزء السابق للصفحة الرئيسية -->
+  <!-- اترك كود الصفحة الرئيسية الحالي يبدأ من هنا -->
   <!-- بداية الصفحة الرئيسية -->
   <main>
     <section class="home-hero" id="home">
