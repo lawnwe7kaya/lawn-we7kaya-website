@@ -2,24 +2,23 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#fbf5e9">
-  <meta name="description" content="لون وحكاية: كتب تلوين للأطفال وهدايا شخصية وتصميمات فنية مميزة.">
+  <meta name="description" content="لون وحكاية - كتب تلوين مخصصة للأطفال، أدوات للرسم، وهدايا شخصية مميزة.">
   <title>لون وحكاية | كل لون وراه حكاية</title>
 
   <style>
     :root {
       --cream: #fbf5e9;
       --white: #fffdf9;
-      --brown: #40352f;
-      --muted: #81736a;
-      --terracotta: #b96f54;
-      --terracotta-dark: #96533f;
-      --green: #657b60;
-      --line: #e9ddcf;
-      --soft-green: #e9eee4;
-      --soft-pink: #f4e4e3;
-      --shadow: 0 8px 26px rgba(64, 53, 47, .08);
+      --green: #496b50;
+      --green-dark: #304c37;
+      --terracotta: #c96f51;
+      --yellow: #f2cf75;
+      --text: #39382f;
+      --muted: #777368;
+      --border: #e9dfd0;
+      --shadow: 0 8px 25px rgba(67, 54, 35, .08);
     }
 
     * {
@@ -30,13 +29,13 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 100px;
+      scroll-padding-top: 90px;
     }
 
     body {
       font-family: Tahoma, Arial, sans-serif;
       background: var(--cream);
-      color: var(--brown);
+      color: var(--text);
       line-height: 1.8;
     }
 
@@ -47,35 +46,40 @@
 
     button {
       font: inherit;
+      cursor: pointer;
     }
 
-    button:focus-visible,
-    a:focus-visible {
-      outline: 3px solid var(--green);
-      outline-offset: 3px;
+    img {
+      max-width: 100%;
     }
 
     .container {
       width: min(1120px, 92%);
-      margin-inline: auto;
+      margin: auto;
     }
 
-    .site-header {
+    .announcement {
+      background: var(--green);
+      color: white;
+      text-align: center;
+      padding: 7px 12px;
+      font-size: 13px;
+    }
+
+    header {
+      background: rgba(255, 253, 249, .97);
+      border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(255, 253, 249, .97);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
+      z-index: 20;
     }
 
     .navbar {
-      min-height: 78px;
+      min-height: 76px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
-      padding-block: 10px;
+      gap: 18px;
     }
 
     .brand {
@@ -83,24 +87,32 @@
       align-items: center;
       gap: 10px;
       flex-shrink: 0;
-      font-size: 22px;
-      font-weight: 800;
-      color: var(--terracotta-dark);
     }
 
-    .brand-logo {
-      width: 48px;
-      height: 48px;
+    .brand img {
+      width: 58px;
+      height: 58px;
       object-fit: contain;
       border-radius: 12px;
+    }
+
+    .brand-name {
+      color: var(--green-dark);
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+
+    .brand-tagline {
+      color: var(--muted);
+      font-size: 11px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
+      gap: 22px;
       font-size: 14px;
     }
 
@@ -108,60 +120,42 @@
       color: var(--terracotta);
     }
 
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      border: 1px solid transparent;
-      border-radius: 12px;
-      padding: 11px 19px;
-      font-size: 14px;
-      font-weight: bold;
-      transition: .2s ease;
-      cursor: pointer;
-    }
-
-    .button-primary {
-      color: white;
+    .nav-contact {
       background: var(--terracotta);
-    }
-
-    .button-primary:hover {
-      background: var(--terracotta-dark);
-      transform: translateY(-2px);
-    }
-
-    .button-outline {
-      background: var(--white);
-      border-color: var(--line);
-    }
-
-    .button-outline:hover {
-      border-color: var(--terracotta);
-      color: var(--terracotta-dark);
+      color: white;
+      border-radius: 24px;
+      padding: 9px 17px;
+      white-space: nowrap;
+      font-size: 13px;
+      font-weight: bold;
     }
 
     .hero {
-      padding-block: 65px 55px;
+      padding: 60px 0 48px;
+      overflow: hidden;
     }
 
-    .hero-grid {
+    .hero-inner {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
+      grid-template-columns: 1.15fr .85fr;
       align-items: center;
       gap: 42px;
     }
 
     .eyebrow {
-      color: var(--green);
-      font-weight: bold;
-      margin-bottom: 10px;
+      display: inline-block;
+      background: #f4e4ca;
+      color: #81583d;
+      border-radius: 30px;
+      padding: 5px 14px;
+      font-size: 13px;
+      margin-bottom: 15px;
     }
 
     .hero h1 {
-      font-size: clamp(34px, 5vw, 54px);
-      line-height: 1.4;
+      color: var(--green-dark);
+      font-size: clamp(32px, 5vw, 52px);
+      line-height: 1.45;
       margin-bottom: 15px;
     }
 
@@ -169,485 +163,687 @@
       color: var(--terracotta);
     }
 
-    .hero-copy {
+    .hero p {
       color: var(--muted);
-      max-width: 540px;
-      margin-bottom: 23px;
+      max-width: 520px;
+      margin-bottom: 25px;
+      font-size: 16px;
     }
 
-    .hero-actions {
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      border: none;
+      border-radius: 28px;
+      padding: 12px 22px;
+      font-weight: bold;
+      font-size: 14px;
+      transition: transform .2s, background .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: white;
+      background: var(--green);
+    }
+
+    .button-primary:hover {
+      background: var(--green-dark);
+    }
+
+    .button-outline {
+      border: 1px solid var(--green);
+      color: var(--green);
+      background: transparent;
+      margin-right: 8px;
+    }
+
+    .hero-art {
+      min-height: 300px;
+      border-radius: 38% 62% 57% 43% / 43% 40% 60% 57%;
+      background: #f1dfbf;
       display: flex;
-      gap: 11px;
-      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      padding: 30px;
     }
 
-    .hero-visual {
-      min-height: 320px;
+    .hero-art-inner {
+      text-align: center;
+      width: 100%;
+    }
+
+    .hero-emoji {
+      font-size: clamp(65px, 10vw, 105px);
+      line-height: 1.5;
+    }
+
+    .hero-art h2 {
+      color: var(--green-dark);
+      font-size: 24px;
+      margin-top: 8px;
+    }
+
+    .hero-art p {
+      font-size: 13px;
+      margin: 5px auto 0;
+      max-width: 260px;
+    }
+
+    .floating {
+      position: absolute;
+      font-size: 32px;
+    }
+
+    .float-one {
+      top: 22px;
+      right: 25px;
+    }
+
+    .float-two {
+      bottom: 25px;
+      left: 25px;
+    }
+
+    .features {
+      padding: 16px 0 38px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 16px;
+      border-radius: 17px;
+    }
+
+    .feature-icon {
+      width: 45px;
+      height: 45px;
       display: grid;
       place-items: center;
-      padding: 25px;
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 20% 20%, #f8dcca 0 8%, transparent 9%),
-        radial-gradient(circle at 80% 75%, #dce7d4 0 11%, transparent 12%),
-        #f0e4d5;
-      overflow: hidden;
+      background: #f5e7d1;
+      border-radius: 14px;
+      font-size: 23px;
+      flex-shrink: 0;
     }
 
-    .hero-visual img {
+    .feature strong {
       display: block;
-      max-width: 100%;
-      max-height: 340px;
-      object-fit: contain;
-      border-radius: 18px;
+      font-size: 14px;
+    }
+
+    .feature small {
+      color: var(--muted);
+      font-size: 12px;
     }
 
     .section {
-      padding-block: 42px;
+      padding: 45px 0;
     }
 
     .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
       margin-bottom: 22px;
     }
 
     .section-heading h2 {
-      font-size: clamp(25px, 4vw, 34px);
-      margin-bottom: 4px;
+      color: var(--green-dark);
+      font-size: clamp(23px, 3vw, 31px);
+      line-height: 1.5;
     }
 
     .section-heading p {
       color: var(--muted);
       font-size: 14px;
+      margin-top: 3px;
     }
 
-    .categories {
+    .category-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 17px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
     }
 
     .category-card {
-      padding: 21px 14px;
-      border: 1px solid var(--line);
-      border-radius: 19px;
-      background: var(--white);
-      text-align: center;
-      transition: .2s ease;
+      min-height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-radius: 22px;
+      padding: 22px;
+      transition: transform .2s;
     }
 
     .category-card:hover {
       transform: translateY(-4px);
-      box-shadow: var(--shadow);
     }
 
-    .category-icon {
-      width: 55px;
-      height: 55px;
-      display: grid;
-      place-items: center;
-      margin: 0 auto 9px;
-      border-radius: 17px;
-      font-size: 29px;
-      background: #f4e5d8;
+    .category-card:nth-child(1) {
+      background: #f4e1d1;
     }
 
-    .category-card:nth-child(2) .category-icon {
-      background: var(--soft-green);
+    .category-card:nth-child(2) {
+      background: #dfe9d9;
     }
 
-    .category-card:nth-child(3) .category-icon {
-      background: var(--soft-pink);
+    .category-card:nth-child(3) {
+      background: #f5e9bd;
+    }
+
+    .category-emoji {
+      font-size: 39px;
+      line-height: 1.5;
     }
 
     .category-card h3 {
-      font-size: 17px;
-      margin-bottom: 3px;
+      font-size: 19px;
+      margin-top: 6px;
     }
 
     .category-card p {
-      font-size: 12px;
-      color: var(--muted);
+      color: #686253;
+      font-size: 13px;
+      margin-top: 3px;
     }
 
-    .product-section {
-      padding-block: 34px 40px;
-      border-top: 1px solid var(--line);
-      scroll-margin-top: 100px;
+    .category-arrow {
+      align-self: flex-start;
+      margin-top: 10px;
+      font-size: 22px;
     }
 
-    .product-heading {
+    .products-section {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .product-tools {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 17px;
+      gap: 9px;
     }
 
-    .product-heading h2 {
-      font-size: clamp(21px, 3vw, 27px);
-      margin-bottom: 3px;
-    }
-
-    .product-heading p {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .carousel-controls {
-      display: flex;
-      gap: 7px;
-      flex-shrink: 0;
-    }
-
-    .carousel-arrow {
+    .slider-arrow {
       display: grid;
       place-items: center;
-      width: 41px;
-      height: 41px;
-      border: 1px solid var(--line);
-      border-radius: 12px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
       background: var(--white);
-      color: var(--brown);
+      color: var(--green-dark);
       font-size: 23px;
-      cursor: pointer;
-      transition: .2s;
+      line-height: 1;
     }
 
-    .carousel-arrow:hover {
-      background: var(--terracotta);
+    .slider-arrow:hover {
+      background: var(--green);
       color: white;
-      border-color: var(--terracotta);
     }
 
-    .carousel-arrow:disabled {
-      opacity: .4;
-      cursor: default;
-    }
-
-    .product-track {
+    .products-track {
       display: grid;
       grid-auto-flow: column;
-      grid-auto-columns: calc((100% - 48px) / 4);
-      gap: 16px;
+      grid-auto-columns: calc((100% - 54px) / 4);
+      gap: 18px;
       overflow-x: auto;
-      overscroll-behavior-inline: contain;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      padding: 3px 2px 15px;
-      scrollbar-width: thin;
-      scrollbar-color: #c9a38e transparent;
+      scrollbar-width: none;
+      padding: 3px 1px 15px;
+    }
+
+    .products-track::-webkit-scrollbar {
+      display: none;
     }
 
     .product-card {
-      min-width: 0;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 17px;
-      background: var(--white);
       scroll-snap-align: start;
-      transition: box-shadow .2s;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
     }
 
-    .product-card:hover {
-      box-shadow: var(--shadow);
-    }
-
-    .product-art {
-      min-height: 135px;
-      aspect-ratio: 1.15 / 1;
+    .product-picture {
+      min-height: 175px;
+      background: #f5eadb;
       display: grid;
       place-items: center;
-      font-size: 59px;
-      background: #f2e5d8;
+      position: relative;
+      padding: 15px;
     }
 
-    .product-card:nth-child(3n + 2) .product-art {
-      background: var(--soft-green);
+    .product-card:nth-child(3n + 2) .product-picture {
+      background: #e5ecdf;
     }
 
-    .product-card:nth-child(3n) .product-art {
-      background: var(--soft-pink);
+    .product-card:nth-child(3n) .product-picture {
+      background: #f7edc9;
+    }
+
+    .product-emoji {
+      font-size: 65px;
+      line-height: 1.5;
+    }
+
+    .product-label {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      color: var(--green-dark);
+      border-radius: 20px;
+      padding: 3px 9px;
+      font-size: 10px;
     }
 
     .product-info {
-      padding: 13px;
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     .product-info h3 {
       font-size: 15px;
       line-height: 1.6;
-      margin-bottom: 5px;
     }
 
     .product-info p {
-      font-size: 12px;
       color: var(--muted);
-      line-height: 1.7;
+      font-size: 12px;
+      margin: 5px 0 13px;
+      flex: 1;
     }
 
-    .product-tag {
-      display: inline-block;
-      margin-top: 9px;
-      color: var(--green);
+    .product-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .product-price {
+      font-size: 13px;
+      font-weight: bold;
+      color: var(--green-dark);
+    }
+
+    .order-small {
+      border: none;
+      background: var(--green);
+      color: white;
+      border-radius: 20px;
+      padding: 7px 11px;
       font-size: 11px;
       font-weight: bold;
     }
 
-    .section-footer {
+    .order-small:hover {
+      background: var(--green-dark);
+    }
+
+    .show-all-wrap {
       text-align: center;
-      margin-top: 13px;
+      margin-top: 15px;
     }
 
-    .all-products {
-      display: none;
+    .show-all {
+      background: transparent;
+      color: var(--green);
+      border: 1px solid var(--green);
+      padding: 10px 23px;
+    }
+
+    .show-all:hover {
+      background: var(--green);
+      color: white;
+    }
+
+    .products-track.expanded {
+      grid-auto-flow: row;
       grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 20px;
+      grid-auto-columns: auto;
+      overflow: visible;
     }
 
-    .all-products.open {
-      display: grid;
+    .products-track.expanded .product-card {
+      min-width: 0;
+    }
+
+    .about-section {
+      padding: 55px 0;
     }
 
     .about-panel {
+      background: #e5ebdf;
+      border-radius: 28px;
+      padding: 34px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: .75fr 1.25fr;
       align-items: center;
-      gap: 25px;
-      padding: 32px;
-      border-radius: 24px;
-      background: #f0e7da;
+      gap: 30px;
+    }
+
+    .about-illustration {
+      text-align: center;
+      font-size: 95px;
+      line-height: 1.5;
     }
 
     .about-panel h2 {
-      font-size: 28px;
+      color: var(--green-dark);
+      font-size: 29px;
       margin-bottom: 10px;
     }
 
     .about-panel p {
-      color: #76695f;
+      color: #5e6558;
+      font-size: 14px;
+      margin-bottom: 12px;
     }
 
     .about-points {
-      display: grid;
-      gap: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 15px;
     }
 
-    .about-point {
-      padding: 12px 15px;
-      border-radius: 13px;
-      background: rgba(255, 253, 249, .85);
+    .about-points span {
+      background: rgba(255,255,255,.75);
+      border-radius: 20px;
+      padding: 6px 12px;
+      font-size: 12px;
+    }
+
+    .contact-section {
+      padding: 20px 0 55px;
     }
 
     .contact-panel {
-      padding: 35px 20px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      background: var(--white);
       text-align: center;
+      background: #f1e2cc;
+      border-radius: 28px;
+      padding: 38px 22px;
+    }
+
+    .contact-emoji {
+      font-size: 42px;
+      line-height: 1.5;
     }
 
     .contact-panel h2 {
-      font-size: 29px;
-      margin-bottom: 7px;
+      color: var(--green-dark);
+      font-size: 30px;
+      margin: 5px 0 8px;
     }
 
     .contact-panel > p {
-      color: var(--muted);
-      margin-bottom: 21px;
+      color: #71695b;
+      font-size: 14px;
+      margin-bottom: 22px;
     }
 
     .social-links {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 11px;
+      gap: 12px;
     }
 
     .social-link {
-      min-width: 135px;
+      min-width: 165px;
+      color: white;
     }
 
     .social-whatsapp {
-      background: #287e50;
-      color: white;
-    }
-
-    .social-whatsapp:hover {
-      background: #20643f;
+      background: #27864d;
     }
 
     .social-facebook {
-      background: #2866b2;
-      color: white;
-    }
-
-    .social-facebook:hover {
-      background: #1e518f;
+      background: #2462ad;
     }
 
     .social-instagram {
-      background: #a84679;
+      background: #b94c75;
+    }
+
+    .social-link:hover {
+      filter: brightness(.93);
+    }
+
+    footer {
+      background: var(--green-dark);
       color: white;
+      padding: 30px 0 18px;
     }
 
-    .social-instagram:hover {
-      background: #85355f;
-    }
-
-    .social-caption {
-      margin-top: 17px;
-      font-size: 12px;
-      color: var(--muted);
-    }
-
-    .site-footer {
-      margin-top: 20px;
-      padding-block: 25px;
-      border-top: 1px solid var(--line);
-      text-align: center;
-      background: #f7efe3;
+    .footer-main {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 30px;
+      padding-bottom: 24px;
     }
 
     .footer-brand {
-      font-size: 19px;
+      font-size: 22px;
       font-weight: bold;
-      color: var(--terracotta-dark);
+      margin-bottom: 7px;
+    }
+
+    footer p,
+    footer a {
+      color: #e2e8dd;
+      font-size: 13px;
+    }
+
+    footer h3 {
+      font-size: 15px;
       margin-bottom: 10px;
     }
 
     .footer-links {
       display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 17px;
-      margin-bottom: 12px;
-      font-size: 13px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
     }
 
     .footer-socials {
       display: flex;
-      justify-content: center;
-      gap: 15px;
       flex-wrap: wrap;
-      margin-bottom: 13px;
-    }
-
-    .footer-socials a {
-      color: var(--green);
-      font-size: 13px;
-      font-weight: bold;
+      gap: 13px;
+      margin-top: 8px;
     }
 
     .copyright {
-      color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,.2);
+      padding-top: 14px;
+      text-align: center;
       font-size: 12px;
+      color: #d9e0d5;
     }
 
     @media (max-width: 850px) {
-      .hero-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 22px;
-      }
-
-      .product-track {
-        grid-auto-columns: calc((100% - 16px) / 2);
-      }
-
-      .all-products.open {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
       .nav-links {
         gap: 12px;
+        font-size: 12px;
       }
 
-      .navbar {
-        flex-wrap: wrap;
+      .brand-name {
+        font-size: 18px;
+      }
+
+      .products-track {
+        grid-auto-columns: calc((100% - 36px) / 3);
+      }
+
+      .products-track.expanded {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .hero-inner {
+        gap: 24px;
       }
     }
 
     @media (max-width: 600px) {
+      .announcement {
+        font-size: 11px;
+      }
+
       .navbar {
-        justify-content: center;
+        min-height: 67px;
+        flex-wrap: wrap;
+        padding: 8px 0;
         gap: 8px;
       }
 
-      .brand {
-        font-size: 20px;
+      .brand img {
+        width: 45px;
+        height: 45px;
       }
 
-      .brand-logo {
-        width: 42px;
-        height: 42px;
+      .brand-name {
+        font-size: 17px;
+      }
+
+      .brand-tagline {
+        font-size: 10px;
       }
 
       .nav-links {
+        order: 3;
         width: 100%;
-        gap: 9px 15px;
+        justify-content: space-around;
+        gap: 8px;
+        padding: 5px 0 3px;
+        border-top: 1px solid var(--border);
+      }
+
+      .nav-contact {
+        padding: 7px 12px;
         font-size: 12px;
       }
 
       .hero {
-        padding-block: 35px 30px;
+        padding: 35px 0 25px;
       }
 
-      .hero-grid {
+      .hero-inner {
         grid-template-columns: 1fr;
+        gap: 24px;
       }
 
       .hero h1 {
-        font-size: 36px;
+        font-size: 34px;
       }
 
-      .hero-visual {
-        min-height: 210px;
-        padding: 15px;
-      }
-
-      .section {
-        padding-block: 30px;
-      }
-
-      .categories {
-        gap: 9px;
-      }
-
-      .category-card {
-        padding: 15px 7px;
-      }
-
-      .category-icon {
-        width: 45px;
-        height: 45px;
-        font-size: 24px;
-      }
-
-      .category-card h3 {
+      .hero p {
         font-size: 14px;
       }
 
-      .category-card p {
-        font-size: 10px;
+      .hero-art {
+        min-height: 225px;
+        border-radius: 28px;
       }
 
-      .product-section {
-        padding-block: 27px 32px;
+      .hero-emoji {
+        font-size: 68px;
       }
 
-      .product-track {
-        grid-auto-columns: calc((100% - 12px) / 2);
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+
+      .feature {
+        padding: 12px;
+      }
+
+      .section {
+        padding: 32px 0;
+      }
+
+      .section-heading {
+        align-items: center;
+      }
+
+      .section-heading h2 {
+        font-size: 22px;
+      }
+
+      .section-heading p {
+        font-size: 12px;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
         gap: 12px;
       }
 
-      .product-art {
-        min-height: 105px;
-        font-size: 46px;
+      .category-card {
+        min-height: 145px;
+        padding: 18px;
+      }
+
+      .category-emoji {
+        font-size: 30px;
+      }
+
+      .category-card h3 {
+        font-size: 17px;
+      }
+
+      .products-track {
+        grid-auto-columns: 72%;
+        gap: 12px;
+      }
+
+      .products-track.expanded {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .product-picture {
+        min-height: 135px;
+      }
+
+      .product-emoji {
+        font-size: 53px;
       }
 
       .product-info {
-        padding: 10px;
+        padding: 11px;
       }
 
       .product-info h3 {
@@ -658,89 +854,134 @@
         font-size: 11px;
       }
 
-      .product-heading {
-        align-items: center;
+      .product-bottom {
+        align-items: flex-start;
+        flex-direction: column;
       }
 
-      .carousel-arrow {
-        width: 36px;
-        height: 36px;
+      .order-small {
+        width: 100%;
       }
 
       .about-panel {
         grid-template-columns: 1fr;
-        padding: 23px;
+        padding: 24px 19px;
+        gap: 8px;
       }
 
-      .contact-panel {
-        padding: 27px 14px;
+      .about-illustration {
+        font-size: 65px;
+      }
+
+      .about-panel h2 {
+        font-size: 24px;
+      }
+
+      .contact-panel h2 {
+        font-size: 25px;
       }
 
       .social-links {
-        gap: 9px;
+        flex-direction: column;
       }
 
       .social-link {
-        min-width: 115px;
-        padding: 10px 12px;
+        width: 100%;
+        max-width: 300px;
       }
 
-      .all-products.open {
-        gap: 12px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html,
-      .product-track {
-        scroll-behavior: auto;
+      .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 23px 16px;
       }
 
-      * {
-        transition-duration: 0s !important;
+      .footer-main > div:first-child {
+        grid-column: 1 / -1;
+      }
+
+      .copyright {
+        font-size: 11px;
       }
     }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
+  <div class="announcement">
+    كل لون وراه حكاية جميلة 🎨
+  </div>
+
+  <header>
     <div class="container navbar">
       <a class="brand" href="#home" aria-label="لون وحكاية - الرئيسية">
-        <img class="brand-logo" src="website%20logo.jpeg" alt="شعار لون وحكاية">
-        <span>لون وحكاية</span>
+        <img src="website%20logo.jpeg" alt="لوجو لون وحكاية">
+        <div>
+          <div class="brand-name">لون وحكاية</div>
+          <div class="brand-tagline">كل لون وراه حكاية</div>
+        </div>
       </a>
 
       <nav class="nav-links" aria-label="القائمة الرئيسية">
         <a href="#home">الرئيسية</a>
-        <a href="#categories">أقسامنا</a>
-        <a href="#kids">كتب الأطفال</a>
-        <a href="#art">الأعمال الفنية</a>
-        <a href="#contact">تواصل معنا</a>
+        <a href="#categories">الأقسام</a>
+        <a href="#kids">المنتجات</a>
+        <a href="#about">عنّا</a>
       </nav>
+
+      <a class="nav-contact" href="#contact">تواصل معنا</a>
     </div>
   </header>
 
   <main>
     <section class="hero" id="home">
-      <div class="container hero-grid">
+      <div class="container hero-inner">
         <div>
-          <div class="eyebrow">كل لون وراه حكاية ✨</div>
-          <h1>خلّي خيالك <span>ياخد لونه</span></h1>
-          <p class="hero-copy">
-            كتب تلوين للأطفال، وتصميمات فنية، وهدايا شخصية
-            بتفاصيل مميزة. اختار فكرتك وابدأ حكايتك معانا.
+          <span class="eyebrow">مساحة صغيرة لخيال كبير ✨</span>
+          <h1>كل لون وراه <span>حكاية!</span></h1>
+          <p>
+            في لون وحكاية، بنحوّل اللحظات البسيطة لذكريات مميزة.
+            اكتشف كتب التلوين والهدايا الشخصية المصممة بحب ليك ولأطفالك.
           </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#categories">اكتشف منتجاتنا</a>
-            <a class="button button-outline"
-               href="https://wa.me/201276369556"
-               target="_blank" rel="noopener noreferrer">اطلب على واتساب</a>
+          <a class="button button-primary" href="#categories">اكتشف منتجاتنا ←</a>
+          <a class="button button-outline" href="#contact">اطلب دلوقتي</a>
+        </div>
+
+        <div class="hero-art">
+          <span class="floating float-one">⭐</span>
+          <span class="floating float-two">🌈</span>
+          <div class="hero-art-inner">
+            <div class="hero-emoji">🎨 📚 🖍️</div>
+            <h2>خيالك هو البداية</h2>
+            <p>ألوان، حكايات، وهدايا معمولة مخصوص عشانك</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="container feature-grid">
+        <div class="feature">
+          <div class="feature-icon">🖍️</div>
+          <div>
+            <strong>وقت ممتع ومفيد</strong>
+            <small>أنشطة تشجع خيال الأطفال</small>
           </div>
         </div>
 
-        <div class="hero-visual">
-          <img src="website%20logo.jpeg" alt="لون وحكاية">
+        <div class="feature">
+          <div class="feature-icon">🎁</div>
+          <div>
+            <strong>هدايا شخصية</strong>
+            <small>تفاصيل مميزة باسم صاحب الهدية</small>
+          </div>
+        </div>
+
+        <div class="feature">
+          <div class="feature-icon">💚</div>
+          <div>
+            <strong>تصميم بحب</strong>
+            <small>كل حكاية ليها طابعها الخاص</small>
+          </div>
         </div>
       </div>
     </section>
@@ -748,152 +989,42 @@
     <section class="section" id="categories">
       <div class="container">
         <div class="section-heading">
-          <h2>اختار حكايتك</h2>
-          <p>تصفّح أقسامنا واكتشف الأفكار اللي تناسبك.</p>
+          <div>
+            <h2>اختار حكايتك 🎨</h2>
+            <p>اتفرج على الأقسام واكتشف اللي يناسبك.</p>
+          </div>
         </div>
 
-        <div class="categories">
+        <div class="category-grid">
           <a class="category-card" href="#kids">
-            <div class="category-icon">🧸</div>
-            <h3>كتب الأطفال</h3>
-            <p>تلوين وخيال ومغامرات</p>
+            <div>
+              <div class="category-emoji">🦕 📚</div>
+              <h3>كتب تلوين الأطفال</h3>
+              <p>حكايات ورسومات تشجع الصغير يبدع.</p>
+            </div>
+            <span class="category-arrow">←</span>
           </a>
 
           <a class="category-card" href="#art">
-            <div class="category-icon">🎨</div>
-            <h3>الأعمال الفنية</h3>
-            <p>إبداع ولمسات فنية</p>
+            <div>
+              <div class="category-emoji">🖍️ 🖌️</div>
+              <h3>الفن والرسم</h3>
+              <p>مساحة للألوان والأفكار الجديدة.</p>
+            </div>
+            <span class="category-arrow">←</span>
           </a>
 
           <a class="category-card" href="#gifts">
-            <div class="category-icon">🎁</div>
-            <h3>الهدايا الشخصية</h3>
-            <p>هدايا بتفاصيل خاصة</p>
+            <div>
+              <div class="category-emoji">🎁 💌</div>
+              <h3>الهدايا الشخصية</h3>
+              <p>هدايا بتفاصيل قريبة للقلب.</p>
+            </div>
+            <span class="category-arrow">←</span>
           </a>
         </div>
       </div>
     </section>
 
-    <!-- قسم كتب الأطفال -->
-    <section class="product-section" id="kids">
-      <div class="container">
-        <div class="product-heading">
-          <div>
-            <h2>🧸 كتب الأطفال</h2>
-            <p>مغامرات ممتعة وصفحات مليانة خيال.</p>
-          </div>
-          <div class="carousel-controls">
-            <button class="carousel-arrow" type="button"
-              data-track="kidsTrack" data-direction="-1"
-              aria-label="المنتجات السابقة">›</button>
-            <button class="carousel-arrow" type="button"
-              data-track="kidsTrack" data-direction="1"
-              aria-label="المنتجات التالية">‹</button>
-          </div>
-        </div>
-
-        <div class="product-track" id="kidsTrack">
-          <article class="product-card">
-            <div class="product-art">🦖</div>
-            <div class="product-info">
-              <h3>مغامرات الديناصورات</h3>
-              <p>كتاب تلوين للأطفال محبي المغامرات.</p>
-              <span class="product-tag">قابل للتخصيص</span>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-art">🚀</div>
-            <div class="product-info">
-              <h3>رحلة إلى الفضاء</h3>
-              <p>كواكب وصواريخ وخيال واسع.</p>
-              <span class="product-tag">قابل للتخصيص</span>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-art">🦁</div>
-            <div class="product-info">
-              <h3>أصدقاء الغابة</h3>
-              <p>حيوانات لطيفة وصفحات تلوين.</p>
-              <span class="product-tag">قابل للتخصيص</span>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-art">🚗</div>
-            <div class="product-info">
-              <h3>عالم السيارات</h3>
-              <p>مركبات ومغامرات صغيرة.</p>
-              <span class="product-tag">قابل للتخصيص</span>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-art">🦕</div>
-            <div class="product-info">
-              <h3>رحلة في عالم الديناصورات</h3>
-              <p>أفكار ممتعة لعشاق الديناصورات.</p>
-              <span class="product-tag">قابل للتخصيص</span>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-art">🧑‍🚀</div>
-            <div class="product-info">
-              <h3>بطل المغامرات</h3>
-              <p>كتاب بشخصية الطفل حسب الطلب.</p>
-              <span class="product-tag">حسب الطلب</span>
-            </div>
-          </article>
-        </div>
-
-        <div class="section-footer">
-          <button class="button button-outline" type="button"
-            data-expand="kidsAll">عرض كل المنتجات ＋</button>
-        </div>
-        <div class="all-products" id="kidsAll"></div>
-      </div>
-    </section>
-
-    <!-- قسم الأعمال الفنية -->
-    <section class="product-section" id="art">
-      <div class="container">
-        <div class="product-heading">
-          <div>
-            <h2>🎨 الأعمال الفنية</h2>
-            <p>أفكار إبداعية ولمسات مختلفة.</p>
-          </div>
-          <div class="carousel-controls">
-            <button class="carousel-arrow" type="button"
-              data-track="artTrack" data-direction="-1"
-              aria-label="الأعمال السابقة">›</button>
-            <button class="carousel-arrow" type="button"
-              data-track="artTrack" data-direction="1"
-              aria-label="الأعمال التالية">‹</button>
-          </div>
-        </div>
-
-        <div class="product-track" id="artTrack">
-          <article class="product-card">
-            <div class="product-art">🖼️</div>
-            <div class="product-info">
-              <h3>لوحات فنية</h3>
-              <p>لمسة مميزة لديكور المكان.</p>
-              <span class="product-tag">استفسر عن المتاح</span>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-art">🌸</div>
-            <div class="product-info">
-              <h3>رسومات لطيفة</h3>
-              <p>تصميمات مبهجة لمحبي الفن.</p>
-              <span class="product-tag">حسب الطلب</span>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-art">✏️</div>
-            <div class="product-info">
-              <h3>تصميمات مخصصة</h3>
-              <p>فكرتك تتحول لتصميم خاص.</p>
-              <span class="product-tag">حسب الطلب</span>
-            </div>
-          </article>
-          <article class="product-card">
-            <div class="product-art">🌈</div>
-            <div class="product-info">
+    <section class="section products-section" id="kids">
+      <div class="
