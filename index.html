@@ -6,7 +6,43 @@
 <meta name="theme-color" content="#fbf5e9">
 <meta name="description" content="لون وحكاية — كتب تلوين ولوحات فنية وهدايا شخصية. كل قطعة ليها حكاية.">
 <title>لون وحكاية | كل قطعة ليها حكاية</title>
+/* تكبير وتوحيد مربعات التواصل الاجتماعي */
+.contact-actions {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+  width: 100%;
+  align-items: stretch;
+}
 
+.contact-actions .btn {
+  width: 100% !important;
+  min-width: 0;
+  min-height: 75px !important;
+  box-sizing: border-box;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 5px !important;
+  font-size: 14px !important;
+  font-weight: 700;
+  line-height: 1.5;
+  text-align: center;
+  white-space: normal;
+  border-radius: 16px !important;
+}
+
+@media (max-width: 540px) {
+  .contact-actions {
+    gap: 8px !important;
+  }
+
+  .contact-actions .btn {
+    min-height: 82px !important;
+    padding: 12px 3px !important;
+    font-size: 12px !important;
+  }
+}
 <style>
 :root {
   --cream: #fbf5e9;
