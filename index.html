@@ -1027,4 +1027,239 @@
     </section>
 
     <section class="section products-section" id="kids">
-      <div class="
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <h2>📚 كتب تلوين الأطفال</h2>
+            <p>كتب تلوين مخصصة باسم الطفل واهتماماته.</p>
+          </div>
+          <div class="product-tools">
+            <button class="slider-arrow" type="button" onclick="moveProducts('kids-products',-1)">›</button>
+            <button class="slider-arrow" type="button" onclick="moveProducts('kids-products',1)">‹</button>
+          </div>
+        </div>
+
+        <div class="products-track" id="kids-products">
+          <article class="product-card">
+            <div class="product-picture"><span class="product-emoji">🦕</span></div>
+            <div class="product-info">
+              <h3>كتاب تلوين باسم الطفل</h3>
+              <p>كتاب برسومات ممتعة واسم الطفل على الغلاف.</p>
+              <button class="order-small" onclick="orderProduct('كتاب تلوين باسم الطفل')">اطلبه عبر واتساب</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-picture"><span class="product-emoji">🚀</span></div>
+            <div class="product-info">
+              <h3>رحلة المغامرات</h3>
+              <p>رسومات متنوعة لعالم مليان اكتشافات.</p>
+              <button class="order-small" onclick="orderProduct('كتاب رحلة المغامرات')">اطلبه عبر واتساب</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-picture"><span class="product-emoji">🦁</span></div>
+            <div class="product-info">
+              <h3>عالم الحيوانات</h3>
+              <p>حيوانات لطيفة ورسومات مناسبة للأطفال.</p>
+              <button class="order-small" onclick="orderProduct('كتاب عالم الحيوانات')">اطلبه عبر واتساب</button>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-picture"><span class="product-emoji">🧚</span></div>
+            <div class="product-info">
+              <h3>عالم الخيال</h3>
+              <p>شخصيات وأماكن تسيب مساحة لخيال الطفل.</p>
+              <button class="order-small" onclick="orderProduct('كتاب عالم الخيال')">اطلبه عبر واتساب</button>
+            </div>
+          </article>
+        </div>
+
+        <div class="show-all-wrap">
+          <button class="button show-all" onclick="toggleProducts('kids-products',this)">عرض كل المنتجات</button>
+        </div>
+      </div>
+    </section>
+    <section class="section products-section" id="art">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <h2>🖍️ الفن والرسم</h2>
+        <p>أفكار لمحبي الرسم والتلوين.</p>
+      </div>
+      <div class="product-tools">
+        <button class="slider-arrow" onclick="moveProducts('art-products',-1)">›</button>
+        <button class="slider-arrow" onclick="moveProducts('art-products',1)">‹</button>
+      </div>
+    </div>
+
+    <div class="products-track" id="art-products">
+      <article class="product-card">
+        <div class="product-picture"><span class="product-emoji">🎨</span></div>
+        <div class="product-info">
+          <h3>دفتر الإبداع</h3>
+          <p>مساحة للأفكار والرسومات الجديدة.</p>
+          <button class="order-small" onclick="orderProduct('دفتر الإبداع')">اطلبه عبر واتساب</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-picture"><span class="product-emoji">🌼</span></div>
+        <div class="product-info">
+          <h3>رسومات الطبيعة</h3>
+          <p>زهور ونباتات وعناصر من الطبيعة.</p>
+          <button class="order-small" onclick="orderProduct('رسومات الطبيعة')">اطلبها عبر واتساب</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-picture"><span class="product-emoji">🖍️</span></div>
+        <div class="product-info">
+          <h3>كتاب رسومات للتلوين</h3>
+          <p>رسومات متنوعة لعشاق الألوان.</p>
+          <button class="order-small" onclick="orderProduct('كتاب رسومات للتلوين')">اطلبه عبر واتساب</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="show-all-wrap">
+      <button class="button show-all" onclick="toggleProducts('art-products',this)">عرض كل المنتجات</button>
+    </div>
+  </div>
+</section>
+
+<section class="section products-section" id="gifts">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <h2>🎁 الهدايا الشخصية</h2>
+        <p>هدايا بتفاصيل مميزة وقريبة للقلب.</p>
+      </div>
+      <div class="product-tools">
+        <button class="slider-arrow" onclick="moveProducts('gift-products',-1)">›</button>
+        <button class="slider-arrow" onclick="moveProducts('gift-products',1)">‹</button>
+      </div>
+    </div>
+
+    <div class="products-track" id="gift-products">
+      <article class="product-card">
+        <div class="product-picture"><span class="product-emoji">🎁</span></div>
+        <div class="product-info">
+          <h3>هدية باسمك</h3>
+          <p>اختار الاسم والتفاصيل اللي بتحبها.</p>
+          <button class="order-small" onclick="orderProduct('هدية شخصية بالاسم')">اطلبها عبر واتساب</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-picture"><span class="product-emoji">💌</span></div>
+        <div class="product-info">
+          <h3>كارت إهداء</h3>
+          <p>رسالة بسيطة تضيف لمسة شخصية لهديتك.</p>
+          <button class="order-small" onclick="orderProduct('كارت إهداء')">اطلبه عبر واتساب</button>
+        </div>
+      </article>
+      <article class="product-card">
+        <div class="product-picture"><span class="product-emoji">📖</span></div>
+        <div class="product-info">
+          <h3>كتاب هدية مخصص</h3>
+          <p>فكرة مختلفة للمناسبات وأعياد الميلاد.</p>
+          <button class="order-small" onclick="orderProduct('كتاب هدية مخصص')">اطلبه عبر واتساب</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="show-all-wrap">
+      <button class="button show-all" onclick="toggleProducts('gift-products',this)">عرض كل المنتجات</button>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-panel">
+      <div class="about-illustration">🌈 📚 🎨</div>
+      <div>
+        <h2>حكايتنا بدأت بفكرة بسيطة</h2>
+        <p>لون وحكاية مساحة للإبداع والذكريات الجميلة. بنقدم أفكار تلوين وهدايا شخصية تقدر تختار تفاصيلها وتخليها أقرب للشخص اللي هتقدمها له.</p>
+        <p>هدفنا إن كل منتج يكون بداية لحكاية مميزة.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <div class="contact-panel">
+      <div class="contact-emoji">💌</div>
+      <h2>نبدأ حكايتنا؟</h2>
+      <p>للطلب أو الاستفسار، تواصل معانا من خلال حساباتنا.</p>
+      <div class="social-links">
+        <a class="button social-link social-whatsapp" href="https://wa.me/201276369556" target="_blank" rel="noopener noreferrer">☎️ اطلب عبر واتساب</a>
+        <a class="button social-link social-facebook" href="https://www.facebook.com/share/1FjaMLQWo6/" target="_blank" rel="noopener noreferrer">f تابعنا على فيسبوك</a>
+        <a class="button social-link social-instagram" href="https://www.instagram.com/lawnwe7kaya/" target="_blank" rel="noopener noreferrer">◎ تابعنا على إنستجرام</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-main">
+      <div>
+        <div class="footer-brand">🎨 لون وحكاية</div>
+        <p>كل لون وراه حكاية — كتب تلوين وهدايا شخصية معمولة بحب.</p>
+      </div>
+      <div>
+        <h3>روابط سريعة</h3>
+        <div class="footer-links">
+          <a href="#home">الرئيسية</a>
+          <a href="#categories">الأقسام</a>
+          <a href="#kids">كتب الأطفال</a>
+          <a href="#art">الفن والرسم</a>
+          <a href="#gifts">الهدايا الشخصية</a>
+        </div>
+      </div>
+      <div>
+        <h3>حسابات التواصل</h3>
+        <div class="footer-links">
+          <a href="https://wa.me/201276369556" target="_blank" rel="noopener noreferrer">واتساب</a>
+          <a href="https://www.facebook.com/share/1FjaMLQWo6/" target="_blank" rel="noopener noreferrer">فيسبوك</a>
+          <a href="https://www.instagram.com/lawnwe7kaya/" target="_blank" rel="noopener noreferrer">إنستجرام</a>
+          <a href="#contact">تواصل معنا</a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright">© <span id="year"></span> لون وحكاية — جميع الحقوق محفوظة</div>
+  </div>
+</footer>
+
+<script>
+  function moveProducts(id, direction) {
+    var track = document.getElementById(id);
+    if (track) {
+      track.scrollBy({
+        left: direction * Math.max(track.clientWidth * 0.8, 220),
+        behavior: "smooth"
+      });
+    }
+  }
+
+  function toggleProducts(id, button) {
+    var track = document.getElementById(id);
+    if (!track) return;
+    var expanded = track.classList.toggle("expanded");
+    button.textContent = expanded ? "عرض أقل ↑" : "عرض كل المنتجات";
+  }
+
+  function orderProduct(name) {
+    var message = "أهلاً لون وحكاية، عايز أستفسر عن: " + name;
+    window.open(
+      "https://wa.me/201276369556?text=" + encodeURIComponent(message),
+      "_blank"
+    );
+  }
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
