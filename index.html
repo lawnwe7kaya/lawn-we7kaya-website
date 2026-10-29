@@ -265,6 +265,110 @@
     min-height: 140px;
   }
 }
+/* إصلاح ترتيب الصفحة الرئيسية */
+.lw-home {
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+  position: relative !important;
+  padding: 30px 16px 40px !important;
+}
+
+.lw-home .lw-container {
+  display: block !important;
+  width: 100% !important;
+  max-width: 1150px !important;
+  margin: 0 auto !important;
+}
+
+.lw-home .lw-hero-layout {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) !important;
+  align-items: center !important;
+  gap: 30px !important;
+  width: 100% !important;
+  margin: 0 auto 45px !important;
+}
+
+.lw-home .lw-hero-text,
+.lw-home .lw-hero-visual {
+  display: block !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+.lw-home .lw-hero-text h1,
+.lw-home .lw-hero-text p {
+  display: block !important;
+  white-space: normal !important;
+}
+
+.lw-home .lw-hero-buttons {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
+}
+
+.lw-home .lw-hero-image-frame {
+  display: flex !important;
+  width: 100% !important;
+  max-width: 430px !important;
+  min-height: 340px !important;
+  margin: 0 auto !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.lw-home .lw-hero-cover {
+  display: block;
+  max-width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+.lw-home .lw-categories {
+  display: block !important;
+  width: 100% !important;
+  clear: both !important;
+}
+
+.lw-home .lw-categories-heading,
+.lw-home .lw-categories-intro {
+  display: block !important;
+  text-align: center !important;
+}
+
+.lw-home .lw-category-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+.lw-home .lw-category-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  white-space: normal !important;
+}
+
+@media (max-width: 700px) {
+  .lw-home .lw-hero-layout {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .lw-home .lw-hero-text {
+    text-align: center !important;
+  }
+
+  .lw-home .lw-hero-buttons {
+    justify-content: center !important;
+  }
+
+  .lw-home .lw-category-grid {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+}
   <style>
 :root {
   --cream: #fbf5e9;
