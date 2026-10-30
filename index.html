@@ -1,16 +1,616 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-default>Vite + React + TS</title>
-    <meta property="og:image" content="https://bolt.new/static/og_default.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f4ec">
+  <meta name="description" content="لون وحكاية — مساحة تجمع الفن والخيال واللمسات الشخصية. كل لون وراه حكاية.">
+  <meta property="og:title" content="لون وحكاية | كل لون وراه حكاية">
+  <meta property="og:description" content="مساحة تجمع الفن والخيال واللمسات الشخصية.">
+  <title>لون وحكاية | كل لون وراه حكاية</title>
+  <style>
+    :root {
+      --cream: #f8f4ec;
+      --paper: #fffdf9;
+      --ink: #30352f;
+      --muted: #74776e;
+      --green: #536d58;
+      --green-dark: #354b3a;
+      --green-soft: #e7ede4;
+      --clay: #bd765e;
+      --clay-dark: #9c5b46;
+      --peach: #f3e4d9;
+      --gold: #d9b66f;
+      --line: #e8e1d6;
+      --shadow: 0 18px 50px rgba(58, 58, 43, .09);
+      --radius: 26px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.85;
+      overflow-x: hidden;
+    }
+    body, button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1160px, calc(100% - 42px)); margin-inline: auto; }
+    .section { padding: 88px 0; }
+    .section-kicker {
+      display: inline-flex; align-items: center; gap: 9px;
+      color: var(--clay-dark); font-size: 13px; font-weight: 700;
+      letter-spacing: .2px; margin-bottom: 9px;
+    }
+    .section-kicker::before { content: ""; width: 25px; height: 2px; background: var(--gold); }
+    .section-title {
+      margin: 0; color: var(--green-dark); font-size: clamp(28px, 4vw, 40px);
+      line-height: 1.45; letter-spacing: -.6px;
+    }
+    .section-intro { color: var(--muted); max-width: 650px; margin: 10px 0 0; font-size: 15px; }
+
+    /* Top announcement and navigation */
+    .top-note { background: var(--green-dark); color: #fff; text-align: center; padding: 7px 12px; font-size: 12px; letter-spacing: .2px; }
+    .site-header {
+      position: sticky; top: 0; z-index: 50; background: rgba(255,253,249,.94);
+      border-bottom: 1px solid rgba(232,225,214,.85); backdrop-filter: blur(14px);
+    }
+    .nav-wrap { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: 185px; }
+    .brand-mark {
+      width: 48px; height: 48px; border-radius: 15px; overflow: hidden;
+      background: #f0e4d4; border: 1px solid var(--line); flex: 0 0 48px;
+    }
+    .brand-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .brand-name { display: block; color: var(--green-dark); font-size: 20px; font-weight: 800; line-height: 1.3; }
+    .brand-line { display: block; color: var(--muted); font-size: 10px; line-height: 1.5; }
+    .nav-links { display: flex; align-items: center; justify-content: center; gap: clamp(14px, 2.1vw, 28px); }
+    .nav-links a { color: #555b52; font-size: 13px; font-weight: 700; transition: color .2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--clay-dark); }
+    .nav-actions { display: flex; align-items: center; gap: 9px; }
+    .lang-button, .menu-button {
+      border: 1px solid var(--line); background: var(--paper); color: var(--green-dark);
+      min-height: 41px; border-radius: 99px; padding: 0 14px; font-size: 12px; font-weight: 800;
+    }
+    .lang-button:hover, .menu-button:hover { background: var(--green-soft); }
+    .menu-button { display: none; width: 42px; padding: 0; font-size: 20px; }
+
+    /* Hero */
+    .hero { position: relative; padding: 72px 0 56px; overflow: hidden; }
+    .hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+    .hero::before { width: 390px; height: 390px; background: #efe7d9; top: -210px; left: -150px; opacity: .72; }
+    .hero::after { width: 190px; height: 190px; background: #e9eee5; bottom: -125px; right: 8%; opacity: .9; }
+    .hero-grid {
+      position: relative; z-index: 1; display: grid; grid-template-columns: 1fr .94fr;
+      align-items: center; gap: clamp(36px, 6vw, 82px); direction: ltr;
+    }
+    .hero-copy { direction: rtl; text-align: right; }
+    .is-english .hero-copy { direction: ltr; text-align: left; }
+    .hero-label {
+      display: inline-flex; align-items: center; gap: 8px; border: 1px solid #e7dac7;
+      background: rgba(255,253,249,.76); border-radius: 99px; padding: 6px 14px;
+      color: var(--clay-dark); font-size: 12px; font-weight: 700; margin-bottom: 20px;
+    }
+    .hero-label span { color: var(--gold); font-size: 15px; }
+    .hero-title { color: var(--green-dark); font-size: clamp(39px, 5.5vw, 68px); line-height: 1.32; letter-spacing: -1.5px; margin: 0 0 17px; }
+    .hero-title em { color: var(--clay); font-style: normal; position: relative; white-space: nowrap; }
+    .hero-title em::after { content: ""; position: absolute; height: 8px; border-radius: 50%; background: #e9d5b7; opacity: .75; bottom: 0; right: 3px; left: 3px; z-index: -1; }
+    .hero-description { max-width: 560px; color: var(--muted); font-size: 16px; margin: 0 0 27px; }
+    .hero-buttons { display: flex; align-items: center; flex-wrap: wrap; gap: 11px; }
+    .button {
+      min-height: 49px; padding: 0 22px; border-radius: 99px; display: inline-flex;
+      align-items: center; justify-content: center; gap: 9px; border: 1px solid transparent;
+      font-size: 13px; font-weight: 800; transition: transform .2s, box-shadow .2s, background .2s;
+    }
+    .button:hover { transform: translateY(-3px); box-shadow: 0 10px 22px rgba(50,70,53,.12); }
+    .button-primary { background: var(--green); color: #fff; }
+    .button-primary:hover { background: var(--green-dark); }
+    .button-light { border-color: #d7d9cf; color: var(--green-dark); background: rgba(255,253,249,.55); }
+    .hero-note { color: #8a887d; font-size: 11px; margin-top: 19px; }
+    .hero-visual { direction: rtl; position: relative; width: 100%; max-width: 470px; margin-inline: auto; }
+    .hero-image-frame {
+      position: relative; width: 100%; aspect-ratio: 1 / 1; padding: 17px;
+      background: var(--paper); border: 1px solid #e8dfd1; border-radius: 38px;
+      box-shadow: 0 28px 65px rgba(62,65,48,.13); overflow: hidden;
+    }
+    .hero-image-frame::before { content: ""; position: absolute; inset: 9px; border: 1px solid #eee7dc; border-radius: 29px; pointer-events: none; z-index: 1; }
+    .hero-image-frame img { width: 100%; height: 100%; object-fit: contain; border-radius: 25px; background: #f8f2e8; }
+    .image-fallback {
+      display: none; position: absolute; inset: 17px; z-index: 2; border-radius: 25px;
+      background: #f0e7da; color: var(--green-dark); text-align: center;
+      align-items: center; justify-content: center; padding: 24px; font-size: 14px;
+    }
+    .hero-image-frame.image-missing .image-fallback { display: flex; }
+    .floating-note {
+      position: absolute; z-index: 3; background: var(--paper); border: 1px solid var(--line);
+      border-radius: 18px; padding: 11px 15px; box-shadow: var(--shadow); color: var(--green-dark);
+      font-size: 12px; font-weight: 800;
+    }
+    .floating-note small { display: block; color: var(--muted); font-size: 10px; font-weight: 400; }
+    .note-top { top: 9%; right: -28px; }
+    .note-bottom { bottom: 8%; left: -27px; }
+
+    /* Values strip */
+    .values { padding: 12px 0 40px; }
+    .values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+    .value-item { display: flex; align-items: center; gap: 13px; padding: 17px 19px; border: 1px solid var(--line); background: rgba(255,253,249,.76); border-radius: 18px; }
+    .value-icon { width: 43px; height: 43px; flex: 0 0 43px; display: grid; place-items: center; border-radius: 14px; background: var(--green-soft); font-size: 21px; }
+    .value-item:nth-child(2) .value-icon { background: var(--peach); }
+    .value-item:nth-child(3) .value-icon { background: #f5edcf; }
+    .value-item strong { display: block; color: var(--green-dark); font-size: 13px; }
+    .value-item small { display: block; color: var(--muted); font-size: 11px; }
+
+    /* Categories */
+    .categories-section { background: var(--paper); border-block: 1px solid var(--line); }
+    .heading-row { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 30px; }
+    .heading-side-note { color: var(--muted); font-size: 12px; max-width: 230px; }
+    .category-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .category-card { min-height: 270px; position: relative; padding: 25px; border-radius: var(--radius); overflow: hidden; transition: transform .25s, box-shadow .25s; }
+    .category-card:hover { transform: translateY(-6px); box-shadow: var(--shadow); }
+    .category-card:nth-child(1) { background: #f3e5d9; }
+    .category-card:nth-child(2) { background: #e5ebe1; }
+    .category-card:nth-child(3) { background: #f4edcf; }
+    .category-card::after { content: ""; position: absolute; width: 170px; height: 170px; border-radius: 50%; background: rgba(255,255,255,.31); left: -50px; bottom: -80px; }
+    .category-art { height: 88px; display: flex; align-items: center; gap: 8px; font-size: 43px; position: relative; z-index: 1; }
+    .category-art span:nth-child(2) { font-size: 30px; transform: rotate(-12deg); }
+    .category-number { position: absolute; top: 25px; left: 25px; font-size: 11px; color: rgba(48,53,47,.5); letter-spacing: 1px; }
+    .category-card h3 { position: relative; z-index: 1; margin: 13px 0 5px; color: var(--green-dark); font-size: 22px; }
+    .category-card p { position: relative; z-index: 1; color: #65675e; font-size: 13px; margin: 0; max-width: 300px; }
+    .category-caption { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 8px; margin-top: 17px; color: var(--clay-dark); font-size: 11px; font-weight: 800; }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: .85fr 1.15fr; gap: 64px; align-items: center; }
+    .about-art {
+      position: relative; min-height: 350px; border-radius: 34px; overflow: hidden;
+      background: #e7ede4; display: grid; place-items: center;
+    }
+    .about-art::before, .about-art::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(83,109,88,.22); }
+    .about-art::before { width: 240px; height: 240px; }
+    .about-art::after { width: 295px; height: 295px; }
+    .about-art-symbol { position: relative; z-index: 1; font-size: 105px; filter: drop-shadow(0 12px 10px rgba(57,77,56,.13)); }
+    .about-stamp { position: absolute; bottom: 22px; right: 22px; background: var(--paper); border-radius: 15px; padding: 9px 14px; color: var(--green-dark); font-size: 11px; font-weight: 800; box-shadow: var(--shadow); }
+    .about-copy p { color: var(--muted); font-size: 14px; margin: 14px 0; }
+    .about-signature { display: flex; align-items: center; gap: 10px; margin-top: 23px; color: var(--clay-dark); font-size: 13px; font-weight: 800; }
+    .about-signature::before { content: ""; width: 34px; height: 2px; background: var(--gold); }
+
+    /* Why us */
+    .why-section { background: #eef1e9; }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 30px; }
+    .why-card { background: rgba(255,253,249,.83); border: 1px solid rgba(218,225,213,.95); border-radius: 21px; padding: 25px 22px; }
+    .why-icon { width: 48px; height: 48px; border-radius: 15px; display: grid; place-items: center; background: var(--peach); font-size: 23px; margin-bottom: 17px; }
+    .why-card:nth-child(2) .why-icon { background: #f4edcf; }
+    .why-card:nth-child(3) .why-icon { background: var(--green-soft); }
+    .why-card h3 { color: var(--green-dark); font-size: 16px; margin: 0 0 7px; }
+    .why-card p { color: var(--muted); font-size: 12px; margin: 0; }
+
+    /* Process */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 23px; margin-top: 34px; }
+    .step { position: relative; padding: 8px 4px; }
+    .step-number { width: 47px; height: 47px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: white; font-weight: 800; font-size: 14px; margin-bottom: 17px; box-shadow: 0 0 0 7px var(--green-soft); }
+    .step h3 { color: var(--green-dark); margin: 0 0 5px; font-size: 17px; }
+    .step p { color: var(--muted); margin: 0; font-size: 13px; }
+
+    /* FAQ */
+    .faq-section { background: var(--paper); border-block: 1px solid var(--line); }
+    .faq-wrap { display: grid; grid-template-columns: .72fr 1.28fr; gap: 55px; align-items: start; }
+    .faq-list { display: grid; gap: 11px; }
+    .faq-list details { background: #faf8f3; border: 1px solid var(--line); border-radius: 16px; padding: 0 18px; }
+    .faq-list summary { list-style: none; cursor: pointer; padding: 15px 0; color: var(--green-dark); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after { content: "+"; color: var(--clay); font-size: 22px; line-height: 1; }
+    .faq-list details[open] summary::after { content: "−"; }
+    .faq-list details p { color: var(--muted); font-size: 12px; margin: 0; padding: 0 0 16px; }
+
+    /* Contact */
+    .contact-section { padding: 82px 0; }
+    .contact-panel {
+      position: relative; overflow: hidden; border-radius: 34px; padding: 55px 30px;
+      text-align: center; background: #f0e4d7; border: 1px solid #eadccc;
+    }
+    .contact-panel::before, .contact-panel::after { content: ""; position: absolute; border-radius: 50%; border: 1px solid rgba(189,118,94,.18); pointer-events: none; }
+    .contact-panel::before { width: 260px; height: 260px; top: -160px; right: -70px; }
+    .contact-panel::after { width: 220px; height: 220px; bottom: -150px; left: -65px; }
+    .contact-inner { position: relative; z-index: 1; }
+    .contact-symbol { font-size: 35px; margin-bottom: 5px; }
+    .contact-panel h2 { color: var(--green-dark); font-size: clamp(27px, 4vw, 37px); margin: 0 0 8px; }
+    .contact-panel > .contact-inner > p { color: #74695c; font-size: 14px; margin: 0 auto 25px; max-width: 570px; }
+    .social-links { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; }
+    .social-link { min-width: 185px; min-height: 52px; display: inline-flex; align-items: center; justify-content: center; gap: 10px; color: white; border-radius: 15px; padding: 10px 19px; font-size: 13px; font-weight: 800; box-shadow: 0 8px 16px rgba(50,50,40,.08); transition: transform .2s, filter .2s; }
+    .social-link:hover { transform: translateY(-3px); filter: brightness(.96); }
+    .social-link svg { width: 20px; height: 20px; fill: currentColor; flex: 0 0 auto; }
+    .whatsapp { background: #238b58; }
+    .facebook { background: #315fa8; }
+    .instagram { background: #a84f75; }
+    .contact-phone { display: inline-block; margin-top: 20px; color: var(--green-dark); font-size: 13px; font-weight: 800; direction: ltr; }
+
+    /* Footer and floating controls */
+    .site-footer { background: #334a39; color: #fff; padding: 43px 0 20px; }
+    .footer-grid { display: grid; grid-template-columns: 1.2fr .8fr .9fr; gap: 38px; padding-bottom: 30px; }
+    .footer-title { font-size: 21px; font-weight: 800; margin-bottom: 8px; }
+    .footer-copy { color: #d8e1d7; font-size: 12px; max-width: 330px; margin: 0; }
+    .footer-heading { font-size: 13px; margin: 4px 0 12px; }
+    .footer-links { display: grid; gap: 7px; }
+    .footer-links a, .footer-contact a { color: #d8e1d7; font-size: 12px; }
+    .footer-links a:hover, .footer-contact a:hover { color: #f2cf91; }
+    .footer-contact { display: grid; gap: 8px; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,.17); padding-top: 15px; text-align: center; color: #c7d3c7; font-size: 11px; }
+    .floating-whatsapp {
+      position: fixed; z-index: 40; bottom: 20px; left: 20px; width: 54px; height: 54px;
+      border-radius: 50%; display: grid; place-items: center; background: #238b58; color: #fff;
+      box-shadow: 0 8px 23px rgba(35,139,88,.3); transition: transform .2s;
+    }
+    .floating-whatsapp:hover { transform: translateY(-4px); }
+    .floating-whatsapp svg { width: 27px; height: 27px; fill: currentColor; }
+    .back-to-top {
+      position: fixed; z-index: 39; bottom: 83px; left: 26px; width: 42px; height: 42px;
+      border: 1px solid var(--line); border-radius: 50%; background: var(--paper); color: var(--green-dark);
+      box-shadow: var(--shadow); display: grid; place-items: center; font-size: 19px; cursor: pointer;
+      opacity: 0; visibility: hidden; transform: translateY(8px); transition: .2s;
+    }
+    .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    @media (max-width: 980px) {
+      .nav-links { gap: 12px; }
+      .nav-links a { font-size: 12px; }
+      .brand { min-width: auto; }
+      .hero-grid { gap: 35px; }
+      .note-top { right: -12px; }
+      .note-bottom { left: -12px; }
+      .about-grid { gap: 38px; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 30px, 560px); }
+      .section { padding: 65px 0; }
+      .nav-wrap { min-height: 72px; }
+      .brand-mark { width: 43px; height: 43px; flex-basis: 43px; }
+      .brand-name { font-size: 17px; }
+      .brand-line { font-size: 9px; }
+      .menu-button { display: inline-grid; place-items: center; }
+      .nav-links {
+        display: none; position: absolute; top: calc(100% + 1px); right: 0; left: 0;
+        padding: 14px 22px 19px; background: var(--paper); border-bottom: 1px solid var(--line);
+        box-shadow: 0 14px 22px rgba(40,45,36,.08); align-items: stretch; gap: 0;
+      }
+      .nav-links.open { display: grid; }
+      .nav-links a { padding: 10px 0; border-bottom: 1px solid #f0ece4; font-size: 13px; }
+      .nav-links a:last-child { border-bottom: 0; }
+      .nav-actions { gap: 7px; }
+      .lang-button { min-height: 39px; padding-inline: 12px; }
+      .hero { padding: 48px 0 37px; }
+      .hero-grid { display: flex; flex-direction: column; direction: rtl; gap: 34px; align-items: stretch; }
+      .hero-copy { order: 1; text-align: center; }
+      .hero-description { margin-inline: auto; font-size: 14px; }
+      .hero-title { font-size: clamp(37px, 10vw, 52px); }
+      .hero-buttons { justify-content: center; }
+      .hero-note { margin-top: 14px; }
+      .hero-visual { order: 2; max-width: 390px; width: calc(100% - 25px); }
+      .hero-image-frame { border-radius: 29px; padding: 13px; }
+      .hero-image-frame::before { inset: 7px; border-radius: 22px; }
+      .image-fallback { inset: 13px; border-radius: 19px; }
+      .floating-note { padding: 8px 11px; font-size: 10px; }
+      .floating-note small { font-size: 9px; }
+      .note-top { right: -13px; }
+      .note-bottom { left: -13px; }
+      .values { padding-bottom: 25px; }
+      .values-grid { grid-template-columns: 1fr; gap: 9px; }
+      .value-item { padding: 12px 15px; }
+      .heading-row { display: block; margin-bottom: 22px; }
+      .heading-side-note { margin-top: 9px; max-width: none; }
+      .category-grid { grid-template-columns: 1fr; gap: 13px; }
+      .category-card { min-height: 225px; padding: 22px; }
+      .category-art { height: 68px; font-size: 37px; }
+      .category-card h3 { font-size: 20px; }
+      .about-grid, .faq-wrap { grid-template-columns: 1fr; gap: 29px; }
+      .about-art { min-height: 265px; order: 2; }
+      .about-copy { order: 1; }
+      .about-art-symbol { font-size: 86px; }
+      .why-grid { grid-template-columns: 1fr; gap: 11px; }
+      .why-card { padding: 20px; }
+      .why-icon { margin-bottom: 12px; }
+      .steps-grid { grid-template-columns: 1fr; gap: 25px; }
+      .step { padding-inline: 4px; }
+      .faq-wrap { gap: 20px; }
+      .contact-section { padding: 60px 0; }
+      .contact-panel { padding: 42px 17px; border-radius: 27px; }
+      .social-links { display: grid; grid-template-columns: 1fr; width: min(100%, 330px); margin-inline: auto; }
+      .social-link { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 25px 18px; }
+      .footer-brand-block { grid-column: 1 / -1; }
+      .floating-whatsapp { width: 49px; height: 49px; bottom: 15px; left: 15px; }
+      .back-to-top { bottom: 72px; left: 19px; }
+    }
+    @media (max-width: 380px) {
+      .container { width: calc(100% - 24px); }
+      .brand { gap: 7px; }
+      .brand-name { font-size: 15px; }
+      .brand-line { font-size: 8px; }
+      .lang-button { padding-inline: 9px; font-size: 11px; }
+      .menu-button { width: 39px; }
+      .hero-title { font-size: 35px; }
+      .button { padding-inline: 16px; font-size: 12px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-brand-block { grid-column: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="top-note" data-ar="مساحة تجمع الفن والخيال واللمسات الشخصية" data-en="A space for art, imagination and personal touches">مساحة تجمع الفن والخيال واللمسات الشخصية</div>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="لون وحكاية - الرئيسية">
+        <span class="brand-mark"><img src="./website%20logo.jpeg" alt="شعار لون وحكاية"></span>
+        <span>
+          <span class="brand-name" data-ar="لون وحكاية" data-en="Lawn We7kaya">لون وحكاية</span>
+          <span class="brand-line" data-ar="كل لون وراه حكاية" data-en="Every color has a story">كل لون وراه حكاية</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="mainNav" aria-label="التنقل الرئيسي">
+        <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+        <a href="#categories" data-ar="أقسامنا" data-en="Our worlds">أقسامنا</a>
+        <a href="#about" data-ar="حكايتنا" data-en="Our story">حكايتنا</a>
+        <a href="#why" data-ar="ما يميزنا" data-en="What makes us special">ما يميزنا</a>
+        <a href="#faq" data-ar="أسئلة شائعة" data-en="FAQ">أسئلة شائعة</a>
+        <a href="#contact" data-ar="تواصل معنا" data-en="Contact">تواصل معنا</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="lang-button" id="languageToggle" type="button" aria-label="Change language"><span id="languageLabel">EN</span></button>
+        <button class="menu-button" id="menuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNav">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="hero-label"><span>✦</span><span data-ar="كل قطعة تبدأ بفكرة" data-en="Every creation starts with an idea">كل قطعة تبدأ بفكرة</span></div>
+          <h1 class="hero-title"><span data-ar="كل لون وراه" data-en="Every color has">كل لون وراه</span><br><em data-ar="حكاية" data-en="a story">حكاية</em></h1>
+          <p class="hero-description" data-ar="أهلًا بيك في لون وحكاية؛ مساحة تجمع بين الفن والخيال والأفكار المميزة. بنحب التفاصيل اللي بتحوّل الفكرة البسيطة لحاجة ليها روح وحكاية." data-en="Welcome to Lawn We7kaya — a space where art, imagination and thoughtful ideas come together. We love the details that turn a simple idea into something with its own spirit and story.">أهلًا بيك في لون وحكاية؛ مساحة تجمع بين الفن والخيال والأفكار المميزة. بنحب التفاصيل اللي بتحوّل الفكرة البسيطة لحاجة ليها روح وحكاية.</p>
+          <div class="hero-buttons">
+            <a class="button button-primary" href="#categories"><span data-ar="اكتشف أقسامنا" data-en="Explore our worlds">اكتشف أقسامنا</span><span aria-hidden="true">←</span></a>
+            <a class="button button-light" href="#contact" data-ar="خلينا نتواصل" data-en="Get in touch">خلينا نتواصل</a>
+          </div>
+          <p class="hero-note" data-ar="فن، خيال، ولمسة شخصية في كل تفصيلة." data-en="Art, imagination and a personal touch in every detail.">فن، خيال، ولمسة شخصية في كل تفصيلة.</p>
+        </div>
+
+        <div class="hero-visual">
+          <div class="hero-image-frame" id="heroImageFrame">
+            <img src="./website%20logo.jpeg" alt="لون وحكاية — كل لون وراه حكاية" fetchpriority="high" onerror="document.getElementById('heroImageFrame').classList.add('image-missing')">
+            <div class="image-fallback" data-ar="الصورة لم تُحمّل. تأكد أن اسم الملف هو website logo.jpeg وأنه موجود بجوار index.html." data-en="The image could not be loaded. Check that website logo.jpeg is beside index.html.">الصورة لم تُحمّل. تأكد أن اسم الملف هو website logo.jpeg وأنه موجود بجوار index.html.</div>
+          </div>
+          <div class="floating-note note-top"><span data-ar="كل لون" data-en="Every color">كل لون</span><small data-ar="بداية حكاية" data-en="A story begins">بداية حكاية</small></div>
+          <div class="floating-note note-bottom"><span data-ar="بصمتك الخاصة" data-en="Your personal touch">بصمتك الخاصة</span><small data-ar="تفاصيل تصنع فرقًا" data-en="Details that matter">تفاصيل تصنع فرقًا</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="values" aria-label="قيم لون وحكاية">
+      <div class="container values-grid">
+        <div class="value-item"><span class="value-icon">🎨</span><span><strong data-ar="خيال بلا حدود" data-en="Limitless imagination">خيال بلا حدود</strong><small data-ar="مساحة للأفكار الجديدة" data-en="Room for fresh ideas">مساحة للأفكار الجديدة</small></span></div>
+        <div class="value-item"><span class="value-icon">✦</span><span><strong data-ar="اهتمام بالتفاصيل" data-en="Thoughtful details">اهتمام بالتفاصيل</strong><small data-ar="لأن اللمسات الصغيرة تفرق" data-en="Because little touches matter">لأن اللمسات الصغيرة تفرق</small></span></div>
+        <div class="value-item"><span class="value-icon">💛</span><span><strong data-ar="روح شخصية" data-en="A personal spirit">روح شخصية</strong><small data-ar="كل فكرة لها طابعها الخاص" data-en="Every idea has its own character">كل فكرة لها طابعها الخاص</small></span></div>
+      </div>
+    </section>
+
+    <section class="section categories-section" id="categories">
+      <div class="container">
+        <div class="heading-row">
+          <div>
+            <span class="section-kicker" data-ar="اكتشف عوالمنا" data-en="Discover our worlds">اكتشف عوالمنا</span>
+            <h2 class="section-title" data-ar="ثلاث مساحات.. وحكايات كتير" data-en="Three creative worlds, endless stories">ثلاث مساحات.. وحكايات كتير</h2>
+            <p class="section-intro" data-ar="كل عالم له إحساسه وتفاصيله؛ اختار المساحة الأقرب لخيالك." data-en="Each world has its own feeling and details. Find the one closest to your imagination.">كل عالم له إحساسه وتفاصيله؛ اختار المساحة الأقرب لخيالك.</p>
+          </div>
+          <p class="heading-side-note" data-ar="لسه الحكاية في أولها، ودي مجرد بداية لعوالم لون وحكاية." data-en="This is only the beginning of the worlds of Lawn We7kaya.">لسه الحكاية في أولها، ودي مجرد بداية لعوالم لون وحكاية.</p>
+        </div>
+
+        <div class="category-grid">
+          <article class="category-card">
+            <span class="category-number">01 / 03</span>
+            <div class="category-art" aria-hidden="true"><span>🖍️</span><span>⭐</span><span>🦕</span></div>
+            <h3 data-ar="عالم أطفال" data-en="Kids' world">عالم أطفال</h3>
+            <p data-ar="مساحة للخيال والمرح والتلوين، حيث تتحول الأفكار إلى مغامرات صغيرة." data-en="A space for imagination, fun and coloring, where ideas become little adventures.">مساحة للخيال والمرح والتلوين، حيث تتحول الأفكار إلى مغامرات صغيرة.</p>
+            <span class="category-caption" data-ar="الخيال يبدأ من هنا" data-en="Imagination starts here">الخيال يبدأ من هنا</span>
+          </article>
+          <article class="category-card">
+            <span class="category-number">02 / 03</span>
+            <div class="category-art" aria-hidden="true"><span>🖼️</span><span>🌿</span><span>🎨</span></div>
+            <h3 data-ar="لوحات فنية" data-en="Artworks">لوحات فنية</h3>
+            <p data-ar="ألوان وتكوينات فنية تضيف إحساسًا مختلفًا ولمسة جميلة للمكان." data-en="Artistic colors and compositions that bring a distinctive feeling and a beautiful touch to a space.">ألوان وتكوينات فنية تضيف إحساسًا مختلفًا ولمسة جميلة للمكان.</p>
+            <span class="category-caption" data-ar="الفن لغة التفاصيل" data-en="Art speaks in details">الفن لغة التفاصيل</span>
+          </article>
+          <article class="category-card">
+            <span class="category-number">03 / 03</span>
+            <div class="category-art" aria-hidden="true"><span>🎁</span><span>✉️</span><span>💝</span></div>
+            <h3 data-ar="هدايا شخصية" data-en="Personalized gifts">هدايا شخصية</h3>
+            <p data-ar="أفكار تحمل معنى خاصًا، وتفاصيل تخلي الهدية أقرب للقلب." data-en="Meaningful ideas and thoughtful details that make a gift feel closer to the heart.">أفكار تحمل معنى خاصًا، وتفاصيل تخلي الهدية أقرب للقلب.</p>
+            <span class="category-caption" data-ar="هدية تشبه أصحابها" data-en="A gift with a personal touch">هدية تشبه أصحابها</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="about-art" aria-hidden="true"><div class="about-art-symbol">🌱</div><div class="about-stamp" data-ar="فكرة تكبر بالإبداع" data-en="An idea grows through creativity">فكرة تكبر بالإبداع</div></div>
+        <div class="about-copy">
+          <span class="section-kicker" data-ar="حكايتنا" data-en="Our story">حكايتنا</span>
+          <h2 class="section-title" data-ar="كل حكاية جميلة بتبدأ بفكرة" data-en="Every beautiful story begins with an idea">كل حكاية جميلة بتبدأ بفكرة</h2>
+          <p data-ar="لون وحكاية مساحة للأفكار اللي تجمع بين الفن والخيال واللمسات الشخصية. بنؤمن إن الإبداع مش مجرد شكل جميل؛ هو إحساس وتفصيلة وذكرى ممكن تفضل معانا." data-en="Lawn We7kaya is a space for ideas that bring together art, imagination and personal touches. We believe creativity is more than a beautiful look — it is a feeling, a detail and a memory that can stay with us.">لون وحكاية مساحة للأفكار اللي تجمع بين الفن والخيال واللمسات الشخصية. بنؤمن إن الإبداع مش مجرد شكل جميل؛ هو إحساس وتفصيلة وذكرى ممكن تفضل معانا.</p>
+          <p data-ar="ومن هنا جت حكايتنا: نحتفي بالألوان، ونفتح مساحة للتعبير، ونهتم إن كل فكرة يكون ليها طابعها الخاص." data-en="That is where our story begins: celebrating color, making room for expression, and giving every idea its own character.">ومن هنا جت حكايتنا: نحتفي بالألوان، ونفتح مساحة للتعبير، ونهتم إن كل فكرة يكون ليها طابعها الخاص.</p>
+          <div class="about-signature" data-ar="لون وحكاية — كل لون وراه حكاية" data-en="Lawn We7kaya — Every color has a story">لون وحكاية — كل لون وراه حكاية</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why-section" id="why">
+      <div class="container">
+        <span class="section-kicker" data-ar="فلسفتنا" data-en="Our philosophy">فلسفتنا</span>
+        <h2 class="section-title" data-ar="إيه اللي بنحبّه في كل حكاية؟" data-en="What do we value in every story?">إيه اللي بنحبّه في كل حكاية؟</h2>
+        <p class="section-intro" data-ar="مش بس النتيجة النهائية؛ إحنا بنحب الفكرة، والطريقة، والتفاصيل اللي بتدي لكل حاجة شخصيتها." data-en="It is not only about the final result. We value the idea, the process and the details that give everything its own character.">مش بس النتيجة النهائية؛ إحنا بنحب الفكرة، والطريقة، والتفاصيل اللي بتدي لكل حاجة شخصيتها.</p>
+        <div class="why-grid">
+          <article class="why-card"><span class="why-icon">💡</span><h3 data-ar="أفكار مختلفة" data-en="Fresh ideas">أفكار مختلفة</h3><p data-ar="نحب نشوف الفكرة من زاوية جديدة ونسيب للخيال مساحة يتحرك." data-en="We love looking at ideas from a new angle and giving imagination room to move.">نحب نشوف الفكرة من زاوية جديدة ونسيب للخيال مساحة يتحرك.</p></article>
+          <article class="why-card"><span class="why-icon">🧵</span><h3 data-ar="تفاصيل لها معنى" data-en="Meaningful details">تفاصيل لها معنى</h3><p data-ar="التفصيلة الصغيرة ممكن تكون هي أكتر حاجة تخلّي الحكاية مميزة." data-en="A small detail can be the very thing that makes a story special.">التفصيلة الصغيرة ممكن تكون هي أكتر حاجة تخلّي الحكاية مميزة.</p></article>
+          <article class="why-card"><span class="why-icon">🎨</span><h3 data-ar="مساحة للتعبير" data-en="Room for expression">مساحة للتعبير</h3><p data-ar="الألوان والفن وسيلة جميلة نعبر بيها عن شخصيتنا وأفكارنا." data-en="Color and art are beautiful ways to express our personality and ideas.">الألوان والفن وسيلة جميلة نعبر بيها عن شخصيتنا وأفكارنا.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="journey">
+      <div class="container">
+        <span class="section-kicker" data-ar="رحلة الإبداع" data-en="The creative journey">رحلة الإبداع</span>
+        <h2 class="section-title" data-ar="من فكرة صغيرة لحكاية كاملة" data-en="From a little idea to a whole story">من فكرة صغيرة لحكاية كاملة</h2>
+        <div class="steps-grid">
+          <article class="step"><div class="step-number">١</div><h3 data-ar="فكرة تلهم" data-en="An inspiring idea">فكرة تلهم</h3><p data-ar="كل حاجة بتبدأ بخيال أو لحظة إلهام تستاهل نديها فرصة." data-en="Everything begins with imagination or a spark worth exploring.">كل حاجة بتبدأ بخيال أو لحظة إلهام تستاهل نديها فرصة.</p></article>
+          <article class="step"><div class="step-number">٢</div><h3 data-ar="لمسة فنية" data-en="An artistic touch">لمسة فنية</h3><p data-ar="نختار الألوان والتفاصيل اللي تعبّر عن روح الفكرة." data-en="Colors and details come together to express the spirit of the idea.">نختار الألوان والتفاصيل اللي تعبّر عن روح الفكرة.</p></article>
+          <article class="step"><div class="step-number">٣</div><h3 data-ar="حكاية تفضل" data-en="A story to remember">حكاية تفضل</h3><p data-ar="تتحول الفكرة لحاجة لها معنى وطابع يميزها." data-en="The idea becomes something meaningful with a character of its own.">تتحول الفكرة لحاجة لها معنى وطابع يميزها.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section faq-section" id="faq">
+      <div class="container faq-wrap">
+        <div>
+          <span class="section-kicker" data-ar="معلومات تهمك" data-en="Good to know">معلومات تهمك</span>
+          <h2 class="section-title" data-ar="أسئلة ممكن تكون في بالك" data-en="A few things you may be wondering">أسئلة ممكن تكون في بالك</h2>
+          <p class="section-intro" data-ar="جمعنالك إجابات سريعة عن لون وحكاية. ولو عندك سؤال تاني، ابعتلنا من خلال وسائل التواصل." data-en="Here are a few quick answers about Lawn We7kaya. For anything else, reach out through our social channels.">جمعنالك إجابات سريعة عن لون وحكاية. ولو عندك سؤال تاني، ابعتلنا من خلال وسائل التواصل.</p>
+        </div>
+        <div class="faq-list">
+          <details><summary data-ar="إيه هي فكرة لون وحكاية؟" data-en="What is Lawn We7kaya about?">إيه هي فكرة لون وحكاية؟</summary><p data-ar="لون وحكاية مساحة تجمع الفن والخيال والأفكار الشخصية من خلال عوالم متنوعة." data-en="Lawn We7kaya is a creative space bringing together art, imagination and personal ideas through different worlds.">لون وحكاية مساحة تجمع الفن والخيال والأفكار الشخصية من خلال عوالم متنوعة.</p></details>
+          <details><summary data-ar="إزاي أتابع جديد لون وحكاية؟" data-en="How can I follow updates?">إزاي أتابع جديد لون وحكاية؟</summary><p data-ar="تقدر تتابعنا على فيسبوك وإنستجرام من روابط التواصل الموجودة في أسفل الصفحة." data-en="Follow us on Facebook and Instagram using the links in the contact section below.">تقدر تتابعنا على فيسبوك وإنستجرام من روابط التواصل الموجودة في أسفل الصفحة.</p></details>
+          <details><summary data-ar="هل فيه أقسام أو أفكار جديدة هتضاف؟" data-en="Will there be new sections and ideas?">هل فيه أقسام أو أفكار جديدة هتضاف؟</summary><p data-ar="أكيد، الموقع قابل للتطوير، وهنضيف تفاصيل وعوالم جديدة مع الوقت." data-en="Absolutely. The website can grow, and new ideas and creative worlds may be added over time.">أكيد، الموقع قابل للتطوير، وهنضيف تفاصيل وعوالم جديدة مع الوقت.</p></details>
+          <details><summary data-ar="إزاي أتواصل معاكم؟" data-en="How can I contact you?">إزاي أتواصل معاكم؟</summary><p data-ar="تقدر تبعتلنا على واتساب أو تزور صفحاتنا على فيسبوك وإنستجرام من الأزرار الموجودة في قسم التواصل." data-en="Message us on WhatsApp or visit our Facebook and Instagram pages through the buttons in the contact section.">تقدر تبعتلنا على واتساب أو تزور صفحاتنا على فيسبوك وإنستجرام من الأزرار الموجودة في قسم التواصل.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div class="contact-inner">
+            <div class="contact-symbol" aria-hidden="true">✉️</div>
+            <h2 data-ar="خلينا نبدأ حكاية جديدة" data-en="Let's start a new story">خلينا نبدأ حكاية جديدة</h2>
+            <p data-ar="يسعدنا تواصلك ومتابعتك. اختار الطريقة اللي تناسبك وخلينا على تواصل." data-en="We would love to hear from you. Choose the channel that works best and stay connected.">يسعدنا تواصلك ومتابعتك. اختار الطريقة اللي تناسبك وخلينا على تواصل.</p>
+            <div class="social-links">
+              <a class="social-link whatsapp" href="https://wa.me/201276369556" target="_blank" rel="noopener noreferrer" aria-label="تواصل عبر واتساب">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .15 5.35.15 11.93c0 2.1.55 4.16 1.6 5.97L.05 24l6.26-1.64a11.9 11.9 0 0 0 5.76 1.47h.01c6.58 0 11.93-5.35 11.93-11.93a11.85 11.85 0 0 0-3.49-8.42ZM12.08 21.8a9.9 9.9 0 0 1-5.05-1.39l-.36-.21-3.72.98.99-3.63-.23-.37a9.84 9.84 0 0 1-1.52-5.25c0-5.46 4.44-9.9 9.9-9.9a9.84 9.84 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c0 5.46-4.45 9.87-9.91 9.87Zm5.43-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.1 4.5.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
+                <span data-ar="راسلنا على واتساب" data-en="Chat on WhatsApp">راسلنا على واتساب</span>
+              </a>
+              <a class="social-link facebook" href="https://www.facebook.com/share/1FQZVchDh3/" target="_blank" rel="noopener noreferrer" aria-label="صفحة لون وحكاية على فيسبوك">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.03 1.79-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.95.93-1.95 1.88v2.26h3.32l-.53 3.49h-2.79V24C19.61 23.1 24 18.1 24 12.07Z"/></svg>
+                <span data-ar="تابعنا على فيسبوك" data-en="Follow on Facebook">تابعنا على فيسبوك</span>
+              </a>
+              <a class="social-link instagram" href="https://www.instagram.com/lawnwe7kaya?vrfl=MXVxaXZ3cXQycjZhOA==" target="_blank" rel="noopener noreferrer" aria-label="صفحة لون وحكاية على إنستجرام">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 2h8.4A5.8 5.8 0 0 1 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8A5.8 5.8 0 0 1 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2Zm0 2A3.8 3.8 0 0 0 4 7.8v8.4A3.8 3.8 0 0 0 7.8 20h8.4a3.8 3.8 0 0 0 3.8-3.8V7.8A3.8 3.8 0 0 0 16.2 4H7.8ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.2-3.5a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4Z"/></svg>
+                <span data-ar="تابعنا على إنستجرام" data-en="Follow on Instagram">تابعنا على إنستجرام</span>
+              </a>
+            </div>
+            <a class="contact-phone" href="tel:+201276369556">+20 127 636 9556</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <div class="footer-title" data-ar="لون وحكاية" data-en="Lawn We7kaya">لون وحكاية</div>
+          <p class="footer-copy" data-ar="كل لون وراه حكاية. مساحة تجمع الفن والخيال والأفكار اللي ليها طابع خاص." data-en="Every color has a story. A space for art, imagination and ideas with a character of their own.">كل لون وراه حكاية. مساحة تجمع الفن والخيال والأفكار اللي ليها طابع خاص.</p>
+        </div>
+        <div>
+          <h3 class="footer-heading" data-ar="روابط سريعة" data-en="Quick links">روابط سريعة</h3>
+          <div class="footer-links">
+            <a href="#home" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+            <a href="#categories" data-ar="أقسامنا" data-en="Our worlds">أقسامنا</a>
+            <a href="#about" data-ar="حكايتنا" data-en="Our story">حكايتنا</a>
+            <a href="#faq" data-ar="الأسئلة الشائعة" data-en="FAQ">الأسئلة الشائعة</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-heading" data-ar="تواصل معنا" data-en="Contact us">تواصل معنا</h3>
+          <div class="footer-contact">
+            <a href="https://wa.me/201276369556" target="_blank" rel="noopener noreferrer" data-ar="واتساب" data-en="WhatsApp">واتساب</a>
+            <a href="https://www.facebook.com/share/1FQZVchDh3/" target="_blank" rel="noopener noreferrer" data-ar="فيسبوك" data-en="Facebook">فيسبوك</a>
+            <a href="https://www.instagram.com/lawnwe7kaya?vrfl=MXVxaXZ3cXQycjZhOA==" target="_blank" rel="noopener noreferrer" data-ar="إنستجرام" data-en="Instagram">إنستجرام</a>
+            <a href="tel:+201276369556" dir="ltr">+20 127 636 9556</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span data-ar="© " data-en="© ">© </span><span id="currentYear">2026</span><span data-ar=" لون وحكاية. جميع الحقوق محفوظة." data-en=" Lawn We7kaya. All rights reserved."> لون وحكاية. جميع الحقوق محفوظة.</span></div>
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/201276369556" target="_blank" rel="noopener noreferrer" aria-label="واتساب">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .15 5.35.15 11.93c0 2.1.55 4.16 1.6 5.97L.05 24l6.26-1.64a11.9 11.9 0 0 0 5.76 1.47h.01c6.58 0 11.93-5.35 11.93-11.93a11.85 11.85 0 0 0-3.49-8.42ZM12.08 21.8a9.9 9.9 0 0 1-5.05-1.39l-.36-.21-3.72.98.99-3.63-.23-.37a9.84 9.84 0 0 1-1.52-5.25c0-5.46 4.44-9.9 9.9-9.9a9.84 9.84 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c0 5.46-4.45 9.87-9.91 9.87Zm5.43-7.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.48-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.89 1.22 3.09c.15.2 2.1 3.21 5.1 4.5.71.31 1.27.5 1.7.64.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35Z"/></svg>
+  </a>
+  <button class="back-to-top" id="backToTop" type="button" aria-label="العودة إلى أعلى الصفحة">↑</button>
+
+  <script>
+    (function () {
+      const languageToggle = document.getElementById('languageToggle');
+      const languageLabel = document.getElementById('languageLabel');
+      const menuToggle = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      const backToTop = document.getElementById('backToTop');
+      let currentLanguage = 'ar';
+
+      function setLanguage(language) {
+        currentLanguage = language;
+        document.body.classList.toggle('is-english', language === 'en');
+        document.documentElement.lang = language;
+        document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+        document.querySelectorAll('[data-ar][data-en]').forEach(function (element) {
+          element.textContent = element.getAttribute('data-' + language);
+        });
+        languageLabel.textContent = language === 'ar' ? 'EN' : 'عربي';
+        languageToggle.setAttribute('aria-label', language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية');
+        menuToggle.setAttribute('aria-label', language === 'ar' ? 'فتح القائمة' : 'Open menu');
+        backToTop.setAttribute('aria-label', language === 'ar' ? 'العودة إلى أعلى الصفحة' : 'Back to top');
+      }
+
+      languageToggle.addEventListener('click', function () {
+        setLanguage(currentLanguage === 'ar' ? 'en' : 'ar');
+      });
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = mainNav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.textContent = isOpen ? '×' : '☰';
+      });
+
+      mainNav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          mainNav.classList.remove('open');
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.textContent = '☰';
+        });
+      });
+
+      window.addEventListener('scroll', function () {
+        backToTop.classList.toggle('visible', window.scrollY > 450);
+      }, { passive: true });
+
+      backToTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      document.getElementById('currentYear').textContent = new Date().getFullYear();
+      setLanguage('ar');
+    })();
+  </script>
+</body>
 </html>
+
