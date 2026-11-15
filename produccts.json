@@ -1,0 +1,234 @@
+{
+  "categories": [
+    {
+      "id": "kids",
+      "visible": true,
+      "name": "عالم أطفال",
+      "name_en": "Kids' world",
+      "description": "مساحة للخيال والمرح والتلوين، حيث تتحول الأفكار إلى مغامرات صغيرة.",
+      "description_en": "A space for imagination, fun and coloring, where ideas become little adventures.",
+      "caption": "الخيال يبدأ من هنا",
+      "caption_en": "Imagination starts here",
+      "icons": [
+        "🖍️",
+        "⭐",
+        "🦕"
+      ],
+      "note": ""
+    },
+    {
+      "id": "art",
+      "visible": true,
+      "name": "لوحات فنية",
+      "name_en": "Artworks",
+      "description": "ألوان وتكوينات فنية تضيف إحساسًا مختلفًا ولمسة جميلة للمكان.",
+      "description_en": "Artistic colors and compositions that bring a distinctive feeling and a beautiful touch to a space.",
+      "caption": "الفن لغة التفاصيل",
+      "caption_en": "Art speaks in details",
+      "icons": [
+        "🖼️",
+        "🌿",
+        "🎨"
+      ],
+      "note": "نماذج عرض مؤقتة — الصور والأعمال الفعلية تُضاف عند تجهيزها."
+    },
+    {
+      "id": "gift",
+      "visible": true,
+      "name": "هدايا شخصية",
+      "name_en": "Personalized gifts",
+      "description": "أفكار تحمل معنى خاصًا، وتفاصيل تخلي الهدية أقرب للقلب.",
+      "description_en": "Meaningful ideas and thoughtful details that make a gift feel closer to the heart.",
+      "caption": "هدية تشبه أصحابها",
+      "caption_en": "A gift with a personal touch",
+      "icons": [
+        "🎁",
+        "✉️",
+        "💝"
+      ],
+      "note": "نماذج عرض مؤقتة — نضيف التصميمات الحقيقية لاحقًا."
+    }
+  ],
+  "products": [
+    {
+      "category": "kids",
+      "icon": "📖",
+      "name": "كتاب تلوين 12 صفحة",
+      "description": "12 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك. مناسب للألوان الخشب والشمع.",
+      "price": 150,
+      "image": "images/book-12.jpg",
+      "badge": "",
+      "cta": "اطلب الآن",
+      "message": "مرحبًا، أريد طلب كتاب تلوين 12 صفحة باسم وصورة طفلي",
+      "visible": true
+    },
+    {
+      "category": "kids",
+      "icon": "📖",
+      "name": "كتاب تلوين 24 صفحة",
+      "description": "24 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك. مناسب للألوان الخشب والشمع.",
+      "price": 250,
+      "image": "images/book-24.jpg",
+      "badge": "",
+      "cta": "اطلب الآن",
+      "message": "مرحبًا، أريد طلب كتاب تلوين 24 صفحة باسم وصورة طفلي",
+      "visible": true
+    },
+    {
+      "category": "kids",
+      "icon": "📖",
+      "name": "كتاب تلوين 50 صفحة",
+      "description": "50 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك. مناسب للألوان الخشب والشمع.",
+      "price": 400,
+      "image": "images/book-50.jpg",
+      "badge": "",
+      "cta": "اطلب الآن",
+      "message": "مرحبًا، أريد طلب كتاب تلوين 50 صفحة باسم وصورة طفلي",
+      "visible": true
+    },
+    {
+      "category": "kids",
+      "icon": "🦕",
+      "name": "مغامرة الديناصورات",
+      "description": "فكرة مرحة لعالم مليء بالمغامرات والألوان.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "kids",
+      "icon": "🚀",
+      "name": "رحلة إلى الفضاء",
+      "description": "مساحة للخيال بين الكواكب والنجوم.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "kids",
+      "icon": "🦸",
+      "name": "أبطال صغار",
+      "description": "أفكار مليئة بالحركة والمرح.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "kids",
+      "icon": "🧚",
+      "name": "عالم الخيال",
+      "description": "شخصيات وحكايات تفتح أبواب الخيال.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "kids",
+      "icon": "🐠",
+      "name": "مغامرة تحت البحر",
+      "description": "اكتشافات مرحة بين الأسماك والألوان.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "kids",
+      "icon": "🦊",
+      "name": "أصدقاء الغابة",
+      "description": "حيوانات لطيفة ومواقف مليئة بالخيال.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "art",
+      "icon": "🌿",
+      "name": "لمسة من الطبيعة",
+      "description": "تكوين فني مستوحى من هدوء الطبيعة.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "art",
+      "icon": "🌅",
+      "name": "ألوان الغروب",
+      "description": "ألوان دافئة تضيف إحساسًا مميزًا للمكان.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "art",
+      "icon": "🌸",
+      "name": "زهور وألوان",
+      "description": "لمسة رقيقة مستوحاة من الزهور.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "art",
+      "icon": "🖌️",
+      "name": "تجريد فني",
+      "description": "تكوينات وألوان بطابع عصري.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "art",
+      "icon": "🌺",
+      "name": "حديقة الألوان",
+      "description": "لوحة مستوحاة من جمال الزهور والطبيعة.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "art",
+      "icon": "🎨",
+      "name": "مساحة من الألوان",
+      "description": "تكوين فني مرح بألوان متناسقة.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "gift",
+      "icon": "🎁",
+      "name": "هدية باسمك",
+      "description": "تفصيلة شخصية تخلي الهدية أقرب للقلب.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "gift",
+      "icon": "🖼️",
+      "name": "ذكرى في إطار",
+      "description": "ذكرى جميلة بتصميم يليق بيها.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "gift",
+      "icon": "💌",
+      "name": "رسالة مميزة",
+      "description": "كلمات ولمسات صغيرة لمناسبة خاصة.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "gift",
+      "icon": "✨",
+      "name": "تفصيلة من اختيارك",
+      "description": "فكرة شخصية تحمل طابعك الخاص.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "gift",
+      "icon": "☕",
+      "name": "مج باسمك",
+      "description": "هدية يومية بتفصيلة تحمل اسمك.",
+      "badge": "نموذج عرض",
+      "visible": true
+    },
+    {
+      "category": "gift",
+      "icon": "📒",
+      "name": "دفتر بتصميمك",
+      "description": "غلاف مميز يعبر عن ذوقك وشخصيتك.",
+      "badge": "نموذج عرض",
+      "visible": true
+    }
+  ]
+}
