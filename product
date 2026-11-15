@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8f4ec">
+  <meta name="description" content="تفاصيل المنتج من لون وحكاية.">
+  <title>المنتج | لون وحكاية</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html#home" aria-label="لون وحكاية - الرئيسية">
+        <span class="brand-mark"><img src="./website%20logo.jpeg" alt="شعار لون وحكاية"></span>
+        <span>
+          <span class="brand-name">لون وحكاية</span>
+          <span class="brand-line">كل لون وراه حكاية</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" id="mainNav" aria-label="التنقل الرئيسي">
+        <a href="index.html#home">الرئيسية</a>
+        <a href="index.html#categories">أقسامنا</a>
+        <a href="index.html#about">حكايتنا</a>
+        <a href="index.html#why">ما يميزنا</a>
+        <a href="index.html#faq">أسئلة شائعة</a>
+        <a href="index.html#contact">تواصل معنا</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="menu-button" id="menuToggle" type="button" aria-label="فتح القائمة" aria-expanded="false" aria-controls="mainNav">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="pp">
+    <div class="container">
+      <nav class="pp-crumbs" id="ppCrumbs" aria-label="مسار الصفحة"></nav>
+      <div id="ppRoot"><p>جاري التحميل…</p></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <div class="footer-title">لون وحكاية</div>
+          <p class="footer-copy">كل لون وراه حكاية. مساحة تجمع الفن والخيال والأفكار اللي ليها طابع خاص.</p>
+        </div>
+        <div>
+          <h3 class="footer-heading">روابط سريعة</h3>
+          <div class="footer-links">
+            <a href="index.html#home">الرئيسية</a>
+            <a href="index.html#categories">أقسامنا</a>
+            <a href="index.html#about">حكايتنا</a>
+            <a href="index.html#faq">الأسئلة الشائعة</a>
+          </div>
+        </div>
+        <div>
+          <h3 class="footer-heading">تواصل معنا</h3>
+          <div class="footer-contact">
+            <a href="https://wa.me/201276369556" target="_blank" rel="noopener noreferrer">واتساب</a>
+            <a href="https://www.facebook.com/share/1FQZVchDh3/" target="_blank" rel="noopener noreferrer">فيسبوك</a>
+            <a href="https://www.instagram.com/lawnwe7kaya?vrfl=MXVxaXZ3cXQycjZhOA==" target="_blank" rel="noopener noreferrer">إنستجرام</a>
+            <a href="tel:+201276369556" dir="ltr">+20 127 636 9556</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>© </span><span id="currentYear">2026</span><span> لون وحكاية. جميع الحقوق محفوظة.</span></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const WHATSAPP_NUMBER = '201276369556';
+      const root = document.getElementById('ppRoot');
+      const crumbs = document.getElementById('ppCrumbs');
+      const menuToggle = document.getElementById('menuToggle');
+      const mainNav = document.getElementById('mainNav');
+      const year = document.getElementById('currentYear');
+      if (year) year.textContent = new Date().getFullYear();
+
+      menuToggle.addEventListener('click', function () {
+        const isOpen = mainNav.classList.toggle('open');
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.textContent = isOpen ? '×' : '☰';
+      });
+
+      function el(tag, cls, text) {
+        const node = document.createElement(tag);
+        if (cls) node.className = cls;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+      function formatPrice(price) {
+        if (price === undefined || price === null || price === '') return '';
+        return typeof price === 'number' ? price + ' جنيه' : String(price);
+      }
+      function fail(message) {
+        root.textContent = '';
+        const box = el('div', 'pp-box');
+        box.appendChild(el('p', null, message));
+        const back = el('a', 'button button-primary', 'العودة للمنتجات');
+        back.href = 'index.html#categories';
+        box.appendChild(back);
+        root.appendChild(box);
+      }
+      // بنحمّل الصور الأول ونحتفظ بس بالصور اللي فعلًا موجودة
+      function loadImages(urls) {
+        return Promise.all(urls.map(function (url) {
+          return new Promise(function (resolve) {
+            const probe = new Image();
+            probe.onload = function () { resolve(url); };
+            probe.onerror = function () { resolve(null); };
+            probe.src = url;
+          });
+        })).then(function (list) { return list.filter(Boolean); });
+      }
+      function whatsappLink(message) {
+        return 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(message);
+      }
+
+      function buildGallery(product, images) {
+        const wrap = el('div');
+        const main = el('div', 'pp-main');
+        let mainImg = null;
+        if (images.length) {
+          mainImg = document.createElement('img');
+          mainImg.src = images[0];
+          mainImg.alt = product.name || '';
+          main.appendChild(mainImg);
+        } else {
+          main.appendChild(document.createTextNode(product.icon || '🎨'));
+        }
+        wrap.appendChild(main);
+        if (images.length > 1) {
+          const thumbs = el('div', 'pp-thumbs');
+          images.forEach(function (url, index) {
+            const button = el('button', 'pp-thumb' + (index === 0 ? ' active' : ''));
+            button.type = 'button';
+            button.setAttribute('aria-label', 'صورة ' + (index + 1));
+            const image = document.createElement('img');
+            image.src = url;
+            image.alt = '';
+            button.appendChild(image);
+            button.addEventListener('click', function () {
+              mainImg.src = url;
+              thumbs.querySelectorAll('.pp-thumb').forEach(function (t) { t.classList.remove('active'); });
+              button.classList.add('active');
+            });
+            thumbs.appendChild(button);
+          });
+          wrap.appendChild(thumbs);
+        }
+        return wrap;
+      }
+
+      function chipGroup(title, items, cls, mark) {
+        if (!Array.isArray(items) || !items.length) return null;
+        const group = el('div', 'pp-group');
+        group.appendChild(el('small', null, title));
+        const chips = el('div', 'pp-chips');
+        items.forEach(function (item) { chips.appendChild(el('span', 'pp-chip ' + cls, mark + ' ' + item)); });
+        group.appendChild(chips);
+        return group;
+      }
+
+      function buildOrderBox(product) {
+        const box = el('div', 'pp-box');
+        if (product.orderable === false) {
+          box.appendChild(el('h2', null, 'عجبتك الفكرة؟'));
+          box.appendChild(el('p', null, 'ده نموذج عرض للفكرة. ابعتلنا وإحنا نعملهالك بتصميم مخصص.'));
+          const ask = el('a', 'pp-submit', 'اسأل عن الفكرة على واتساب');
+          ask.target = '_blank';
+          ask.rel = 'noopener';
+          ask.href = whatsappLink('مرحبًا، عجبتني فكرة «' + product.name + '» وأريد الاستفسار عنها');
+          box.appendChild(ask);
+          return box;
+        }
+
+        box.appendChild(el('h2', null, 'اطلب المنتج'));
+        const form = el('form', 'pp-form');
+        function field(id, label, placeholder, multiline, required) {
+          const wrap = el('div', 'pp-field');
+          const lab = el('label', null, label);
+          lab.htmlFor = id;
+          const input = document.createElement(multiline ? 'textarea' : 'input');
+          input.id = id;
+          input.name = id;
+          input.placeholder = placeholder;
+          if (!multiline) input.type = 'text';
+          if (required) input.required = true;
+          wrap.appendChild(lab);
+          wrap.appendChild(input);
+          form.appendChild(wrap);
+          return input;
+        }
+        const childName = field('childName', 'اسم الطفل (يتكتب على الكتاب)', 'مثال: ماركوس', false, true);
+        const childAge = field('childAge', 'سن الطفل', 'مثال: 5 سنين', false, false);
+        const interests = field('interests', 'الطفل بيحب إيه؟', 'مثال: ديناصورات، فضاء، عربيات…', true, false);
+        const giftFrom = field('giftFrom', 'الإهداء من مين؟ (لو هدية)', 'مثال: من عمو أحمد', false, false);
+        const notes = field('notes', 'ملاحظات إضافية', 'أي حاجة تحب نعرفها', true, false);
+
+        const submit = el('button', 'pp-submit', 'اطلب عبر واتساب ←');
+        submit.type = 'submit';
+        form.appendChild(submit);
+
+        form.addEventListener('submit', function (event) {
+          event.preventDefault();
+          const lines = ['مرحبًا لون وحكاية 👋', 'أريد طلب: ' + product.name];
+          const price = formatPrice(product.price);
+          if (price) lines.push('السعر: ' + price);
+          lines.push('اسم الطفل: ' + childName.value.trim());
+          if (childAge.value.trim()) lines.push('السن: ' + childAge.value.trim());
+          if (interests.value.trim()) lines.push('بيحب: ' + interests.value.trim());
+          if (giftFrom.value.trim()) lines.push('الإهداء من: ' + giftFrom.value.trim());
+          if (notes.value.trim()) lines.push('ملاحظات: ' + notes.value.trim());
+          lines.push('وهبعت صورة الطفل في الرسالة اللي بعدها.');
+          window.open(whatsappLink(lines.join('\n')), '_blank', 'noopener');
+        });
+
+        box.appendChild(form);
+        box.appendChild(el('p', 'pp-hint', 'هيتفتحلك واتساب برسالة جاهزة. بعد ما تبعتها، ابعتلنا صورة الطفل في الرسالة اللي بعدها.'));
+        return box;
+      }
+
+      function buildInfo(product) {
+        const info = el('div');
+        if (product.badge) info.appendChild(el('span', 'pp-badge', product.badge));
+        info.appendChild(el('h1', null, product.name || ''));
+        const price = formatPrice(product.price);
+        if (price) info.appendChild(el('div', 'pp-price', price));
+        const text = product.longDescription || product.description;
+        if (text) info.appendChild(el('p', 'pp-desc', text));
+
+        if (Array.isArray(product.specs) && product.specs.length) {
+          const box = el('div', 'pp-box');
+          box.appendChild(el('h2', null, 'تفاصيل المنتج'));
+          const list = el('dl', 'pp-specs');
+          product.specs.forEach(function (row) {
+            const line = el('div');
+            line.appendChild(el('dt', null, row.label || ''));
+            line.appendChild(el('dd', null, row.value || ''));
+            list.appendChild(line);
+          });
+          box.appendChild(list);
+          info.appendChild(box);
+        }
+
+        const groups = [
+          chipGroup('مناسب للتلوين بـ', product.suitable, 'ok', '✓'),
+          chipGroup('ممكن بحذر', product.withCare, 'care', '!'),
+          chipGroup('غير مناسب', product.notRecommended, 'no', '✕')
+        ].filter(Boolean);
+        if (groups.length) {
+          const box = el('div', 'pp-box');
+          box.appendChild(el('h2', null, 'ينفع تتلون بإيه؟'));
+          groups.forEach(function (g) { box.appendChild(g); });
+          info.appendChild(box);
+        }
+
+        if (Array.isArray(product.notes) && product.notes.length) {
+          const box = el('div', 'pp-box');
+          box.appendChild(el('h2', null, 'ملاحظات'));
+          const list = el('ul', 'pp-notes');
+          product.notes.forEach(function (n) { list.appendChild(el('li', null, n)); });
+          box.appendChild(list);
+          info.appendChild(box);
+        }
+
+        info.appendChild(buildOrderBox(product));
+        return info;
+      }
+
+      const id = new URLSearchParams(location.search).get('id');
+      if (!id) { fail('اختار منتج من الصفحة الرئيسية.'); return; }
+
+      fetch('products.json', { cache: 'no-cache' })
+        .then(function (response) {
+          if (!response.ok) throw new Error('products.json not found');
+          return response.json();
+        })
+        .then(function (data) {
+          const products = (data && Array.isArray(data.products)) ? data.products : [];
+          const categories = (data && Array.isArray(data.categories)) ? data.categories : [];
+          const product = products.find(function (p) { return p && p.id === id && p.visible !== false; });
+          if (!product) { fail('المنتج ده غير متاح حاليًا.'); return; }
+          const category = categories.find(function (c) { return c && c.id === product.category; });
+
+          document.title = (product.name || 'المنتج') + ' | لون وحكاية';
+          const home = el('a', null, 'الرئيسية'); home.href = 'index.html';
+          crumbs.appendChild(home);
+          if (category) {
+            crumbs.appendChild(el('span', null, '/'));
+            const cat = el('a', null, category.name || ''); cat.href = 'index.html#' + category.id + '-products';
+            crumbs.appendChild(cat);
+          }
+          crumbs.appendChild(el('span', null, '/'));
+          crumbs.appendChild(el('span', null, product.name || ''));
+
+          const urls = Array.isArray(product.images) && product.images.length ? product.images : (product.image ? [product.image] : []);
+          return loadImages(urls).then(function (images) {
+            root.textContent = '';
+            const grid = el('div', 'pp-grid');
+            grid.appendChild(buildGallery(product, images));
+            grid.appendChild(buildInfo(product));
+            root.appendChild(grid);
+
+            const others = products.filter(function (p) {
+              return p && p.visible !== false && p.id && p.id !== product.id && p.category === product.category;
+            }).slice(0, 3);
+            if (others.length) {
+              const related = el('div', 'pp-related');
+              related.appendChild(el('h2', null, 'منتجات أخرى من نفس القسم'));
+              others.forEach(function (p) {
+                const a = el('a');
+                a.href = 'product.html?id=' + encodeURIComponent(p.id);
+                a.appendChild(el('strong', null, p.name || ''));
+                const price = formatPrice(p.price);
+                if (price) a.appendChild(el('span', null, price));
+                related.appendChild(a);
+              });
+              root.appendChild(related);
+            }
+          });
+        })
+        .catch(function (error) {
+          console.warn(error);
+          fail('تعذّر تحميل بيانات المنتج. حاول مرة أخرى.');
+        });
+    })();
+  </script>
+</body>
+</html>
