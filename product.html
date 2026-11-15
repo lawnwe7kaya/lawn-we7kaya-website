@@ -652,7 +652,7 @@
         });
         interests.parentNode.appendChild(mixedButton);
         const giftFrom = field('giftFrom', 'الإهداء من مين؟ (لو هدية)', 'مثال: بابا وماما، أو جدو وتيتا، أو العيلة كلها', false, false);
-        giftFrom.parentNode.appendChild(el('p', 'pp-hint', 'هيتكتب في كارت الإهداء على الغلاف الخلفي، بعد كلمة From.'));
+       const interests = field('interests', 'إهداء خاص', 'مثال: بكل حب، إلى صغيرنا الغالي ❤️', true, false);
         const notes = field('notes', 'ملاحظات إضافية', 'أي حاجة تحب نعرفها', true, false);
 
         const submit = el('button', 'pp-submit', 'اطلب عبر واتساب ←');
@@ -668,6 +668,7 @@
           if (childAge.value.trim()) lines.push('السن: ' + childAge.value.trim());
           if (interests.value.trim()) lines.push('بيحب: ' + interests.value.trim());
           if (giftFrom.value.trim()) lines.push('الإهداء من: ' + giftFrom.value.trim());
+          if (interests.value.trim()) lines.push('الإهداء: ' + interests.value.trim());
           if (notes.value.trim()) lines.push('ملاحظات: ' + notes.value.trim());
           lines.push('وهبعت صورة الطفل في الرسالة اللي بعدها.');
           window.open(whatsappLink(lines.join('\n')), '_blank', 'noopener');
