@@ -652,7 +652,7 @@
         });
         interests.parentNode.appendChild(mixedButton);
         const giftFrom = field('giftFrom', 'الإهداء من مين؟ (لو هدية)', 'مثال: بابا وماما، أو جدو وتيتا، أو العيلة كلها', false, false);
-        giftFrom.parentNode.appendChild(el('p', 'pp-hint', 'هيتكتب في كارت الإهداء على الغلاف الخلفي، بعد كلمة From.'));
+       const giftFrom = field('Special Dedication', 'اهداء خاص؟ (لو هدية)', 'مثال:الي  صغيرنا الحبيب،بكل حب', false, false);
         const notes = field('notes', 'ملاحظات إضافية', 'أي حاجة تحب نعرفها', true, false);
 
         const submit = el('button', 'pp-submit', 'اطلب عبر واتساب ←');
