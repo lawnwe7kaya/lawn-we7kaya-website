@@ -427,6 +427,7 @@
     .pp-chip { padding:6px 13px; border-radius:30px; font-size:13px; font-weight:700; }
     .pp-chip.ok { background:var(--green-soft); color:var(--green-dark); }
     .pp-chip.care { background:#f6ecd2; color:#7a5b16; }
+    .pp-chip-button { margin-top:8px; border:0; cursor:pointer; font:inherit; font-size:13px; font-weight:700; }
     .pp-chip.no { background:var(--peach); color:var(--clay-dark); }
     .pp-notes { margin:0; padding-inline-start:20px; color:var(--muted); font-size:14px; }
     .pp-form { display:grid; gap:12px; }
@@ -635,10 +636,23 @@
           form.appendChild(wrap);
           return input;
         }
-        const childName = field('childName', 'اسم الطفل (يتكتب على الكتاب)', 'مثال: ماركوس', false, true);
+        const childName = field('childName', 'اسم الطفل (يتكتب على الكتاب)', 'مثال: إيفان', false, true);
         const childAge = field('childAge', 'سن الطفل', 'مثال: 5 سنين', false, false);
-        const interests = field('interests', 'الطفل بيحب إيه؟', 'مثال: ديناصورات، فضاء، عربيات…', true, false);
-        const giftFrom = field('giftFrom', 'الإهداء من مين؟ (لو هدية)', 'مثال: من عمو أحمد', false, false);
+        const interests = field('interests', 'الطفل بيحب إيه؟', 'مثال: ديناصورات، فضاء، عربيات… أو دوس على زرار متنوع لو عايز مشاهد مختلفة مش قصة واحدة', true, false);
+        const mixedText = 'متنوع (مشاهد مختلفة، مش قصة واحدة)';
+        const mixedButton = el('button', 'pp-chip ok pp-chip-button', 'متنوع');
+        mixedButton.type = 'button';
+        mixedButton.addEventListener('click', function () {
+          const current = interests.value.trim();
+          if (!current) {
+            interests.value = mixedText;
+          } else if (current.indexOf('متنوع') === -1) {
+            interests.value = current + '، ' + mixedText;
+          }
+        });
+        interests.parentNode.appendChild(mixedButton);
+        const giftFrom = field('giftFrom', 'الإهداء من مين؟ (لو هدية)', 'مثال: بابا وماما، أو جدو وتيتا، أو العيلة كلها', false, false);
+        giftFrom.parentNode.appendChild(el('p', 'pp-hint', 'هيتكتب في كارت الإهداء على الغلاف الخلفي، بعد كلمة From.'));
         const notes = field('notes', 'ملاحظات إضافية', 'أي حاجة تحب نعرفها', true, false);
 
         const submit = el('button', 'pp-submit', 'اطلب عبر واتساب ←');
