@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -731,11 +731,13 @@
         languageToggle.setAttribute('aria-label', language === 'ar' ? 'Switch to English' : 'التبديل إلى العربية');
         menuToggle.setAttribute('aria-label', language === 'ar' ? 'فتح القائمة' : 'Open menu');
         backToTop.setAttribute('aria-label', language === 'ar' ? 'العودة إلى أعلى الصفحة' : 'Back to top');
+        try { localStorage.setItem('lawn-lang', language); } catch (error) {}
       }
 
       languageToggle.addEventListener('click', function () {
         setLanguage(currentLanguage === 'ar' ? 'en' : 'ar');
       });
+      try { if (localStorage.getItem('lawn-lang') === 'en') setLanguage('en'); } catch (error) {}
 
       menuToggle.addEventListener('click', function () {
         const isOpen = mainNav.classList.toggle('open');
@@ -759,6 +761,14 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
+      function setExpandLabel(button, expanded) {
+        const ar = expanded ? 'عرض أقل' : 'عرض كل المنتجات';
+        const en = expanded ? 'Show less' : 'Show all products';
+        button.setAttribute('data-ar', ar);
+        button.setAttribute('data-en', en);
+        button.textContent = currentLanguage === 'en' ? en : ar;
+      }
+
       function initSlider(section) {
         const viewport = section.querySelector('.products-viewport');
         const track = section.querySelector('.products-track');
@@ -766,6 +776,7 @@
         const next = section.querySelector('[data-next]');
         const expand = section.querySelector('[data-expand]');
         let position = 0;
+        setExpandLabel(expand, false);
         function stepSize() {
           const card = track.querySelector('.product-card');
           if (!card) return 0;
@@ -781,7 +792,7 @@
         next.addEventListener('click', function () { move(1); });
         expand.addEventListener('click', function () {
           const isExpanded = section.classList.toggle('products-expanded');
-          expand.textContent = isExpanded ? 'عرض أقل' : 'عرض كل المنتجات';
+          setExpandLabel(expand, isExpanded);
           position = 0;
           track.style.transform = '';
         });
@@ -810,6 +821,12 @@
 
       function productUrl(p) { return 'product.html?id=' + encodeURIComponent(p.id); }
 
+      function priceParts(p) {
+        if (p.price === undefined || p.price === null || p.price === '') return null;
+        if (typeof p.price === 'number') return [p.price + ' جنيه', p.price + ' EGP'];
+        return [String(p.price), p.price_en ? String(p.price_en) : String(p.price)];
+      }
+
       function buildCard(p) {
         const card = el('article', 'product-card');
         const url = p.id ? productUrl(p) : '';
@@ -829,23 +846,22 @@
         } else {
           art.appendChild(document.createTextNode(icon));
         }
-        if (p.badge) art.appendChild(el('small', null, p.badge));
+        if (p.badge) art.appendChild(bilingual(el('small'), p.badge, p.badge_en));
 
         const info = el('div', 'product-info');
         const title = el('h3');
         if (url) {
-          const titleLink = el('a', 'plain-link', p.name || '');
+          const titleLink = bilingual(el('a', 'plain-link'), p.name || '', p.name_en);
           titleLink.href = url;
           title.appendChild(titleLink);
         } else {
-          title.textContent = p.name || '';
+          bilingual(title, p.name || '', p.name_en);
         }
         info.appendChild(title);
-        info.appendChild(el('p', null, p.description || ''));
-        if (p.price !== undefined && p.price !== null && p.price !== '') {
-          info.appendChild(el('div', 'product-price', typeof p.price === 'number' ? p.price + ' جنيه' : p.price));
-        }
-        const link = el('a', 'product-contact', p.cta || 'عرض التفاصيل');
+        info.appendChild(bilingual(el('p'), p.description || '', p.description_en));
+        const price = priceParts(p);
+        if (price) info.appendChild(bilingual(el('div', 'product-price'), price[0], price[1]));
+        const link = bilingual(el('a', 'product-contact'), p.cta || 'عرض التفاصيل', p.cta ? p.cta_en : 'View details');
         if (url) {
           link.href = url;
         } else {
@@ -892,7 +908,7 @@
         const headingText = el('div');
         headingText.appendChild(bilingual(el('span', 'section-kicker'), c.name || '', c.name_en));
         headingText.appendChild(bilingual(el('h2'), c.caption || c.name || '', c.caption ? c.caption_en : c.name_en));
-        if (c.note) headingText.appendChild(el('p', null, c.note));
+        if (c.note) headingText.appendChild(bilingual(el('p'), c.note, c.note_en));
         heading.appendChild(headingText);
         container.appendChild(heading);
 
