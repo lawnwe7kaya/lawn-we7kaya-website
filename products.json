@@ -1,4 +1,4 @@
-{
+ {
   "categories": [
     {
       "id": "kids",
@@ -51,184 +51,352 @@
   ],
   "products": [
     {
+      "id": "book-12",
       "category": "kids",
       "icon": "📖",
       "name": "كتاب تلوين 12 صفحة",
-      "description": "12 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك. مناسب للألوان الخشب والشمع.",
+      "description": "12 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك.",
+      "longDescription": "كتاب تلوين مصمم خصيصًا لطفلك: صورته واسمه على الغلاف وداخل صفحات التلوين، في مشاهد مغامرات تختارها حسب اللي بيحبه.",
       "price": 150,
-      "image": "images/book-12.jpg",
+      "images": [
+        "images/book-12-1.jpg",
+        "images/book-12-2.jpg",
+        "images/book-12-3.jpg",
+        "images/book-12-4.jpg"
+      ],
       "badge": "",
-      "cta": "اطلب الآن",
-      "message": "مرحبًا، أريد طلب كتاب تلوين 12 صفحة باسم وصورة طفلي",
+      "specs": [
+        {
+          "label": "المقاس",
+          "value": "A4 (21 × 29.7 سم)"
+        },
+        {
+          "label": "عدد صفحات التلوين",
+          "value": "12 صفحة"
+        },
+        {
+          "label": "الورق الداخلي",
+          "value": "ورق 80 جرام"
+        },
+        {
+          "label": "الغلاف",
+          "value": "كوشيه لامع"
+        },
+        {
+          "label": "التجليد",
+          "value": "سلك"
+        },
+        {
+          "label": "التخصيص",
+          "value": "صورة واسم الطفل"
+        }
+      ],
+      "suitable": [
+        "ألوان خشب",
+        "ألوان شمع (كرايون)",
+        "قلم رصاص"
+      ],
+      "withCare": [
+        "ماركر خفيف (حط ورقة سميكة تحت الصفحة)"
+      ],
+      "notRecommended": [
+        "ألوان مائية",
+        "ألوان أكريليك",
+        "ماركر عريض"
+      ],
       "visible": true
     },
     {
+      "id": "book-24",
       "category": "kids",
       "icon": "📖",
       "name": "كتاب تلوين 24 صفحة",
-      "description": "24 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك. مناسب للألوان الخشب والشمع.",
+      "description": "24 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك.",
+      "longDescription": "كتاب تلوين مصمم خصيصًا لطفلك: صورته واسمه على الغلاف وداخل صفحات التلوين، في مشاهد مغامرات تختارها حسب اللي بيحبه.",
       "price": 250,
-      "image": "images/book-24.jpg",
+      "images": [
+        "images/book-24-1.jpg",
+        "images/book-24-2.jpg",
+        "images/book-24-3.jpg",
+        "images/book-24-4.jpg"
+      ],
       "badge": "",
-      "cta": "اطلب الآن",
-      "message": "مرحبًا، أريد طلب كتاب تلوين 24 صفحة باسم وصورة طفلي",
+      "specs": [
+        {
+          "label": "المقاس",
+          "value": "A4 (21 × 29.7 سم)"
+        },
+        {
+          "label": "عدد صفحات التلوين",
+          "value": "24 صفحة"
+        },
+        {
+          "label": "الورق الداخلي",
+          "value": "ورق 80 جرام"
+        },
+        {
+          "label": "الغلاف",
+          "value": "كوشيه لامع"
+        },
+        {
+          "label": "التجليد",
+          "value": "سلك"
+        },
+        {
+          "label": "التخصيص",
+          "value": "صورة واسم الطفل"
+        }
+      ],
+      "suitable": [
+        "ألوان خشب",
+        "ألوان شمع (كرايون)",
+        "قلم رصاص"
+      ],
+      "withCare": [
+        "ماركر خفيف (حط ورقة سميكة تحت الصفحة)"
+      ],
+      "notRecommended": [
+        "ألوان مائية",
+        "ألوان أكريليك",
+        "ماركر عريض"
+      ],
       "visible": true
     },
     {
+      "id": "book-50",
       "category": "kids",
       "icon": "📖",
       "name": "كتاب تلوين 50 صفحة",
-      "description": "50 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك. مناسب للألوان الخشب والشمع.",
+      "description": "50 صفحة تلوين بصورة طفلك واسمه، غلاف ملون وتجليد سلك.",
+      "longDescription": "كتاب تلوين مصمم خصيصًا لطفلك: صورته واسمه على الغلاف وداخل صفحات التلوين، في مشاهد مغامرات تختارها حسب اللي بيحبه.",
       "price": 400,
-      "image": "images/book-50.jpg",
+      "images": [
+        "images/book-50-1.jpg",
+        "images/book-50-2.jpg",
+        "images/book-50-3.jpg",
+        "images/book-50-4.jpg"
+      ],
       "badge": "",
-      "cta": "اطلب الآن",
-      "message": "مرحبًا، أريد طلب كتاب تلوين 50 صفحة باسم وصورة طفلي",
+      "specs": [
+        {
+          "label": "المقاس",
+          "value": "A4 (21 × 29.7 سم)"
+        },
+        {
+          "label": "عدد صفحات التلوين",
+          "value": "50 صفحة"
+        },
+        {
+          "label": "الورق الداخلي",
+          "value": "ورق 80 جرام"
+        },
+        {
+          "label": "الغلاف",
+          "value": "كوشيه لامع"
+        },
+        {
+          "label": "التجليد",
+          "value": "سلك"
+        },
+        {
+          "label": "التخصيص",
+          "value": "صورة واسم الطفل"
+        }
+      ],
+      "suitable": [
+        "ألوان خشب",
+        "ألوان شمع (كرايون)",
+        "قلم رصاص"
+      ],
+      "withCare": [
+        "ماركر خفيف (حط ورقة سميكة تحت الصفحة)"
+      ],
+      "notRecommended": [
+        "ألوان مائية",
+        "ألوان أكريليك",
+        "ماركر عريض"
+      ],
       "visible": true
     },
     {
+      "id": "kids-sample-1",
       "category": "kids",
       "icon": "🦕",
       "name": "مغامرة الديناصورات",
       "description": "فكرة مرحة لعالم مليء بالمغامرات والألوان.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "kids-sample-2",
       "category": "kids",
       "icon": "🚀",
       "name": "رحلة إلى الفضاء",
       "description": "مساحة للخيال بين الكواكب والنجوم.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "kids-sample-3",
       "category": "kids",
       "icon": "🦸",
       "name": "أبطال صغار",
       "description": "أفكار مليئة بالحركة والمرح.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "kids-sample-4",
       "category": "kids",
       "icon": "🧚",
       "name": "عالم الخيال",
       "description": "شخصيات وحكايات تفتح أبواب الخيال.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "kids-sample-5",
       "category": "kids",
       "icon": "🐠",
       "name": "مغامرة تحت البحر",
       "description": "اكتشافات مرحة بين الأسماك والألوان.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "kids-sample-6",
       "category": "kids",
       "icon": "🦊",
       "name": "أصدقاء الغابة",
       "description": "حيوانات لطيفة ومواقف مليئة بالخيال.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "art-sample-1",
       "category": "art",
       "icon": "🌿",
       "name": "لمسة من الطبيعة",
       "description": "تكوين فني مستوحى من هدوء الطبيعة.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "art-sample-2",
       "category": "art",
       "icon": "🌅",
       "name": "ألوان الغروب",
       "description": "ألوان دافئة تضيف إحساسًا مميزًا للمكان.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "art-sample-3",
       "category": "art",
       "icon": "🌸",
       "name": "زهور وألوان",
       "description": "لمسة رقيقة مستوحاة من الزهور.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "art-sample-4",
       "category": "art",
       "icon": "🖌️",
       "name": "تجريد فني",
       "description": "تكوينات وألوان بطابع عصري.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "art-sample-5",
       "category": "art",
       "icon": "🌺",
       "name": "حديقة الألوان",
       "description": "لوحة مستوحاة من جمال الزهور والطبيعة.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "art-sample-6",
       "category": "art",
       "icon": "🎨",
       "name": "مساحة من الألوان",
       "description": "تكوين فني مرح بألوان متناسقة.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "gift-sample-1",
       "category": "gift",
       "icon": "🎁",
       "name": "هدية باسمك",
       "description": "تفصيلة شخصية تخلي الهدية أقرب للقلب.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "gift-sample-2",
       "category": "gift",
       "icon": "🖼️",
       "name": "ذكرى في إطار",
       "description": "ذكرى جميلة بتصميم يليق بيها.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "gift-sample-3",
       "category": "gift",
       "icon": "💌",
       "name": "رسالة مميزة",
       "description": "كلمات ولمسات صغيرة لمناسبة خاصة.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "gift-sample-4",
       "category": "gift",
       "icon": "✨",
       "name": "تفصيلة من اختيارك",
       "description": "فكرة شخصية تحمل طابعك الخاص.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "gift-sample-5",
       "category": "gift",
       "icon": "☕",
       "name": "مج باسمك",
       "description": "هدية يومية بتفصيلة تحمل اسمك.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     },
     {
+      "id": "gift-sample-6",
       "category": "gift",
       "icon": "📒",
       "name": "دفتر بتصميمك",
       "description": "غلاف مميز يعبر عن ذوقك وشخصيتك.",
       "badge": "نموذج عرض",
-      "visible": true
+      "visible": true,
+      "orderable": false
     }
   ]
 }
