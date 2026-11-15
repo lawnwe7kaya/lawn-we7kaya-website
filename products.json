@@ -18,7 +18,7 @@
     },
     {
       "id": "art",
-      "visible": true,
+      "visible": false,
       "name": "لوحات فنية",
       "name_en": "Artworks",
       "description": "ألوان وتكوينات فنية تضيف إحساسًا مختلفًا ولمسة جميلة للمكان.",
