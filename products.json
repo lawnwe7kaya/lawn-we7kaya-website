@@ -30,7 +30,8 @@
         "🌿",
         "🎨"
       ],
-      "note": "نماذج عرض مؤقتة — الصور والأعمال الفعلية تُضاف عند تجهيزها."
+      "note": "نماذج عرض مؤقتة — الصور والأعمال الفعلية تُضاف عند تجهيزها.",
+      "note_en": "Temporary samples - the actual works are added when ready."
     },
     {
       "id": "gift",
@@ -46,7 +47,8 @@
         "✉️",
         "💝"
       ],
-      "note": "نماذج عرض مؤقتة — نضيف التصميمات الحقيقية لاحقًا."
+      "note": "نماذج عرض مؤقتة — نضيف التصميمات الحقيقية لاحقًا.",
+      "note_en": "Temporary samples - real designs are added later."
     }
   ],
   "products": [
@@ -68,27 +70,39 @@
       "specs": [
         {
           "label": "المقاس",
-          "value": "A4 (21 × 29.7 سم)"
+          "value": "A4 (21 × 29.7 سم)",
+          "label_en": "Size",
+          "value_en": "A4 (21 × 29.7 cm)"
         },
         {
           "label": "عدد صفحات التلوين",
-          "value": "12 صفحة"
+          "value": "12 صفحة",
+          "label_en": "Coloring pages",
+          "value_en": "12 pages"
         },
         {
           "label": "الورق الداخلي",
-          "value": "ورق 80 جرام"
+          "value": "ورق 80 جرام",
+          "label_en": "Inner paper",
+          "value_en": "80 gsm paper"
         },
         {
           "label": "الغلاف",
-          "value": "كوشيه لامع"
+          "value": "كوشيه لامع",
+          "label_en": "Cover",
+          "value_en": "Glossy coated paper"
         },
         {
           "label": "التجليد",
-          "value": "سلك"
+          "value": "سلك",
+          "label_en": "Binding",
+          "value_en": "Wire"
         },
         {
           "label": "التخصيص",
-          "value": "صورة واسم الطفل"
+          "value": "صورة واسم الطفل",
+          "label_en": "Personalization",
+          "value_en": "Child's photo and name"
         }
       ],
       "suitable": [
@@ -104,7 +118,23 @@
         "ألوان أكريليك",
         "ماركر عريض"
       ],
-      "visible": true
+      "visible": true,
+      "name_en": "Coloring Book - 12 Pages",
+      "description_en": "12 coloring pages with your child's photo and name, a colorful cover and wire binding.",
+      "longDescription_en": "A coloring book made just for your child: their photo and name on the cover and inside the coloring pages, in adventure scenes based on what they love.",
+      "suitable_en": [
+        "Colored pencils",
+        "Wax crayons",
+        "Pencil"
+      ],
+      "withCare_en": [
+        "Light markers (place a thick sheet under the page)"
+      ],
+      "notRecommended_en": [
+        "Watercolors",
+        "Acrylic paints",
+        "Thick markers"
+      ]
     },
     {
       "id": "book-24",
@@ -124,27 +154,39 @@
       "specs": [
         {
           "label": "المقاس",
-          "value": "A4 (21 × 29.7 سم)"
+          "value": "A4 (21 × 29.7 سم)",
+          "label_en": "Size",
+          "value_en": "A4 (21 × 29.7 cm)"
         },
         {
           "label": "عدد صفحات التلوين",
-          "value": "24 صفحة"
+          "value": "24 صفحة",
+          "label_en": "Coloring pages",
+          "value_en": "24 pages"
         },
         {
           "label": "الورق الداخلي",
-          "value": "ورق 80 جرام"
+          "value": "ورق 80 جرام",
+          "label_en": "Inner paper",
+          "value_en": "80 gsm paper"
         },
         {
           "label": "الغلاف",
-          "value": "كوشيه لامع"
+          "value": "كوشيه لامع",
+          "label_en": "Cover",
+          "value_en": "Glossy coated paper"
         },
         {
           "label": "التجليد",
-          "value": "سلك"
+          "value": "سلك",
+          "label_en": "Binding",
+          "value_en": "Wire"
         },
         {
           "label": "التخصيص",
-          "value": "صورة واسم الطفل"
+          "value": "صورة واسم الطفل",
+          "label_en": "Personalization",
+          "value_en": "Child's photo and name"
         }
       ],
       "suitable": [
@@ -160,7 +202,23 @@
         "ألوان أكريليك",
         "ماركر عريض"
       ],
-      "visible": true
+      "visible": true,
+      "name_en": "Coloring Book - 24 Pages",
+      "description_en": "24 coloring pages with your child's photo and name, a colorful cover and wire binding.",
+      "longDescription_en": "A coloring book made just for your child: their photo and name on the cover and inside the coloring pages, in adventure scenes based on what they love.",
+      "suitable_en": [
+        "Colored pencils",
+        "Wax crayons",
+        "Pencil"
+      ],
+      "withCare_en": [
+        "Light markers (place a thick sheet under the page)"
+      ],
+      "notRecommended_en": [
+        "Watercolors",
+        "Acrylic paints",
+        "Thick markers"
+      ]
     },
     {
       "id": "book-50",
@@ -180,27 +238,39 @@
       "specs": [
         {
           "label": "المقاس",
-          "value": "A4 (21 × 29.7 سم)"
+          "value": "A4 (21 × 29.7 سم)",
+          "label_en": "Size",
+          "value_en": "A4 (21 × 29.7 cm)"
         },
         {
           "label": "عدد صفحات التلوين",
-          "value": "50 صفحة"
+          "value": "50 صفحة",
+          "label_en": "Coloring pages",
+          "value_en": "50 pages"
         },
         {
           "label": "الورق الداخلي",
-          "value": "ورق 80 جرام"
+          "value": "ورق 80 جرام",
+          "label_en": "Inner paper",
+          "value_en": "80 gsm paper"
         },
         {
           "label": "الغلاف",
-          "value": "كوشيه لامع"
+          "value": "كوشيه لامع",
+          "label_en": "Cover",
+          "value_en": "Glossy coated paper"
         },
         {
           "label": "التجليد",
-          "value": "سلك"
+          "value": "سلك",
+          "label_en": "Binding",
+          "value_en": "Wire"
         },
         {
           "label": "التخصيص",
-          "value": "صورة واسم الطفل"
+          "value": "صورة واسم الطفل",
+          "label_en": "Personalization",
+          "value_en": "Child's photo and name"
         }
       ],
       "suitable": [
@@ -216,7 +286,23 @@
         "ألوان أكريليك",
         "ماركر عريض"
       ],
-      "visible": true
+      "visible": true,
+      "name_en": "Coloring Book - 50 Pages",
+      "description_en": "50 coloring pages with your child's photo and name, a colorful cover and wire binding.",
+      "longDescription_en": "A coloring book made just for your child: their photo and name on the cover and inside the coloring pages, in adventure scenes based on what they love.",
+      "suitable_en": [
+        "Colored pencils",
+        "Wax crayons",
+        "Pencil"
+      ],
+      "withCare_en": [
+        "Light markers (place a thick sheet under the page)"
+      ],
+      "notRecommended_en": [
+        "Watercolors",
+        "Acrylic paints",
+        "Thick markers"
+      ]
     },
     {
       "id": "kids-sample-1",
@@ -226,7 +312,10 @@
       "description": "فكرة مرحة لعالم مليء بالمغامرات والألوان.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Dinosaur Adventure",
+      "description_en": "A fun idea for a world full of adventures and colors.",
+      "badge_en": "Sample"
     },
     {
       "id": "kids-sample-2",
@@ -236,7 +325,10 @@
       "description": "مساحة للخيال بين الكواكب والنجوم.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Space Trip",
+      "description_en": "Room for imagination among planets and stars.",
+      "badge_en": "Sample"
     },
     {
       "id": "kids-sample-3",
@@ -246,7 +338,10 @@
       "description": "أفكار مليئة بالحركة والمرح.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Little Heroes",
+      "description_en": "Ideas full of action and fun.",
+      "badge_en": "Sample"
     },
     {
       "id": "kids-sample-4",
@@ -256,7 +351,10 @@
       "description": "شخصيات وحكايات تفتح أبواب الخيال.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Fantasy World",
+      "description_en": "Characters and stories that open the doors of imagination.",
+      "badge_en": "Sample"
     },
     {
       "id": "kids-sample-5",
@@ -266,7 +364,10 @@
       "description": "اكتشافات مرحة بين الأسماك والألوان.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Under the Sea Adventure",
+      "description_en": "Playful discoveries among fish and colors.",
+      "badge_en": "Sample"
     },
     {
       "id": "kids-sample-6",
@@ -276,7 +377,10 @@
       "description": "حيوانات لطيفة ومواقف مليئة بالخيال.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Forest Friends",
+      "description_en": "Cute animals and moments full of imagination.",
+      "badge_en": "Sample"
     },
     {
       "id": "art-sample-1",
@@ -286,7 +390,10 @@
       "description": "تكوين فني مستوحى من هدوء الطبيعة.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "A Touch of Nature",
+      "description_en": "An artistic composition inspired by the calm of nature.",
+      "badge_en": "Sample"
     },
     {
       "id": "art-sample-2",
@@ -296,7 +403,10 @@
       "description": "ألوان دافئة تضيف إحساسًا مميزًا للمكان.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Sunset Colors",
+      "description_en": "Warm colors that add a special feeling to a space.",
+      "badge_en": "Sample"
     },
     {
       "id": "art-sample-3",
@@ -306,7 +416,10 @@
       "description": "لمسة رقيقة مستوحاة من الزهور.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Flowers and Colors",
+      "description_en": "A delicate touch inspired by flowers.",
+      "badge_en": "Sample"
     },
     {
       "id": "art-sample-4",
@@ -316,7 +429,10 @@
       "description": "تكوينات وألوان بطابع عصري.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Abstract Art",
+      "description_en": "Modern compositions and colors.",
+      "badge_en": "Sample"
     },
     {
       "id": "art-sample-5",
@@ -326,7 +442,10 @@
       "description": "لوحة مستوحاة من جمال الزهور والطبيعة.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Color Garden",
+      "description_en": "A painting inspired by the beauty of flowers and nature.",
+      "badge_en": "Sample"
     },
     {
       "id": "art-sample-6",
@@ -336,7 +455,10 @@
       "description": "تكوين فني مرح بألوان متناسقة.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "A Space of Colors",
+      "description_en": "A playful artistic composition in harmonious colors.",
+      "badge_en": "Sample"
     },
     {
       "id": "gift-sample-1",
@@ -346,7 +468,10 @@
       "description": "تفصيلة شخصية تخلي الهدية أقرب للقلب.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "A Gift with Your Name",
+      "description_en": "A personal detail that brings the gift closer to the heart.",
+      "badge_en": "Sample"
     },
     {
       "id": "gift-sample-2",
@@ -356,7 +481,10 @@
       "description": "ذكرى جميلة بتصميم يليق بيها.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Memory in a Frame",
+      "description_en": "A lovely memory in a design it deserves.",
+      "badge_en": "Sample"
     },
     {
       "id": "gift-sample-3",
@@ -366,7 +494,10 @@
       "description": "كلمات ولمسات صغيرة لمناسبة خاصة.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "A Special Message",
+      "description_en": "Words and little touches for a special occasion.",
+      "badge_en": "Sample"
     },
     {
       "id": "gift-sample-4",
@@ -376,7 +507,10 @@
       "description": "فكرة شخصية تحمل طابعك الخاص.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "A Detail of Your Choice",
+      "description_en": "A personal idea that carries your own style.",
+      "badge_en": "Sample"
     },
     {
       "id": "gift-sample-5",
@@ -386,7 +520,10 @@
       "description": "هدية يومية بتفصيلة تحمل اسمك.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Mug with Your Name",
+      "description_en": "An everyday gift with a detail carrying your name.",
+      "badge_en": "Sample"
     },
     {
       "id": "gift-sample-6",
@@ -396,7 +533,10 @@
       "description": "غلاف مميز يعبر عن ذوقك وشخصيتك.",
       "badge": "نموذج عرض",
       "visible": true,
-      "orderable": false
+      "orderable": false,
+      "name_en": "Notebook with Your Design",
+      "description_en": "A distinctive cover that reflects your taste and personality.",
+      "badge_en": "Sample"
     }
   ]
 }
