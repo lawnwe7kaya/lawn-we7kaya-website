@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -391,6 +391,12 @@
       .slider-arrow { width:32px; min-height:100%; border-radius:11px; font-size:22px; }
       .product-section.products-expanded .products-track { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
     }
+
+    /* Categories and products loaded from products.json */
+    .category-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .product-art img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .product-art small { z-index:1; }
+    .product-price { margin:0 0 10px; color:var(--clay-dark); font-size:13px; font-weight:800; }
   </style>
 </head>
 <body>
@@ -703,7 +709,7 @@
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
 
-      document.querySelectorAll('[data-product-section]').forEach(function (section) {
+      function initSlider(section) {
         const viewport = section.querySelector('.products-viewport');
         const track = section.querySelector('.products-track');
         const prev = section.querySelector('[data-prev]');
@@ -730,7 +736,155 @@
           track.style.transform = '';
         });
         window.addEventListener('resize', function () { position = 0; track.style.transform = ''; });
-      });
+      }
+      document.querySelectorAll('[data-product-section]').forEach(initSlider);
+
+
+      // ===== الأقسام والمنتجات من ملف products.json =====
+      // لو الملف مش موجود أو فيه خطأ، بيفضل الموقع بالأقسام والبطاقات الثابتة اللي في الصفحة.
+      const WHATSAPP = 'https://wa.me/201276369556?text=';
+      function el(tag, cls, text) {
+        const node = document.createElement(tag);
+        if (cls) node.className = cls;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      }
+      function bilingual(node, ar, en) {
+        const english = en || ar;
+        node.setAttribute('data-ar', ar);
+        node.setAttribute('data-en', english);
+        node.textContent = currentLanguage === 'en' ? english : ar;
+        return node;
+      }
+      function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+      function buildCard(p) {
+        const card = el('article', 'product-card');
+        const art = el('div', 'product-art');
+        const icon = p.icon || '🎨';
+        if (p.image) {
+          const img = document.createElement('img');
+          img.src = p.image;
+          img.alt = p.name || '';
+          img.loading = 'lazy';
+          img.addEventListener('error', function () {
+            img.remove();
+            art.insertBefore(document.createTextNode(icon), art.firstChild);
+          });
+          art.appendChild(img);
+        } else {
+          art.appendChild(document.createTextNode(icon));
+        }
+        if (p.badge) art.appendChild(el('small', null, p.badge));
+
+        const info = el('div', 'product-info');
+        info.appendChild(el('h3', null, p.name || ''));
+        info.appendChild(el('p', null, p.description || ''));
+        if (p.price !== undefined && p.price !== null && p.price !== '') {
+          info.appendChild(el('div', 'product-price', typeof p.price === 'number' ? p.price + ' جنيه' : p.price));
+        }
+        const link = el('a', 'product-contact', p.cta || 'اسأل عن المنتج');
+        link.target = '_blank';
+        link.rel = 'noopener';
+        link.href = WHATSAPP + encodeURIComponent(p.message || ('مرحبًا، أريد الاستفسار عن ' + (p.name || 'المنتج')));
+        info.appendChild(link);
+
+        card.appendChild(art);
+        card.appendChild(info);
+        return card;
+      }
+
+      function buildCategoryCard(c, index, total) {
+        const a = el('a', 'category-card');
+        a.href = '#' + c.id + '-products';
+        a.appendChild(el('span', 'category-number', pad(index + 1) + ' / ' + pad(total)));
+        const art = el('div', 'category-art');
+        art.setAttribute('aria-hidden', 'true');
+        (c.icons || []).slice(0, 3).forEach(function (icon) { art.appendChild(el('span', null, icon)); });
+        a.appendChild(art);
+        a.appendChild(bilingual(el('h3'), c.name || '', c.name_en));
+        a.appendChild(bilingual(el('p'), c.description || '', c.description_en));
+        a.appendChild(bilingual(el('span', 'category-caption'), c.caption || '', c.caption_en));
+        return a;
+      }
+
+      function buildSection(c, list) {
+        const section = el('section', 'section product-section');
+        section.id = c.id + '-products';
+        section.setAttribute('data-product-section', '');
+        const container = el('div', 'container');
+
+        const heading = el('div', 'product-heading');
+        const headingText = el('div');
+        headingText.appendChild(bilingual(el('span', 'section-kicker'), c.name || '', c.name_en));
+        headingText.appendChild(bilingual(el('h2'), c.caption || c.name || '', c.caption ? c.caption_en : c.name_en));
+        if (c.note) headingText.appendChild(el('p', null, c.note));
+        heading.appendChild(headingText);
+        container.appendChild(heading);
+
+        const row = el('div', 'products-row');
+        const prev = el('button', 'slider-arrow', '‹');
+        prev.type = 'button';
+        prev.setAttribute('data-prev', '');
+        prev.setAttribute('aria-label', 'المنتجات السابقة');
+        const viewport = el('div', 'products-viewport');
+        const track = el('div', 'products-track');
+        list.forEach(function (p) { track.appendChild(buildCard(p)); });
+        viewport.appendChild(track);
+        const next = el('button', 'slider-arrow', '›');
+        next.type = 'button';
+        next.setAttribute('data-next', '');
+        next.setAttribute('aria-label', 'المنتجات التالية');
+        row.appendChild(prev);
+        row.appendChild(viewport);
+        row.appendChild(next);
+        container.appendChild(row);
+
+        const bottom = el('div', 'products-bottom');
+        const expand = el('button', 'show-all', 'عرض كل المنتجات');
+        expand.type = 'button';
+        expand.setAttribute('data-expand', '');
+        bottom.appendChild(expand);
+        container.appendChild(bottom);
+
+        section.appendChild(container);
+        return section;
+      }
+
+      fetch('products.json', { cache: 'no-cache' })
+        .then(function (response) {
+          if (!response.ok) throw new Error('products.json not found');
+          return response.json();
+        })
+        .then(function (data) {
+          if (!data || !Array.isArray(data.categories) || !Array.isArray(data.products)) {
+            throw new Error('products.json format is wrong');
+          }
+          const products = data.products.filter(function (p) { return p && p.visible !== false; });
+          // القسم بيظهر بس لو مفتوح وفيه منتج واحد ظاهر على الأقل
+          const shown = data.categories.filter(function (c) {
+            return c && c.id && c.visible !== false && products.some(function (p) { return p.category === c.id; });
+          });
+
+          const grid = document.querySelector('.category-grid');
+          const oldSections = document.querySelectorAll('[data-product-section]');
+          const anchor = oldSections[0];
+          const cards = shown.map(function (c, i) { return buildCategoryCard(c, i, shown.length); });
+          const sections = shown.map(function (c) {
+            return buildSection(c, products.filter(function (p) { return p.category === c.id; }));
+          });
+
+          // بنستبدل بعد ما كل حاجة تتبني بنجاح، عشان الصفحة ما تفضلش فاضية لو حصل خطأ
+          if (grid) { grid.textContent = ''; cards.forEach(function (card) { grid.appendChild(card); }); }
+          if (anchor) { sections.forEach(function (s) { anchor.parentNode.insertBefore(s, anchor); }); }
+          oldSections.forEach(function (s) { s.remove(); });
+          sections.forEach(initSlider);
+          const categoriesSection = document.getElementById('categories');
+          if (categoriesSection) categoriesSection.style.display = shown.length ? '' : 'none';
+        })
+        .catch(function (error) {
+          console.warn('تعذّر تحميل المنتجات، تم عرض النسخة الثابتة.', error);
+        });
 
       document.getElementById('currentYear').textContent = new Date().getFullYear();
       setLanguage('ar');
