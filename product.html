@@ -446,6 +446,27 @@
       .pp-main { font-size:90px; }
     }
 
+    .pp-main.zoomable { cursor: zoom-in; }
+    .pp-zoom-hint { position:absolute; bottom:12px; inset-inline-end:12px; padding:5px 12px; border-radius:30px; background:rgba(57,55,47,.72); color:#fff; font-size:12px; font-weight:700; pointer-events:none; }
+    .pp-lightbox { position:fixed; inset:0; z-index:200; display:none; align-items:center; justify-content:center; background:rgba(28,26,21,.94); }
+    .pp-lightbox.open { display:flex; }
+    .pp-lb-img { max-width:min(92vw,1100px); max-height:82vh; object-fit:contain; border-radius:12px; user-select:none; -webkit-user-select:none; }
+    .pp-lb-btn { position:absolute; display:grid; place-items:center; width:48px; height:48px; padding:0; border:0; border-radius:50%; background:rgba(255,253,248,.18); color:#fff; font-size:30px; line-height:1; cursor:pointer; }
+    .pp-lb-btn:hover { background:rgba(255,253,248,.34); }
+    .pp-lb-close { top:16px; right:16px; font-size:28px; }
+    .pp-lb-left { left:14px; top:50%; transform:translateY(-50%); }
+    .pp-lb-right { right:14px; top:50%; transform:translateY(-50%); }
+    .pp-lb-count { position:absolute; bottom:18px; left:50%; transform:translateX(-50%); color:#fff; font-size:14px; font-weight:700; }
+    @media (max-width: 800px) {
+      .pp-lb-btn { width:42px; height:42px; }
+      .pp-lb-left { left:8px; }
+      .pp-lb-right { right:8px; }
+    }
+    .pp-more { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px, 250px)); justify-content:start; gap:14px; margin-top:26px; align-items:start; }
+    .pp-order { max-width:720px; margin:26px 0 0; }
+    @media (max-width: 560px) { .pp-more { grid-template-columns:repeat(2, minmax(0,1fr)); } }
+    .pp-more button { padding:0; overflow:hidden; border:0; border-radius:16px; background:var(--peach); cursor:zoom-in; }
+    .pp-more img { display:block; width:100%; height:auto; }
   </style>
 </head>
 <body>
@@ -583,51 +604,154 @@
         root.appendChild(box);
       }
       // بنحمّل الصور الأول ونحتفظ بس بالصور اللي فعلًا موجودة
-      function loadImages(urls) {
-        return Promise.all(urls.map(function (url) {
-          return new Promise(function (resolve) {
-            const probe = new Image();
-            probe.onload = function () { resolve(url); };
-            probe.onerror = function () { resolve(null); };
-            probe.src = url;
+      // (لو الامتداد مختلف بنجرب jpg وjpeg وpng وwebp تلقائي)
+      function candidatesFor(url) {
+        const base = url.replace(/\.[A-Za-z0-9]+$/, '');
+        const list = [url];
+        ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG'].forEach(function (ext) {
+          if (list.indexOf(base + ext) === -1) list.push(base + ext);
+        });
+        return list;
+      }
+      function probe(url) {
+        return new Promise(function (resolve) {
+          const test = new Image();
+          test.onload = function () { resolve(true); };
+          test.onerror = function () { resolve(false); };
+          test.src = url;
+        });
+      }
+      function findImage(url) {
+        return candidatesFor(url).reduce(function (chain, candidate) {
+          return chain.then(function (found) {
+            if (found) return found;
+            return probe(candidate).then(function (ok) { return ok ? candidate : null; });
           });
-        })).then(function (list) { return list.filter(Boolean); });
+        }, Promise.resolve(null));
+      }
+      function loadImages(urls) {
+        return Promise.all(urls.map(findImage)).then(function (list) { return list.filter(Boolean); });
       }
 
-      // ---------- معرض الصور ----------
+      // ---------- معرض الصور: الغلاف فوق (يتكبّر بس)، وتحته كل صور الكتاب (تتكبّر وتتقلّب بينها) ----------
       function buildGallery(product, images) {
-        const wrap = el('div');
-        const main = el('div', 'pp-main');
-        let mainImg = null;
-        if (images.length) {
-          mainImg = document.createElement('img');
-          mainImg.src = images[0];
-          mainImg.alt = product.name || '';
-          main.appendChild(mainImg);
-        } else {
-          main.appendChild(document.createTextNode(product.icon || '🎨'));
+        if (!images.length) {
+          const empty = el('div', 'pp-main');
+          empty.appendChild(document.createTextNode(product.icon || '🎨'));
+          return { main: empty, more: null };
         }
-        wrap.appendChild(main);
+
+        const main = el('div', 'pp-main zoomable');
+        const mainImg = document.createElement('img');
+        mainImg.src = images[0];
+        mainImg.alt = product.name || '';
+        main.appendChild(mainImg);
+        main.appendChild(text(el('span', 'pp-zoom-hint'), '🔍 اضغط للتكبير', '🔍 Tap to enlarge'));
+        main.setAttribute('role', 'button');
+        main.tabIndex = 0;
+
+        // الصورة المكبّرة
+        let current = 0;
+        let opened = false;
+        let singleMode = false;
+        const lightbox = el('div', 'pp-lightbox');
+        lightbox.setAttribute('role', 'dialog');
+        lightbox.setAttribute('aria-modal', 'true');
+        const lbImg = document.createElement('img');
+        lbImg.className = 'pp-lb-img';
+        lbImg.alt = product.name || '';
+        const closeButton = el('button', 'pp-lb-btn pp-lb-close', '×');
+        const leftButton = el('button', 'pp-lb-btn pp-lb-left', '‹');
+        const rightButton = el('button', 'pp-lb-btn pp-lb-right', '›');
+        const counter = el('div', 'pp-lb-count');
+        [closeButton, leftButton, rightButton].forEach(function (b) { b.type = 'button'; });
+        lightbox.appendChild(lbImg);
+        lightbox.appendChild(closeButton);
+        lightbox.appendChild(leftButton);
+        lightbox.appendChild(rightButton);
+        lightbox.appendChild(counter);
+        document.body.appendChild(lightbox);
+
+        function isRtl() { return document.documentElement.dir === 'rtl'; }
+        bind(function () {
+          closeButton.setAttribute('aria-label', pick('إغلاق', 'Close'));
+          leftButton.setAttribute('aria-label', isRtl() ? pick('التالي', 'Next') : pick('السابق', 'Previous'));
+          rightButton.setAttribute('aria-label', isRtl() ? pick('السابق', 'Previous') : pick('التالي', 'Next'));
+        });
+
+        function render() {
+          lbImg.src = images[current];
+          counter.textContent = (current + 1) + ' / ' + images.length;
+        }
+        function step(delta) {
+          if (singleMode || images.length < 2) return;
+          current = (current + delta + images.length) % images.length;
+          render();
+        }
+        function openAt(index, single) {
+          singleMode = !!single;
+          current = index;
+          opened = true;
+          render();
+          const showNav = !singleMode && images.length > 1;
+          leftButton.style.display = showNav ? '' : 'none';
+          rightButton.style.display = showNav ? '' : 'none';
+          counter.style.display = showNav ? '' : 'none';
+          lightbox.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        }
+        function closeBox() {
+          opened = false;
+          lightbox.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+        // عربي: الصور بتترتب من اليمين للشمال، فالسهم الشمال بيروح للتالي. إنجليزي: العكس.
+        function goLeft() { step(isRtl() ? 1 : -1); }
+        function goRight() { step(isRtl() ? -1 : 1); }
+
+        main.addEventListener('click', function () { openAt(0, true); });
+        main.addEventListener('keydown', function (event) {
+          if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); openAt(0, true); }
+        });
+        closeButton.addEventListener('click', closeBox);
+        leftButton.addEventListener('click', goLeft);
+        rightButton.addEventListener('click', goRight);
+        lightbox.addEventListener('click', function (event) { if (event.target === lightbox) closeBox(); });
+        document.addEventListener('keydown', function (event) {
+          if (!opened) return;
+          if (event.key === 'Escape') closeBox();
+          else if (event.key === 'ArrowLeft') goLeft();
+          else if (event.key === 'ArrowRight') goRight();
+        });
+        let touchStartX = null;
+        lightbox.addEventListener('touchstart', function (event) {
+          touchStartX = event.changedTouches[0].clientX;
+        }, { passive: true });
+        lightbox.addEventListener('touchend', function (event) {
+          if (touchStartX === null) return;
+          const distance = event.changedTouches[0].clientX - touchStartX;
+          touchStartX = null;
+          if (Math.abs(distance) < 50) return;
+          if (distance > 0) goLeft(); else goRight();
+        }, { passive: true });
+
+        // كل صور المنتج (بما فيها الغلاف) ظاهرة تحت بعرض الصفحة
+        let more = null;
         if (images.length > 1) {
-          const thumbs = el('div', 'pp-thumbs');
+          more = el('div', 'pp-more');
           images.forEach(function (url, index) {
-            const button = el('button', 'pp-thumb' + (index === 0 ? ' active' : ''));
+            const button = el('button');
             button.type = 'button';
-            bind(function () { button.setAttribute('aria-label', pick('صورة ' + (index + 1), 'Image ' + (index + 1))); });
+            bind(function () { button.setAttribute('aria-label', pick('تكبير الصورة ' + (index + 1), 'Enlarge image ' + (index + 1))); });
             const image = document.createElement('img');
             image.src = url;
-            image.alt = '';
+            image.alt = product.name || '';
             button.appendChild(image);
-            button.addEventListener('click', function () {
-              mainImg.src = url;
-              thumbs.querySelectorAll('.pp-thumb').forEach(function (t) { t.classList.remove('active'); });
-              button.classList.add('active');
-            });
-            thumbs.appendChild(button);
+            button.addEventListener('click', function () { openAt(index, false); });
+            more.appendChild(button);
           });
-          wrap.appendChild(thumbs);
         }
-        return wrap;
+        return { main: main, more: more };
       }
 
       function chipGroup(titleAr, titleEn, items, itemsEn, cls, mark) {
@@ -808,7 +932,6 @@
           info.appendChild(box);
         }
 
-        info.appendChild(buildOrderBox(product));
         return info;
       }
 
@@ -846,10 +969,15 @@
           const urls = Array.isArray(product.images) && product.images.length ? product.images : (product.image ? [product.image] : []);
           return loadImages(urls).then(function (images) {
             root.textContent = '';
+            const gallery = buildGallery(product, images);
             const grid = el('div', 'pp-grid');
-            grid.appendChild(buildGallery(product, images));
+            grid.appendChild(gallery.main);
             grid.appendChild(buildInfo(product));
             root.appendChild(grid);
+            if (gallery.more) root.appendChild(gallery.more);
+            const order = el('div', 'pp-order');
+            order.appendChild(buildOrderBox(product));
+            root.appendChild(order);
 
             const others = products.filter(function (p) {
               return p && p.visible !== false && p.id && p.id !== product.id && p.category === product.category;
