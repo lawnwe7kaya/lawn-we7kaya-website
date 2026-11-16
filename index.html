@@ -4,10 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#f8f4ec">
-  <meta name="description" content="لون وحكاية — مساحة تجمع الفن والخيال واللمسات الشخصية. كل لون وراه حكاية.">
-  <meta property="og:title" content="لون وحكاية | كل لون وراه حكاية">
-  <meta property="og:description" content="مساحة تجمع الفن والخيال واللمسات الشخصية.">
-  <title>لون وحكاية | كل لون وراه حكاية</title>
+  <meta name="description" content="كل لون وراه حكاية. كتب تلوين ولوحات فنية وهدايا شخصية من لون وحكاية.">
+  <meta property="og:site_name" content="لون وحكاية">
+  <meta property="og:title" content="لون وحكاية">
+  <meta property="og:description" content="كل لون وراه حكاية. كتب تلوين ولوحات فنية وهدايا شخصية من لون وحكاية.">
+  <title>لون وحكاية</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "لون وحكاية",
+    "alternateName": "Lawn We7kaya",
+    "url": "https://lawnwe7kaya.github.io/lawn-we7kaya-website/"
+  }
+  </script>
   <style>
     :root {
       --cream: #f8f4ec;
@@ -448,6 +458,12 @@
       .pp-main { font-size:90px; }
     }
 
+    /* كروت المنتجات: الصورة والعنوان والزرار في نفس المستوى في كل الكروت */
+    .product-card { display:flex; flex-direction:column; }
+    .product-art { min-height:0; aspect-ratio:4 / 3; }
+    .product-info { display:flex; flex-direction:column; flex:1; }
+    .product-contact { margin-top:auto; }
+    .product-section.products-expanded .product-card { display:flex; flex-direction:column; }
   </style>
 </head>
 <body>
