@@ -394,7 +394,8 @@
 
     /* Categories and products loaded from products.json */
     .category-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .product-art img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    .product-art img { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+    .product-art.has-image { min-height:0; aspect-ratio:4 / 3; }
     .product-art small { z-index:1; }
     .product-price { margin:0 0 10px; color:var(--clay-dark); font-size:13px; font-weight:800; }
   
@@ -821,6 +822,16 @@
 
       function productUrl(p) { return 'product.html?id=' + encodeURIComponent(p.id); }
 
+      // لو الصورة امتدادها مختلف (jpg / jpeg / png / webp) بنجرب الباقي تلقائي
+      function imageCandidates(url) {
+        const base = url.replace(/\.[A-Za-z0-9]+$/, '');
+        const list = [url];
+        ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG'].forEach(function (ext) {
+          if (list.indexOf(base + ext) === -1) list.push(base + ext);
+        });
+        return list;
+      }
+
       function priceParts(p) {
         if (p.price === undefined || p.price === null || p.price === '') return null;
         if (typeof p.price === 'number') return [p.price + ' جنيه', p.price + ' EGP'];
@@ -835,12 +846,21 @@
         const cover = p.image || (Array.isArray(p.images) && p.images.length ? p.images[0] : '');
         if (cover) {
           const img = document.createElement('img');
-          img.src = cover;
+          const candidates = imageCandidates(cover);
+          let attempt = 0;
+          img.src = candidates[0];
           img.alt = p.name || '';
           img.loading = 'lazy';
+          art.className = 'product-art has-image';
           img.addEventListener('error', function () {
-            img.remove();
-            art.insertBefore(document.createTextNode(icon), art.firstChild);
+            attempt += 1;
+            if (attempt < candidates.length) {
+              img.src = candidates[attempt];
+            } else {
+              img.remove();
+              art.className = 'product-art';
+              art.insertBefore(document.createTextNode(icon), art.firstChild);
+            }
           });
           art.appendChild(img);
         } else {
