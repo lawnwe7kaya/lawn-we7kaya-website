@@ -18,7 +18,7 @@
     },
     {
       "id": "art",
-      "visible": false,
+      "visible": true,
       "name": "لوحات فنية",
       "name_en": "Artworks",
       "description": "ألوان وتكوينات فنية تضيف إحساسًا مختلفًا ولمسة جميلة للمكان.",
@@ -35,7 +35,7 @@
     },
     {
       "id": "gift",
-      "visible": false,
+      "visible": true,
       "name": "هدايا شخصية",
       "name_en": "Personalized gifts",
       "description": "أفكار تحمل معنى خاصًا، وتفاصيل تخلي الهدية أقرب للقلب.",
@@ -79,12 +79,6 @@
           "value": "12 صفحة",
           "label_en": "Coloring pages",
           "value_en": "12 pages"
-        },
-        {
-          "label": "الورق الداخلي",
-          "value": "ورق 80 جرام",
-          "label_en": "Inner paper",
-          "value_en": "80 gsm paper"
         },
         {
           "label": "الغلاف",
@@ -165,12 +159,6 @@
           "value_en": "24 pages"
         },
         {
-          "label": "الورق الداخلي",
-          "value": "ورق 80 جرام",
-          "label_en": "Inner paper",
-          "value_en": "80 gsm paper"
-        },
-        {
           "label": "الغلاف",
           "value": "كوشيه لامع",
           "label_en": "Cover",
@@ -247,12 +235,6 @@
           "value": "50 صفحة",
           "label_en": "Coloring pages",
           "value_en": "50 pages"
-        },
-        {
-          "label": "الورق الداخلي",
-          "value": "ورق 80 جرام",
-          "label_en": "Inner paper",
-          "value_en": "80 gsm paper"
         },
         {
           "label": "الغلاف",
