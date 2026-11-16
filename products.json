@@ -18,7 +18,7 @@
     },
     {
       "id": "art",
-      "visible": false,
+      "visible": true,
       "name": "لوحات فنية",
       "name_en": "Artworks",
       "description": "ألوان وتكوينات فنية تضيف إحساسًا مختلفًا ولمسة جميلة للمكان.",
@@ -35,7 +35,7 @@
     },
     {
       "id": "gift",
-      "visible": false,
+      "visible": true,
       "name": "هدايا شخصية",
       "name_en": "Personalized gifts",
       "description": "أفكار تحمل معنى خاصًا، وتفاصيل تخلي الهدية أقرب للقلب.",
@@ -297,7 +297,9 @@
       "orderable": false,
       "name_en": "Dinosaur Adventure",
       "description_en": "A fun idea for a world full of adventures and colors.",
-      "badge_en": "Sample"
+      "badge_en": "Sample",
+      "longDescription": "كتاب تلوين متخصص في مغامرات الطفل في عالم الديناصورات فقط: يركب ديناصور، ويستكشف الغابة القديمة، ويلعب مع الديناصورات الصغيرة. كل صفحة بصورته واسمه. ولو حابب، اختار قصة تانية على ذوقك.",
+      "longDescription_en": "A coloring book focused only on your child's adventures in the world of dinosaurs: riding a dinosaur, exploring the ancient jungle and playing with baby dinosaurs. Every page features their photo and name. Or choose a different story that suits your taste."
     },
     {
       "id": "kids-sample-2",
@@ -310,7 +312,9 @@
       "orderable": false,
       "name_en": "Space Trip",
       "description_en": "Room for imagination among planets and stars.",
-      "badge_en": "Sample"
+      "badge_en": "Sample",
+      "longDescription": "كتاب تلوين متخصص في رحلات الطفل بين الكواكب والنجوم فقط: رائد فضاء في سفينته، يزور القمر ويقابل أصدقاء من الفضاء. كل صفحة بصورته واسمه. ولو حابب، اختار قصة تانية على ذوقك.",
+      "longDescription_en": "A coloring book focused only on your child's journeys among planets and stars: an astronaut in their spaceship, visiting the moon and meeting friends from space. Every page features their photo and name. Or choose a different story that suits your taste."
     },
     {
       "id": "kids-sample-3",
@@ -323,7 +327,9 @@
       "orderable": false,
       "name_en": "Little Heroes",
       "description_en": "Ideas full of action and fun.",
-      "badge_en": "Sample"
+      "badge_en": "Sample",
+      "longDescription": "كتاب تلوين متخصص في الطفل كبطل صغير فقط: يطير فوق المدينة ويساعد أصحابه في مغامرات مليئة بالحركة. كل صفحة بصورته واسمه. ولو حابب، اختار قصة تانية على ذوقك.",
+      "longDescription_en": "A coloring book focused only on your child as a little hero: flying over the city and helping friends in action-packed adventures. Every page features their photo and name. Or choose a different story that suits your taste."
     },
     {
       "id": "kids-sample-4",
@@ -336,7 +342,9 @@
       "orderable": false,
       "name_en": "Fantasy World",
       "description_en": "Characters and stories that open the doors of imagination.",
-      "badge_en": "Sample"
+      "badge_en": "Sample",
+      "longDescription": "كتاب تلوين متخصص في عالم الخيال فقط: قلاع وتنانين لطيفة وشخصيات ساحرة تفتح للطفل أبواب الحكايات. كل صفحة بصورته واسمه. ولو حابب، اختار قصة تانية على ذوقك.",
+      "longDescription_en": "A coloring book focused only on a world of imagination: castles, friendly dragons and magical characters that open the doors of stories for your child. Every page features their photo and name. Or choose a different story that suits your taste."
     },
     {
       "id": "kids-sample-5",
@@ -349,7 +357,9 @@
       "orderable": false,
       "name_en": "Under the Sea Adventure",
       "description_en": "Playful discoveries among fish and colors.",
-      "badge_en": "Sample"
+      "badge_en": "Sample",
+      "longDescription": "كتاب تلوين متخصص في مغامرات الطفل تحت البحر فقط: غوّاص صغير يستكشف الشعاب المرجانية ويصاحب الدلافين والسلاحف وسط الأسماك الملونة. كل صفحة بصورته واسمه. ولو حابب، اختار قصة تانية على ذوقك.",
+      "longDescription_en": "A coloring book focused only on your child's underwater adventures: a little diver exploring coral reefs and swimming with dolphins and turtles among colorful fish. Every page features their photo and name. Or choose a different story that suits your taste."
     },
     {
       "id": "kids-sample-6",
@@ -362,7 +372,9 @@
       "orderable": false,
       "name_en": "Forest Friends",
       "description_en": "Cute animals and moments full of imagination.",
-      "badge_en": "Sample"
+      "badge_en": "Sample",
+      "longDescription": "كتاب تلوين متخصص في مغامرات الطفل في الغابة فقط: مستكشف صغير يقابل القرود والببغاوات والحيوانات اللطيفة وسط الأشجار والشلالات. كل صفحة بصورته واسمه. ولو حابب، اختار قصة تانية على ذوقك.",
+      "longDescription_en": "A coloring book focused only on your child's jungle adventures: a little explorer meeting monkeys, parrots and cute animals among trees and waterfalls. Every page features their photo and name. Or choose a different story that suits your taste."
     },
     {
       "id": "art-sample-1",
