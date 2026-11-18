@@ -1,4 +1,7 @@
 {
+  "settings": {
+    "discount": 50
+  },
   "categories": [
     {
       "id": "kids",
