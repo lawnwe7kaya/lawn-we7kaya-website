@@ -464,6 +464,11 @@
     .product-info { display:flex; flex-direction:column; flex:1; }
     .product-contact { margin-top:auto; }
     .product-section.products-expanded .product-card { display:flex; flex-direction:column; }
+    /* خصم */
+    .old-price { color:var(--muted); font-weight:600; text-decoration:line-through; margin-inline-end:6px; }
+    .discount-tag { display:inline-block; margin-inline-start:8px; padding:2px 10px; border-radius:30px; background:var(--green-soft); color:var(--green-dark); font-size:11px; font-weight:800; vertical-align:middle; }
+    .pp-price .old-price { font-size:18px; }
+    .pp-price .discount-tag { font-size:12px; }
   </style>
 </head>
 <body>
@@ -821,6 +826,7 @@
       // ===== الأقسام والمنتجات من ملف products.json =====
       // لو الملف مش موجود أو فيه خطأ، بيفضل الموقع بالأقسام والبطاقات الثابتة اللي في الصفحة.
       const WHATSAPP = 'https://wa.me/201276369556?text=';
+      let siteDiscount = 0; // الخصم العام بالجنيه (من settings.discount في products.json)
       function el(tag, cls, text) {
         const node = document.createElement(tag);
         if (cls) node.className = cls;
@@ -848,10 +854,18 @@
         return list;
       }
 
-      function priceParts(p) {
+      // السعر بعد الخصم. الخصم بيتطبق على الأسعار الرقمية بس، ولكل منتج ممكن يكون ليه "discount" خاص بيه
+      function priceInfo(p) {
         if (p.price === undefined || p.price === null || p.price === '') return null;
-        if (typeof p.price === 'number') return [p.price + ' جنيه', p.price + ' EGP'];
-        return [String(p.price), p.price_en ? String(p.price_en) : String(p.price)];
+        if (typeof p.price !== 'number') return { text: [String(p.price), p.price_en ? String(p.price_en) : String(p.price)], old: null, discount: 0 };
+        const raw = p.discount !== undefined ? Number(p.discount) : siteDiscount;
+        const discount = raw > 0 && raw < p.price ? raw : 0;
+        const now = p.price - discount;
+        return {
+          text: [now + ' جنيه', now + ' EGP'],
+          old: discount ? [p.price + ' جنيه', p.price + ' EGP'] : null,
+          discount: discount
+        };
       }
 
       function buildCard(p) {
@@ -895,8 +909,14 @@
         }
         info.appendChild(title);
         info.appendChild(bilingual(el('p'), p.description || '', p.description_en));
-        const price = priceParts(p);
-        if (price) info.appendChild(bilingual(el('div', 'product-price'), price[0], price[1]));
+        const price = priceInfo(p);
+        if (price) {
+          const priceBox = el('div', 'product-price');
+          if (price.old) priceBox.appendChild(bilingual(el('s', 'old-price'), price.old[0], price.old[1]));
+          priceBox.appendChild(bilingual(el('span'), price.text[0], price.text[1]));
+          if (price.discount) priceBox.appendChild(bilingual(el('span', 'discount-tag'), 'خصم ' + price.discount + ' جنيه', price.discount + ' EGP off'));
+          info.appendChild(priceBox);
+        }
         const link = bilingual(el('a', 'product-contact'), p.cta || 'عرض التفاصيل', p.cta ? p.cta_en : 'View details');
         if (url) {
           link.href = url;
@@ -986,6 +1006,7 @@
           if (!data || !Array.isArray(data.categories) || !Array.isArray(data.products)) {
             throw new Error('products.json format is wrong');
           }
+          siteDiscount = Number((data.settings || {}).discount) || 0;
           const products = data.products.filter(function (p) { return p && p.visible !== false; });
           // القسم بيظهر بس لو مفتوح وفيه منتج واحد ظاهر على الأقل
           const shown = data.categories.filter(function (c) {
