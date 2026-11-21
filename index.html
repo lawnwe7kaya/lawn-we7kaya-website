@@ -480,6 +480,9 @@
     .offers-name { min-width:130px; color:var(--ink); font-weight:800; text-decoration:none; }
     .offers-chip { padding:6px 14px; border-radius:30px; background:var(--green-soft); color:var(--green-dark); font-size:13px; font-weight:800; text-decoration:none; }
     .offers-chip:hover { background:var(--green); color:#fff; }
+    .offers-chip-single { background:var(--peach); color:var(--clay-dark); }
+    .offers-chip-single:hover { background:var(--clay); color:#fff; }
+    .offers-chip .old-price { color:inherit; opacity:.65; font-weight:600; }
     @media (max-width: 800px) { .offers-card { grid-template-columns:1fr; padding:20px; } }
   </style>
 </head>
@@ -998,6 +1001,15 @@
           const name = bilingual(el('a', 'offers-name'), p.name || '', p.name_en);
           name.href = productUrl(p);
           row.appendChild(name);
+          const single = priceInfo(p);
+          if (single) {
+            const singleChip = el('a', 'offers-chip offers-chip-single');
+            singleChip.href = productUrl(p);
+            singleChip.appendChild(bilingual(el('span'), 'كتاب واحد بـ ', '1 book for '));
+            if (single.old) singleChip.appendChild(bilingual(el('s', 'old-price'), single.old[0], single.old[1]));
+            singleChip.appendChild(bilingual(el('span'), single.text[0], single.text[1]));
+            row.appendChild(singleChip);
+          }
           offersOf(p).forEach(function (o) {
             const words = booksLabel(o.qty);
             const chip = bilingual(el('a', 'offers-chip'), words[0] + ' بـ ' + o.price + ' جنيه', words[1] + ' for ' + o.price + ' EGP');
