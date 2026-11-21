@@ -1,6 +1,7 @@
 {
   "settings": {
-    "discount": 50
+    "discount": 50,
+    "offersBanner": "images/offers-banner.jpg"
   },
   "categories": [
     {
@@ -21,7 +22,7 @@
     },
     {
       "id": "art",
-      "visible": false,
+      "visible": true,
       "name": "لوحات فنية",
       "name_en": "Artworks",
       "description": "ألوان وتكوينات فنية تضيف إحساسًا مختلفًا ولمسة جميلة للمكان.",
@@ -38,7 +39,7 @@
     },
     {
       "id": "gift",
-      "visible": false,
+      "visible": true,
       "name": "هدايا شخصية",
       "name_en": "Personalized gifts",
       "description": "أفكار تحمل معنى خاصًا، وتفاصيل تخلي الهدية أقرب للقلب.",
@@ -131,6 +132,16 @@
         "Watercolors",
         "Acrylic paints",
         "Thick markers"
+      ],
+      "offers": [
+        {
+          "qty": 2,
+          "price": 150
+        },
+        {
+          "qty": 3,
+          "price": 200
+        }
       ]
     },
     {
@@ -209,6 +220,16 @@
         "Watercolors",
         "Acrylic paints",
         "Thick markers"
+      ],
+      "offers": [
+        {
+          "qty": 2,
+          "price": 250
+        },
+        {
+          "qty": 3,
+          "price": 350
+        }
       ]
     },
     {
@@ -287,6 +308,16 @@
         "Watercolors",
         "Acrylic paints",
         "Thick markers"
+      ],
+      "offers": [
+        {
+          "qty": 2,
+          "price": 300
+        },
+        {
+          "qty": 3,
+          "price": 450
+        }
       ]
     },
     {
