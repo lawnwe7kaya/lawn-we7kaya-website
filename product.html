@@ -472,6 +472,13 @@
     .discount-tag { display:inline-block; margin-inline-start:8px; padding:2px 10px; border-radius:30px; background:var(--green-soft); color:var(--green-dark); font-size:11px; font-weight:800; vertical-align:middle; }
     .pp-price .old-price { font-size:18px; }
     .pp-price .discount-tag { font-size:12px; }
+    /* عروض الكتب */
+    .pp-offers-line { margin:-4px 0 16px; color:var(--green-dark); font-size:14px; font-weight:700; }
+    .pp-offers { display:grid; gap:8px; margin-bottom:4px; }
+    .pp-offers-title { margin:0; font-size:13px; font-weight:800; }
+    .pp-offer { display:flex; align-items:center; gap:10px; padding:10px 14px; border:1px solid var(--line); border-radius:16px; background:#fff; font-size:14px; font-weight:700; cursor:pointer; }
+    .pp-offer input { width:18px; height:18px; accent-color:var(--green); }
+    .pp-offer:has(input:checked) { border-color:var(--green); background:var(--green-soft); }
   </style>
 </head>
 <body>
@@ -606,6 +613,15 @@
           return [now + ' جنيه', now + ' EGP'];
         }
         return [String(price), product.price_en ? String(product.price_en) : String(price)];
+      }
+      function booksLabel(qty) {
+        const ar = qty === 1 ? 'كتاب واحد' : qty === 2 ? 'كتابين' : (qty <= 10 ? qty + ' كتب' : qty + ' كتاب');
+        return [ar, qty === 1 ? '1 book' : qty + ' books'];
+      }
+      function offersOf(product) {
+        return Array.isArray(product.offers)
+          ? product.offers.filter(function (o) { return o && o.qty > 1 && typeof o.price === 'number'; })
+          : [];
       }
       function priceLine(product, price) {
         const d = discountOf(product);
@@ -825,6 +841,29 @@
           return input;
         }
 
+        // اختيار العرض (كتاب واحد / كتابين / 3 كتب ...)
+        let selectedOffer = null;
+        const offers = offersOf(product);
+        if (offers.length) {
+          const offerBox = el('div', 'pp-offers');
+          offerBox.appendChild(text(el('p', 'pp-offers-title'), 'اختار العرض', 'Choose your offer'));
+          [{ qty: 1 }].concat(offers).forEach(function (option, i) {
+            const label = el('label', 'pp-offer');
+            const radio = document.createElement('input');
+            radio.type = 'radio';
+            radio.name = 'offer';
+            radio.value = String(option.qty);
+            if (i === 0) radio.checked = true;
+            radio.addEventListener('change', function () { selectedOffer = option.qty === 1 ? null : option; });
+            const words = booksLabel(option.qty);
+            const single = option.qty === 1 ? priceParts(product) : [option.price + ' جنيه', option.price + ' EGP'];
+            label.appendChild(radio);
+            label.appendChild(text(el('span'), words[0] + (single ? ' — ' + single[0] : ''), words[1] + (single ? ' — ' + single[1] : '')));
+            offerBox.appendChild(label);
+          });
+          form.appendChild(offerBox);
+        }
+
         const childName = field('childName', ['اسم الطفل (يتكتب على الكتاب)', "Child's name (printed on the book)"], ['مثال: إيفان', 'e.g. Evan'], false, true);
         const childAge = field('childAge', ['سن الطفل', "Child's age"], ['مثال: 5 سنين', 'e.g. 5 years'], false, false);
         const interests = field('interests', ['الطفل بيحب إيه؟', 'What does the child love?'],
@@ -886,7 +925,12 @@
           const price = priceParts(product);
           const name = pick(product.name, product.name_en);
           const lines = [pick('مرحبًا لون وحكاية 👋', 'Hello 👋'), pick('أريد طلب: ', 'I would like to order: ') + name];
-          if (price) lines.push(priceLine(product, price));
+          if (selectedOffer) {
+            const words = booksLabel(selectedOffer.qty);
+            lines.push(pick('العرض: ', 'Offer: ') + pick(words[0] + ' بـ ' + selectedOffer.price + ' جنيه', words[1] + ' for ' + selectedOffer.price + ' EGP'));
+          } else if (price) {
+            lines.push(priceLine(product, price));
+          }
           lines.push(pick('اسم الطفل: ', "Child's name: ") + childName.value.trim());
           if (childAge.value.trim()) lines.push(pick('السن: ', 'Age: ') + childAge.value.trim());
           if (interests.value.trim()) lines.push(pick('بيحب: ', 'Loves: ') + interests.value.trim());
@@ -920,6 +964,12 @@
           priceBox.appendChild(text(el('span'), price[0], price[1]));
           if (discount) priceBox.appendChild(text(el('span', 'discount-tag'), 'خصم ' + discount + ' جنيه', discount + ' EGP off'));
           info.appendChild(priceBox);
+        }
+        const offersList = offersOf(product);
+        if (offersList.length) {
+          info.appendChild(text(el('p', 'pp-offers-line'),
+            'عروض: ' + offersList.map(function (o) { return booksLabel(o.qty)[0] + ' بـ ' + o.price + ' جنيه'; }).join(' • '),
+            'Offers: ' + offersList.map(function (o) { return booksLabel(o.qty)[1] + ' for ' + o.price + ' EGP'; }).join(' • ')));
         }
         const description = product.longDescription || product.description;
         const descriptionEn = product.longDescription ? product.longDescription_en : product.description_en;
