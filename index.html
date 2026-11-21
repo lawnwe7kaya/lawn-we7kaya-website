@@ -469,6 +469,18 @@
     .discount-tag { display:inline-block; margin-inline-start:8px; padding:2px 10px; border-radius:30px; background:var(--green-soft); color:var(--green-dark); font-size:11px; font-weight:800; vertical-align:middle; }
     .pp-price .old-price { font-size:18px; }
     .pp-price .discount-tag { font-size:12px; }
+    /* عروض الكتب */
+    .product-offers { margin:0 0 10px; color:var(--green-dark); font-size:12px; font-weight:700; line-height:1.6; }
+    .offers-card { display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr); gap:30px; align-items:center; padding:28px; border:1px solid var(--line); border-radius:var(--radius); background:var(--paper); box-shadow:var(--shadow); }
+    .offers-card.no-image { grid-template-columns:1fr; }
+    .offers-image img { display:block; width:100%; border-radius:20px; }
+    .offers-card h2 { margin:6px 0 14px; color:var(--green-dark); font-size:clamp(24px,3.4vw,34px); line-height:1.3; }
+    .offers-row { display:flex; flex-wrap:wrap; align-items:center; gap:8px 10px; padding:12px 0; border-bottom:1px dashed var(--line); }
+    .offers-row:last-child { border-bottom:0; }
+    .offers-name { min-width:130px; color:var(--ink); font-weight:800; text-decoration:none; }
+    .offers-chip { padding:6px 14px; border-radius:30px; background:var(--green-soft); color:var(--green-dark); font-size:13px; font-weight:800; text-decoration:none; }
+    .offers-chip:hover { background:var(--green); color:#fff; }
+    @media (max-width: 800px) { .offers-card { grid-template-columns:1fr; padding:20px; } }
   </style>
 </head>
 <body>
@@ -844,6 +856,25 @@
 
       function productUrl(p) { return 'product.html?id=' + encodeURIComponent(p.id); }
 
+      // العروض: كتابين بـ 150، 3 كتب بـ 200 ...
+      function booksLabel(qty) {
+        const ar = qty === 1 ? 'كتاب واحد' : qty === 2 ? 'كتابين' : (qty <= 10 ? qty + ' كتب' : qty + ' كتاب');
+        return [ar, qty === 1 ? '1 book' : qty + ' books'];
+      }
+      function offersOf(p) {
+        return Array.isArray(p.offers)
+          ? p.offers.filter(function (o) { return o && o.qty > 1 && typeof o.price === 'number'; })
+          : [];
+      }
+      function offersText(p) {
+        const list = offersOf(p);
+        if (!list.length) return null;
+        return [
+          'عروض: ' + list.map(function (o) { return booksLabel(o.qty)[0] + ' بـ ' + o.price; }).join(' • '),
+          'Offers: ' + list.map(function (o) { return booksLabel(o.qty)[1] + ' for ' + o.price; }).join(' • ')
+        ];
+      }
+
       // لو الصورة امتدادها مختلف (jpg / jpeg / png / webp) بنجرب الباقي تلقائي
       function imageCandidates(url) {
         const base = url.replace(/\.[A-Za-z0-9]+$/, '');
@@ -917,6 +948,8 @@
           if (price.discount) priceBox.appendChild(bilingual(el('span', 'discount-tag'), 'خصم ' + price.discount + ' جنيه', price.discount + ' EGP off'));
           info.appendChild(priceBox);
         }
+        const offersLine = offersText(p);
+        if (offersLine) info.appendChild(bilingual(el('p', 'product-offers'), offersLine[0], offersLine[1]));
         const link = bilingual(el('a', 'product-contact'), p.cta || 'عرض التفاصيل', p.cta ? p.cta_en : 'View details');
         if (url) {
           link.href = url;
@@ -938,6 +971,45 @@
         }
         card.appendChild(info);
         return card;
+      }
+
+      function buildOffersSection(products, banner) {
+        const rows = products.filter(function (p) { return p.id && offersOf(p).length; });
+        if (!rows.length) return null;
+        const section = el('section', 'section offers-section');
+        section.id = 'offers';
+        const container = el('div', 'container');
+        const card = el('div', banner ? 'offers-card' : 'offers-card no-image');
+        if (banner) {
+          const imageBox = el('div', 'offers-image');
+          const img = document.createElement('img');
+          img.src = banner;
+          img.alt = '';
+          img.loading = 'lazy';
+          img.addEventListener('error', function () { imageBox.remove(); card.className = 'offers-card no-image'; });
+          imageBox.appendChild(img);
+          card.appendChild(imageBox);
+        }
+        const body = el('div');
+        body.appendChild(bilingual(el('span', 'section-kicker'), 'عروض', 'Offers'));
+        body.appendChild(bilingual(el('h2'), 'اشتري أكتر ووفّر', 'Buy more, save more'));
+        rows.forEach(function (p) {
+          const row = el('div', 'offers-row');
+          const name = bilingual(el('a', 'offers-name'), p.name || '', p.name_en);
+          name.href = productUrl(p);
+          row.appendChild(name);
+          offersOf(p).forEach(function (o) {
+            const words = booksLabel(o.qty);
+            const chip = bilingual(el('a', 'offers-chip'), words[0] + ' بـ ' + o.price + ' جنيه', words[1] + ' for ' + o.price + ' EGP');
+            chip.href = productUrl(p);
+            row.appendChild(chip);
+          });
+          body.appendChild(row);
+        });
+        card.appendChild(body);
+        container.appendChild(card);
+        section.appendChild(container);
+        return section;
       }
 
       function buildCategoryCard(c, index, total) {
@@ -1028,6 +1100,10 @@
           sections.forEach(initSlider);
           const categoriesSection = document.getElementById('categories');
           if (categoriesSection) categoriesSection.style.display = shown.length ? '' : 'none';
+          const oldOffers = document.getElementById('offers');
+          if (oldOffers) oldOffers.remove();
+          const offersSection = buildOffersSection(products, (data.settings || {}).offersBanner);
+          if (offersSection && categoriesSection) categoriesSection.parentNode.insertBefore(offersSection, categoriesSection.nextSibling);
         })
         .catch(function (error) {
           console.warn('تعذّر تحميل المنتجات، تم عرض النسخة الثابتة.', error);
